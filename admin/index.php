@@ -4,9 +4,13 @@ session_start();
     require_once '../commons/function.php';
 
     require_once './controllers/AdminThongKeController.php';
-    
+    require_once './models/AdminSanPhamModel.php';
+
+    require_once './controllers/AdminSanPhamController.php';
     $act = $_GET['act'] ?? '/';
     match($act){
         '/'=>(new AdminThongKeController())->ThongKe(),
+        // Sản phẩm
+        'san-pham' => (new AdminSanPhamController())->danhSachSanPham(),
     };
 ?>
