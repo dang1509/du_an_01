@@ -17,7 +17,7 @@ $act = $_GET['act'] ?? '/';
 
 match ($act) {
     // Trang chủ
-    '/'=>(new UserController())->trangChu(),
+    //'/'=>(new UserController())->trangChu(),
 
 
     
