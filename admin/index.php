@@ -6,6 +6,10 @@ session_start();
     require_once './controllers/AdminThongKeController.php';
     require_once './models/AdminSanPhamModel.php';
 
+    // require_once './controllers/AdminDanhMucController.php';
+    // require_once './models/AdminDanhMucModel.php';
+    
+
     require_once './controllers/AdminSanPhamController.php';
     $act = $_GET['act'] ?? '/';
     match($act){
