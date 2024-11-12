@@ -7,7 +7,7 @@ class DanhMuc{
     }
     public function getAllDanhMuc(){
         try{
-            $sql = "SELECT * FROM danhmuc";
+            $sql = "SELECT * FROM danh_mucs";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
