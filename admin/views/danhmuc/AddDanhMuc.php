@@ -29,12 +29,12 @@
               <form method="post">
   <div class="mb-3">
     <label for="tenDanhMuc" class="form-label">Tên Danh Mục</label>
-    <input type="text" class="form-control" id="tenDanhMuc" name="tenDanhMuc">
+    <input type="text" class="form-control" id="tenDanhMuc" name="ten_danh_muc">
    
   </div>
   <div class="mb-3">
     <label for="moTa" class="form-label">Mô Tả</label>
-    <input type="text" class="form-control" id="moTa" name="moTa">
+    <input type="text" class="form-control" id="moTa" name="mo_ta">
    
   </div>
   <button type="submit" class="btn btn-primary" name="btn_insert">Submit</button>

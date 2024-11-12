@@ -16,10 +16,10 @@ class AdminDanhMucController{
     public function insertDanhMuc(){
         require_once './views/danhmuc/AddDanhMuc.php';
         if(isset($_POST['btn_insert'])){
-            $tenDanhMuc = $_POST['tenDanhMuc'];
-            $moTa = $_POST['moTa'];
+            $tenDanhMuc = $_POST['ten_danh_muc'];
+            $moTa = $_POST['mo_ta'];
             if($this->modelDanhMuc->insert($tenDanhMuc,$moTa)){
-                header("Location: ?act=danh-muc");
+                header('Location: ?act=danh-muc');
             }
         }
     }
@@ -31,7 +31,7 @@ class AdminDanhMucController{
             $tenDanhMuc = $_POST['ten_danh_muc'];
             $moTa = $_POST['mo_ta'];
             if($this->modelDanhMuc->update($id,$tenDanhMuc,$moTa)){
-                header("Location: ?act=danh-muc");
+                header('Location: ?act=danh-muc');
             }
         }
     }

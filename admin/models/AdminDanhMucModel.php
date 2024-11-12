@@ -17,23 +17,23 @@ class DanhMuc{
     }
 
     function delete($id){
-        $sql_one="DELETE FROM danhmuc where id=$id";
+        $sql_one="DELETE FROM danh_mucs where id=$id";
         $result=$this->conn->prepare($sql_one);
         return $result->execute();
 
     }
     function insert($tenDanhMuc,$mota){
-        $sql_one="INSERT INTO danhmuc (ten_danh_muc,mo_ta) VALUES ('$tenDanhMuc' ,'$mota') " ;
+        $sql_one="INSERT INTO danh_mucs (ten_danh_muc,mo_ta) VALUES ('$tenDanhMuc' ,'$mota') " ;
         $result=$this->conn->prepare($sql_one);
         return $result->execute();
     }
     function update($id,$tenDanhMuc,$mota){
-        $sql="update danhmuc set ten_danh_muc='$tenDanhMuc',mo_ta='$mota' where id='$id'";
+        $sql="update danh_mucs set ten_danh_muc='$tenDanhMuc',mo_ta='$mota' where id='$id'";
         return $this->conn->prepare($sql)->execute();
 
     }
     function findId($id){
-        $sql = "SELECT * FROM danhmuc where id=$id";
+        $sql = "SELECT * FROM danh_mucs where id=$id";
         return $this->conn->query($sql)->fetch();
     }
 

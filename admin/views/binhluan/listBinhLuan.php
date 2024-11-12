@@ -11,7 +11,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Admin Danh Mục</h1>
+            <h1>Admin Bình Luận</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -29,28 +29,37 @@
                 <thead>
                   <tr>
                     <th>STT</th>
-                    <th>Tên Danh Mục</th>
-                    <th>Mô Tả</th>
-                    <th>Hành Động</th>
+                    <th>Sản phẩm được bình luận</th>
+                    <th>Người bình luận</th>
+                    <th>Nội dung</th>
+                    <th>Ngày đăng</th>
+                    <th>Trạng thái</th>
+                    <th>Thao tác</th>
                    
                   </tr>
                   </thead>    
                   <tbody>
-                        <?php foreach($listDanhMuc as $key=>$item): ?>
+                        <?php foreach($listBinhLuan as $key=>$item): ?>
                             <tr>
                             <td><?= $key+1 ?></td>
-                            <td><?= $item['ten_danh_muc'] ?></td>
-                            <td><?= $item['mo_ta'] ?></td>
-                          
-                            <td> <button class="btn btn-warning"> <a href="?act=update&id=<?php echo $item['id'] ?>">Sửa</a></button>
-                            <button class="btn btn-danger"><a onclick="return confirm('ban muon xoa k ') "href="?act=delete&id=<?php echo $item['id'] ?>">Xóa</a></button>
-                          
+                            <td><?= $item['san_pham_id'] ?></td>
+                            <td><?= $item['tai_khoan_id'] ?></td>
+                            <td><?= $item['noi_dung'] ?></td>
+                            <td><?= $item['ngay_dang'] ?></td>
+                            <td><?= $item['trang_thai'] === 1 ? 'hiện' : 'ẩn'    ?></td>
+                            <td>
+                                <button class="btn btn-warning">
+                                <a href="?act=trang-thai&id=<?php echo htmlspecialchars($item['id']) ?>">
+                                <?php echo $item['trang_thai'] ? 'Ẩn' : 'Hiện' ?>
+                                </a>
+                                </button>
+                            </td>
                             </tr>
                         <?php endforeach;?>
                       
                   </tbody>
                         </table>
-                        <a href="?act=add"  class="btn btn-primary" >Thêm</a></td>
+                       
                  
 
 

@@ -8,6 +8,9 @@ session_start();
 
     require_once './controllers/AdminDanhMucController.php';
     require_once './models/AdminDanhMucModel.php';
+
+    require_once './controllers/AdminBinhLuanController.php';
+    require_once './models/AdminBinhLuanModel.php';
     
 
     require_once './controllers/AdminSanPhamController.php';
@@ -20,5 +23,9 @@ session_start();
         'delete' => (new AdminDanhMucController())->deleteDanhMuc($_GET['id']),
         'add' => (new AdminDanhMucController())->insertDanhMuc(),
         'update' => (new AdminDanhMucController())->updateDanhMuc($_GET['id']),
+        'binh-luan' => (new AdminBinhLuanController())->danhSachBinhLuan(),
+        'trang-thai' => (new AdminBinhLuanController())->updateTrangThai($_GET['id']),
+        
+
     };
 ?>
