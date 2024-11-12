@@ -18,7 +18,7 @@ session_start();
         'san-pham' => (new AdminSanPhamController())->danhSachSanPham(),
         'danh-muc' => (new AdminDanhMucController())->danhSachDanhMuc(),
         'delete' => (new AdminDanhMucController())->deleteDanhMuc($_GET['id']),
-        'add-san-pham' => (new AdminDanhMucController())->themDanhMuc(),
-        
+        'add' => (new AdminDanhMucController())->insertDanhMuc(),
+        'update' => (new AdminDanhMucController())->updateDanhMuc($_GET['id']),
     };
 ?>

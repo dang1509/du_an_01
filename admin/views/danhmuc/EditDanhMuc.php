@@ -25,31 +25,20 @@
             <div class="card">
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="example1" class="table table-bordered table-striped">   
-                <thead>
-                  <tr>
-                    <th>STT</th>
-                    <th>Tên Danh Mục</th>
-                    <th>Mô Tả</th>
-                    <th>Hành Động</th>
-                   
-                  </tr>
-                  </thead>    
-                  <tbody>
-                        <?php foreach($listDanhMuc as $key=>$item): ?>
-                            <tr>
-                            <td><?= $key+1 ?></td>
-                            <td><?= $item['ten_danh_muc'] ?></td>
-                            <td><?= $item['mo_ta'] ?></td>
-                          
-                            <td> <button class="btn btn-warning"> <a href="?act=update&id=<?php echo $item['id'] ?>">Sửa</a></button>
-                            <button class="btn btn-danger"><a onclick="return confirm('ban muon xoa k ') "href="?act=delete&id=<?php echo $item['id'] ?>">Xóa</a></button>
-                            <a href="?act=add"  class="btn btn-primary" >Thêm</a></td>
-                            </tr>
-                        <?php endforeach;?>
-                  </tbody>
-                 
-
+               
+              <form method="post">
+  <div class="mb-3">
+    <label for="tenDanhMuc" class="form-label">Tên Danh Mục</label>
+    <input type="text" class="form-control" id="tenDanhMuc" name="ten_danh_muc" value="<?= $update['ten_danh_muc']?>">
+   
+  </div>
+  <div class="mb-3">
+    <label for="moTa" class="form-label">Mô Tả</label>
+    <input type="text" class="form-control" id="moTa" name="mo_ta" value="<?= $update['mo_ta']?>">
+   
+  </div>
+  <button type="submit" class="btn btn-primary" name="btn_update">Submit</button>
+</form>
 
   <?php include './views/layout/footer.php';?>
   <script>
