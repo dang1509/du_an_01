@@ -1,4 +1,5 @@
 <?php
+ob_start();
 class AdminDanhMucController{
     public $modelDanhMuc;
     public function __construct(){  
