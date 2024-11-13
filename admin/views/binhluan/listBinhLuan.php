@@ -48,12 +48,14 @@
                             <td><?= $item['ngay_dang'] ?></td>
                             <td><?= $item['trang_thai'] === 1 ? 'hiện' : 'ẩn'    ?></td>
                             <td>
-                                <button class="btn btn-warning">
+                                
                                 <a href="?act=trang-thai&id=<?php echo htmlspecialchars($item['id']) ?>">
-                                <?php echo $item['trang_thai'] ? 'Ẩn' : 'Hiện' ?>
+                                <button class="btn btn-warning">
+                                <?php echo $item['trang_thai'] ? 'Ẩn' : 'Hiện' ?></button>
                                 </a>
-                                </button>
+                                
                             </td>
+                            
                             </tr>
                         <?php endforeach;?>
                       

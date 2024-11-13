@@ -1,3 +1,8 @@
+<style>
+  .table-striped td{
+  max-width:650px;}
+</style>
+
 <?php include './views/layout/header.php'; ?>
   <!-- Navbar -->
   <?php include './views/layout/navbar.php'; ?>
@@ -12,6 +17,7 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Admin Danh Mục</h1>
+            <a href="?act=add"  class="btn btn-primary" >Thêm</a></td>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -50,7 +56,7 @@
                       
                   </tbody>
                         </table>
-                        <a href="?act=add"  class="btn btn-primary" >Thêm</a></td>
+                        <!-- <a href="?act=add"  class="btn btn-primary" >Thêm</a></td> -->
                  
 
 
