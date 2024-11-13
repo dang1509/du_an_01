@@ -60,8 +60,28 @@
                         <?php endforeach;?>
                       
                   </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>STT</th>
+                    <th>Tên danh mục </th>
+                    <th>Mô tả</th>
+                    <th>Hành động</th>
+                    
+                  </tr>
+                  </tfoot>
                         </table>
-                        <!-- <a href="?act=add"  class="btn btn-primary" >Thêm</a></td> -->
+                        </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      <!-- /.container-fluid -->
+    </section>
+      </div>
                  
 
 

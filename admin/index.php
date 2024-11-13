@@ -19,6 +19,7 @@ session_start();
         '/'=>(new AdminThongKeController())->ThongKe(),
         // Sản phẩm
         'san-pham' => (new AdminSanPhamController())->danhSachSanPham(),
+        
 
 
         // Danh mục
