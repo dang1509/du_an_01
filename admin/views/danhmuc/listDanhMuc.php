@@ -60,6 +60,15 @@
                         <?php endforeach;?>
                       
                   </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>STT</th>
+                    <th>Tên danh mục </th>
+                    <th>Mô tả</th>
+                    <th>Hành động</th>
+                    
+                  </tr>
+                  </tfoot>
                         </table>
                         </div>
               <!-- /.card-body -->
@@ -73,9 +82,8 @@
       <!-- /.container-fluid -->
     </section>
       </div>
-    
-    <!-- /.content -->
- 
+
+
 
 
   <?php include './views/layout/footer.php';?>

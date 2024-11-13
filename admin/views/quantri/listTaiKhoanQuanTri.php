@@ -54,7 +54,7 @@
                   </tr>
                   </thead>    
                   <tbody>
-                  <?php foreach($listVoucher as $key=>$item): ?>
+                  <?php foreach($listQuanTri as $key=>$item): ?>
                             <tr>
                             <td><?= $key+1;?></td>
                             <td><?= $item['ho_ten']?></td>
@@ -66,11 +66,12 @@
                             <td><?= $item['dia_chi']?></td>
                             <td><?= $item['mat_khau']?></td>
                             <td><?= $item['chuc_vu']?></td>
+                        
                            
                            
                             <td>
                                 
-                                <a href="?act=trang-thai&id=<?php echo htmlspecialchars($item['id']) ?>">
+                                <a href="?act=trang_thai&id=<?php echo htmlspecialchars($item['id']) ?>">
                                 <button class="btn btn-warning">
                                 <?php echo $item['trang_thai'] ? 'Có hiệu lực' : 'Vô hiệu hóa' ?></button>
                                 </a>

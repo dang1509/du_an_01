@@ -27,6 +27,7 @@ session_start();
         '/'=>(new AdminThongKeController())->ThongKe(),
         // Sản phẩm
         'san-pham' => (new AdminSanPhamController())->danhSachSanPham(),
+        
 
 
         // Danh mục
@@ -43,8 +44,8 @@ session_start();
         // voucher
         'voucher' => (new AdminVoucherController())->danhSachVoucher(),
         // tai khoan
-        'tai-khoan-khach-hang' => (new AdminQuanTriTaiKhoanController())->(),
-        'tai-khoan-quan-tri' => (new AdminQuanTriTaiKhoanController())->(),
+        // 'tai-khoan-khach-hang' => (new AdminQuanTriTaiKhoanController())->(),
+        'tai-khoan-quan-tri' => (new AdminQuanTriTaiKhoanController())->danhSachQuanTri(),
 
     };
 ?>

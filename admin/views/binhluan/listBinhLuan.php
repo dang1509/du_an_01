@@ -61,6 +61,7 @@
                       
                   </tbody>
                         </table>
+
                         </div>
               <!-- /.card-body -->
             </div>
@@ -73,10 +74,6 @@
       <!-- /.container-fluid -->
     </section>
       </div>
-    
-    <!-- /.content -->
- 
-                 
 
 
   <?php include './views/layout/footer.php';?>
