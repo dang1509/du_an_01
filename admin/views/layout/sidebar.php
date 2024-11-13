@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" >
     <!-- Brand Logo -->
     <a href="../../index3.html" class="brand-link text-center">
       <span class="brand-text font-weight-light">Admin</span> 
@@ -85,6 +85,14 @@
                 </a>
               </li>
             </ul>
+          </li>
+          <li class="nav-item">
+            <a href="<?php echo BASE_URL_ADMIN.'?act=binh-luan' ?>" class="nav-link">
+            <i class="nav-icon fas fa-ticket-alt"> </i>
+              <p>
+              Voucher 
+              </p>
+            </a>
           </li>
           
         </ul>
