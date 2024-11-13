@@ -57,12 +57,16 @@
                   <?php foreach($listVoucher as $key=>$item): ?>
                             <tr>
                             <td><?= $key+1;?></td>
-                            <td><?= $item['ma_voucher']?></td>
-                            <td><?= $item['gia_tri_giam_gia']?>%</td>
-                            <td><?= $item['ngay_bat_dau']?></td>
-                            <td><?= $item['ngay_ket_thuc']?></td>
-                            <td><?= $item['so_luong']?></td>
-                            <td><?= $item['trang_thai']?></td>
+                            <td><?= $item['ho_ten']?></td>
+                            <td><?= $item['anh_dai_dien']?>%</td>
+                            <td><?= $item['ngay_sinh']?></td>
+                            <td><?= $item['email']?></td>
+                            <td><?= $item['so_dien_thoai']?></td>
+                            <td><?= $item['gioi_tinh']?></td>
+                            <td><?= $item['dia_chi']?></td>
+                            <td><?= $item['mat_khau']?></td>
+                            <td><?= $item['chuc_vu']?></td>
+                           
                            
                             <td>
                                 
