@@ -32,9 +32,15 @@ class DanhMuc{
         return $this->conn->prepare($sql)->execute();
 
     }
-    function findId($id){
-        $sql = "SELECT * FROM danh_mucs where id=$id";
-        return $this->conn->query($sql)->fetch();
+    function getOneDanhMuc($id){
+        try{
+            $sql = "SELECT * FROM danh_mucs WHERE id=:id";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':id'=>$id]);
+            return $stmt->fetch();
+        }catch(PDOException $e){
+            echo "Lỗi: ".$e->getMessage();
+        }
     }
 
 

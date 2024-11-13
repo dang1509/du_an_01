@@ -19,10 +19,17 @@ session_start();
         '/'=>(new AdminThongKeController())->ThongKe(),
         // Sản phẩm
         'san-pham' => (new AdminSanPhamController())->danhSachSanPham(),
+
+
+        // Danh mục
         'danh-muc' => (new AdminDanhMucController())->danhSachDanhMuc(),
         'delete' => (new AdminDanhMucController())->deleteDanhMuc($_GET['id']),
+        'form-them-danh-muc' => (new AdminDanhMucController())-> formThemDanhMuc(),
         'add' => (new AdminDanhMucController())->insertDanhMuc(),
-        'update' => (new AdminDanhMucController())->updateDanhMuc($_GET['id']),
+        'form-sua-danh-muc' => (new AdminDanhMucController())->formSuaDanhMuc(),
+        'update' => (new AdminDanhMucController())->updateDanhMuc(),
+
+        // Bình luận
         'binh-luan' => (new AdminBinhLuanController())->danhSachBinhLuan(),
         'trang-thai' => (new AdminBinhLuanController())->updateTrangThai($_GET['id']),
         

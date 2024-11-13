@@ -30,7 +30,7 @@
             <!-- /.card -->
             <div class="card">
             <div class="card-header">
-                <a href="<?= BASE_URL_ADMIN.'?act=add';?>">
+                <a href="<?= BASE_URL_ADMIN.'?act=form-them-danh-muc';?>">
               <button class="btn btn-success">Thêm danh mục</button>
               </a>
               </div>
@@ -53,8 +53,8 @@
                             <td><?= $item['ten_danh_muc'] ?></td>
                             <td><?= $item['mo_ta'] ?></td>
                           
-                            <td> <button class="btn btn-warning"> <a href="?act=update&id=<?php echo $item['id'] ?>">Sửa</a></button>
-                            <button class="btn btn-danger"><a onclick="return confirm('ban muon xoa k ') "href="?act=delete&id=<?php echo $item['id'] ?>">Xóa</a></button>
+                            <td><a href="?act=form-sua-danh-muc&id_danh_muc=<?php echo $item['id'] ?>"> <button class="btn btn-warning"> Sửa</button></a>
+                           <a onclick="return confirm('Bạn có muốn xóa không?') "href="?act=delete&id=<?php echo $item['id'] ?>"><button class="btn btn-danger">Xóa</button></a>
                           
                             </tr>
                         <?php endforeach;?>

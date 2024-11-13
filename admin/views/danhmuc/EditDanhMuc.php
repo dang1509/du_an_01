@@ -1,4 +1,4 @@
-<?php include './views/layout/header.php'; ?>
+  <?php include './views/layout/header.php'; ?>
   <!-- Navbar -->
   <?php include './views/layout/navbar.php'; ?>
   <!-- /.navbar -->
@@ -26,15 +26,20 @@
               <!-- /.card-header -->
               <div class="card-body">
                
-              <form method="post">
+              <form action="<?= BASE_URL_ADMIN.'?act=update' ?>" method="post">
+              <input type="hidden" name="id" value="<?= $danhMuc['id']?>" >
+
   <div class="mb-3">
     <label for="tenDanhMuc" class="form-label">Tên Danh Mục</label>
-    <input type="text" class="form-control" id="tenDanhMuc" name="ten_danh_muc" value="<?= $update['ten_danh_muc']?>">
-   
+    <input type="text" class="form-control" id="tenDanhMuc" name="ten_danh_muc" value="<?= $danhMuc['ten_danh_muc']?>">
+    <?php if(isset($error['ten_danh_muc'])){ ?>
+                        <p class="text-danger"><?= $error['ten_danh_muc'] ?></p>
+                 <?php   }
+                     ?>
   </div>
   <div class="mb-3">
     <label for="moTa" class="form-label">Mô Tả</label>
-    <input type="text" class="form-control" id="moTa" name="mo_ta" value="<?= $update['mo_ta']?>">
+    <input type="text" class="form-control" id="moTa" name="mo_ta" value="<?= $danhMuc['mo_ta']?>">
    
   </div>
   <button type="submit" class="btn btn-primary" name="btn_update">Submit</button>

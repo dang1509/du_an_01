@@ -26,11 +26,13 @@
               <!-- /.card-header -->
               <div class="card-body">
                
-              <form method="post">
+              <form action="<?php echo BASE_URL_ADMIN.'?act=add' ?>" method="post">
   <div class="mb-3">
     <label for="tenDanhMuc" class="form-label">Tên Danh Mục</label>
     <input type="text" class="form-control" id="tenDanhMuc" name="ten_danh_muc">
-   
+    <?php if(isset($_SESSION['error']['ten_danh_muc'])){ ?>
+          <p class="text-danger"><?= $_SESSION['error']['ten_danh_muc'] ?></p>
+     <?php   }  ?>
   </div>
   <div class="mb-3">
     <label for="moTa" class="form-label">Mô Tả</label>

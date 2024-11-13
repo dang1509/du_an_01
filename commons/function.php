@@ -22,21 +22,27 @@ function connectDB() {
     }
 }
 
-function uploadFile($file, $folderUpload){
-    $pathStorage = $folderUpload . time() . $file['name'];
-
+function uploadFile($file,$folderUpload){
+    $path_storage = $folderUpload.time().$file['name'];
     $from = $file['tmp_name'];
-    $to = PATH_ROOT . $pathStorage;
-
-    if (move_uploaded_file($from, $to)) {
-        return $pathStorage;
+    $to = PATH_ROOT.$path_storage;
+    if(move_uploaded_file($from,$to)){
+        return $path_storage;
     }
     return null;
 }
 
 function deleteFile($file){
-    $pathDelete = PATH_ROOT . $file;
-    if (file_exists($pathDelete)) {
-        unlink($pathDelete);
+    $path_delete = PATH_ROOT.$file;
+    if(file_exists($path_delete)){
+        unlink($path_delete);
+    }
+}
+
+function deleteSessionError(){
+    if(isset($_SESSION['flash'])){
+        unset($_SESSION['flash']);
+        session_unset();
+        session_destroy();
     }
 }
