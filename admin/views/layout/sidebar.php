@@ -87,7 +87,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="<?php echo BASE_URL_ADMIN.'?act=binh-luan' ?>" class="nav-link">
+            <a href="<?php echo BASE_URL_ADMIN.'?act=voucher' ?>" class="nav-link">
             <i class="nav-icon fas fa-ticket-alt"> </i>
               <p>
               Voucher 
