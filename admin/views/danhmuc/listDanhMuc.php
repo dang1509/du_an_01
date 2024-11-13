@@ -17,7 +17,7 @@
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Admin Danh Mục</h1>
-            <a href="?act=add"  class="btn btn-primary" >Thêm</a></td>
+            
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -29,6 +29,11 @@
        
             <!-- /.card -->
             <div class="card">
+            <div class="card-header">
+                <a href="<?= BASE_URL_ADMIN.'?act=add';?>">
+              <button class="btn btn-success">Thêm danh mục</button>
+              </a>
+              </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">   
