@@ -11,7 +11,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Admin Danh Mục</h1>
+            <h1>Quản lí Danh Mục</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -42,9 +42,16 @@
     <input type="text" class="form-control" id="moTa" name="mo_ta" value="<?= $danhMuc['mo_ta']?>">
    
   </div>
-  <button type="submit" class="btn btn-primary" name="btn_update">Submit</button>
+  <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
 </form>
-
+</div>        
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
   <?php include './views/layout/footer.php';?>
   <script>
   $(function () {

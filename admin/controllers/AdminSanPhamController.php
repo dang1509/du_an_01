@@ -1,19 +1,20 @@
 <?php
     class AdminSanPhamController{
         public $modelSanPham;
-
+        public $modelDanhMuc;
         public function __construct(){
             $this->modelSanPham = new SanPham();
+            $this->modelDanhMuc = new DanhMuc();
         }
         public function danhSachSanPham(){
             $listSanPham = $this->modelSanPham->getAllSanPham();
             require_once './views/sanpham/listSanPham.php';
-            
         }
-        // public function formThemDanhMuc(){
-        //     require_once "./views/danhmuc/formThemDanhmuc.php";
-        //     deleteSessionError();
-        // }
+        public function formThemSanPham(){
+            $this->modelDanhMuc->getAllDanhMuc();
+            require_once "./views/sanpham/formThemSanPham.php";
+            deleteSessionError();
+        }
         // public function ThemDanhMuc(){
         //     if($_SERVER['REQUEST_METHOD']=="POST"){
         //         $ten_danh_muc = $_POST['ten_danh_muc']?? "";
