@@ -16,7 +16,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Admin Danh Mục</h1>
+            <h1>Quản lí Danh Mục</h1>
             
           </div>
         </div>
@@ -55,7 +55,7 @@
                           
                             <td><a href="?act=form-sua-danh-muc&id_danh_muc=<?php echo $item['id'] ?>"> <button class="btn btn-warning"> Sửa</button></a>
                            <a onclick="return confirm('Bạn có muốn xóa không?') "href="?act=delete&id=<?php echo $item['id'] ?>"><button class="btn btn-danger">Xóa</button></a>
-                          
+                           </td>
                             </tr>
                         <?php endforeach;?>
                       

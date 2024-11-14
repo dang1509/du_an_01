@@ -25,7 +25,13 @@ session_start();
         '/'=>(new AdminThongKeController())->ThongKe(),
         // Sản phẩm
         'san-pham' => (new AdminSanPhamController())->danhSachSanPham(),
-        
+        'form-them-san-pham' => (new AdminSanPhamController())->formThemSanPham(),
+        'post-them-san-pham' => (new AdminSanPhamController()) -> postThemSanPham(),
+        'form-edit-san-pham' => (new AdminSanPhamController()) -> formEditSanPham(),
+        'post-edit-san-pham' => (new AdminSanPhamController()) -> postEditSanPham(),
+        'sua-album-anh-san-pham' => (new AdminSanPhamController()) -> postEditAnhSanPham(),
+        'xoa-san-pham' => (new AdminSanPhamController()) -> deleteSanPham(),
+        'chi-tiet-san-pham' =>(new AdminSanPhamController())-> detailSanPham(),
 
 
         // Danh mục
@@ -38,7 +44,7 @@ session_start();
 
         // Bình luận
         'binh-luan' => (new AdminBinhLuanController())->danhSachBinhLuan(),
-        'trang-thai' => (new AdminBinhLuanController())->updateTrangThai($_GET['id']),
+        'trang-thai' => (new AdminBinhLuanController())->updateTrangThai(),
         // voucher
         'voucher' => (new AdminVoucherController())->setVoucher(),
         'update_voucher' => (new AdminVoucherController())->updateVoucher(),
