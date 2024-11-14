@@ -46,6 +46,7 @@
                     <th>Ngày kết thúc</th>
                     <th>Số lượng</th>
                     <th>Trạng thái</th>
+                    <th>Thao tác</th>
                  
                    
                   </tr>

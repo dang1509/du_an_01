@@ -49,7 +49,7 @@ session_start();
         'voucher' => (new AdminVoucherController())->setVoucher(),
         'update_voucher' => (new AdminVoucherController())->updateVoucher(),
         // tai khoan
-        // 'tai-khoan-khach-hang' => (new AdminQuanTriTaiKhoanController())->(),
+       'tai-khoan-khach-hang' => (new AdminQuanTriTaiKhoanController())->danhSachKhach(),
         'tai-khoan-quan-tri' => (new AdminQuanTriTaiKhoanController())->danhSachQuanTri(),
 
     };

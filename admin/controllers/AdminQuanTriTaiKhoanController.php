@@ -10,6 +10,11 @@ class AdminQuanTriTaiKhoanController{
         require_once './views/quantri/listTaiKhoanQuanTri.php';
 
     }
-    
+    public function danhSachKhach(){
+        $listKhach = $this->modelQuanTri->getAllKhach();
+        require_once './views/quantri/listTaiKhoanKhanhHang.php';
+
+    }
+ 
 }
 ?>

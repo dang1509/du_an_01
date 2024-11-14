@@ -42,6 +42,7 @@
                     <th>STT</th>
                     <th>Họ tên</th>
                     <th>Ảnh đại diện</th>
+                    <th>Ngày Sinh</th>
                     <th>Email</th>
                     <th>SĐT</th>
                     <th>Giới Tính</th>
@@ -62,13 +63,11 @@
                             <td><?= $item['ngay_sinh']?></td>
                             <td><?= $item['email']?></td>
                             <td><?= $item['so_dien_thoai']?></td>
-                            <td><?= $item['gioi_tinh']?></td>
+                            <td><?= $item['gioi_tinh'] ==1 ? 'nam' : 'nữ' ?></td>
                             <td><?= $item['dia_chi']?></td>
                             <td><?= $item['mat_khau']?></td>
-                            <td><?= $item['chuc_vu']?></td>
-                        
-                           
-                           
+                            <td><?= $item['chuc_vu_id'] ==1 ? 'admin' : 'khách' ?></td>
+
                             <td>
                                 
                                 <a href="?act=trang_thai&id=<?php echo htmlspecialchars($item['id']) ?>">
