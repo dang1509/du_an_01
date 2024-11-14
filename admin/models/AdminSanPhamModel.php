@@ -58,7 +58,7 @@ class SanPham
     public function getOneSanPham($id)
     {
         try {
-            $sql = 'SELECT san_phams.* FROM san_phams WHERE id=:id';
+            $sql = 'SELECT san_phams.*, danh_mucs.ten_danh_muc FROM san_phams INNER JOIN danh_mucs ON san_phams.danh_muc_id= danh_mucs.id WHERE san_phams.id=:id';
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([':id' => $id]);
             return $stmt->fetch();
@@ -140,6 +140,17 @@ class SanPham
     {
         try {
             $sql = 'DELETE FROM hinh_anh_san_phams WHERE id=:id';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':id'=>$id]);
+            return true;
+
+        } catch (PDOException $e) {
+            echo 'Lỗi: ' . $e->getMessage();
+        }
+    }
+    public function DeleteSanPham($id){
+        try {
+            $sql = 'DELETE FROM san_phams WHERE id=:id';
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([':id'=>$id]);
             return true;

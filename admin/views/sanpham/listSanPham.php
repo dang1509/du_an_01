@@ -50,10 +50,10 @@
                             <td><img src="<?= BASE_URL.$item['hinh_anh'] ?>" alt="" style="width:100px; height: 100px;"></td>
                             <td><?= $item['ten_danh_muc']?></td>
                             <td><?= $item['gia_san_pham'] ?></td>
-                            <td><?= $item['trang_thai']==0 ?'Còn hàng':'Hết hàng' ?></td>
+                            <td><?= $item['trang_thai']==1 ?'Còn hàng':'Hết hàng' ?></td>
                             <td>
                              <a href="<?= BASE_URL_ADMIN.'?act=form-edit-san-pham&id_san_pham='.$item['id']?>"><button class="btn btn-warning">Sửa</button></a> 
-                            <a href="<?= BASE_URL_ADMIN.'?act=xoa-san-pham&id_san_pham='.$item['id']?>"><button class="btn btn-danger">Xóa</button></a> 
+                            <a href="<?= BASE_URL_ADMIN.'?act=xoa-san-pham&id_san_pham='.$item['id']?>" onclick="confirm('Bạn chắc chắn muốn xóa sản phẩm này?')"><button class="btn btn-danger">Xóa</button></a> 
                            <a href="<?= BASE_URL_ADMIN.'?act=chi-tiet-san-pham&id_san_pham='.$item['id']?>"><button class="btn btn-info">Chi tiết</button></a></td>
                             </tr>
                         <?php endforeach;?>
