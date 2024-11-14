@@ -18,8 +18,6 @@ session_start();
     require_once './controllers/AdminQuanTriTaiKhoanController.php';
     require_once './models/AdminQuanTriTaiKhoanModel.php';
     
-    
-    
 
     require_once './controllers/AdminSanPhamController.php';
     $act = $_GET['act'] ?? '/';
@@ -42,7 +40,8 @@ session_start();
         'binh-luan' => (new AdminBinhLuanController())->danhSachBinhLuan(),
         'trang-thai' => (new AdminBinhLuanController())->updateTrangThai($_GET['id']),
         // voucher
-        'voucher' => (new AdminVoucherController())->danhSachVoucher(),
+        'voucher' => (new AdminVoucherController())->setVoucher(),
+        'update_voucher' => (new AdminVoucherController())->updateVoucher(),
         // tai khoan
         // 'tai-khoan-khach-hang' => (new AdminQuanTriTaiKhoanController())->(),
         'tai-khoan-quan-tri' => (new AdminQuanTriTaiKhoanController())->danhSachQuanTri(),

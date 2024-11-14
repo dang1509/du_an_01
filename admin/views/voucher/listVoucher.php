@@ -45,34 +45,30 @@
                     <th>Ngày bắt đầu</th>
                     <th>Ngày kết thúc</th>
                     <th>Số lượng</th>
+                    <th>Trạng thái</th>
                  
                    
                   </tr>
                   </thead>    
                   <tbody>
-                        <?php foreach($listVoucher as $key=>$item): ?>
+                        <?php foreach($vouchers as $key=>$item): ?>
                             <tr>
                             <td><?= $key+1;?></td>
                             <td><?= $item['ma_voucher']?></td>
-                            <td><?= $item['gia_tri_giam_gia']?>%</td>
+                            <td><?= $item['giam_gia']?></td>
                             <td><?= $item['ngay_bat_dau']?></td>
                             <td><?= $item['ngay_ket_thuc']?></td>
                             <td><?= $item['so_luong']?></td>
-                            <td><?= $item['trang_thai']?></td>
-                           
-                            <td>
-                                
-                                <a href="?act=trang-thai&id=<?php echo htmlspecialchars($item['id']) ?>">
+                            <td><?= $item['trang_thai'] == 1 ? 'Có hiệu lực' : 'Vô hiệu hóa' ?></td>
+                            <td>   
+                                <a href="?act=update_voucher&id=<?php echo htmlspecialchars($item['id']) ?>">
                                 <button class="btn btn-warning">
-                                <?php echo $item['trang_thai'] ? 'Có hiệu lực' : 'Vô hiệu hóa' ?></button>
-                                </a>
-                                
+                                <?php echo $item['trang_thai'] ? 'Vô hiệu hóa' : 'Có hiệu lực' ?></button>
+
+                                </a>        
                             </td>
-                          
-                          </tr>
-                          
+                          </tr>  
                         <?php endforeach;?>
-                      
                   </tbody>
                         </table>
                         </div>

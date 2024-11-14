@@ -5,15 +5,11 @@ class Voucher {
         $this->conn = connectDB();
 
     }
-    public function getAllVoucher(){
-        try{
+    public function getAllVoucher(){  
             $sql = "SELECT * FROM vouchers";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
-        }catch(PDOException $e){
-            echo "Lỗi: ".$e->getMessage();
-        }
     }
     public function findId($id){
         $sql = "SELECT * FROM vouchers where id=$id";
@@ -24,9 +20,13 @@ class Voucher {
         $stmt = $this->conn->prepare($sql_one);
         $stmt->execute();
         return $this->conn->lastInsertId();
-    
-
-
-}
+    }
+    public function updateTrangThai($id, $trangThai) {
+        $sql = "UPDATE vouchers SET trang_thai = ? WHERE id = ?";
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute([$trangThai, $id]);
+        return $stmt->rowCount() > 0;
+    }
+   
 }
 ?>
