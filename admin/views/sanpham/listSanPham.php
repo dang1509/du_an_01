@@ -47,7 +47,7 @@
                             <tr>
                             <td><?= $key+1 ?></td>
                             <td><?= $item['ten_san_pham'] ?></td>
-                            <td><img src="<?= BASE_URL.$item['hinh_anh'] ?>" alt="" style="width:100px"></td>
+                            <td><img src="<?= BASE_URL.$item['hinh_anh'] ?>" alt="" style="width:100px; height: 100px;"></td>
                             <td><?= $item['ten_danh_muc']?></td>
                             <td><?= $item['gia_san_pham'] ?></td>
                             <td><?= $item['trang_thai']==0 ?'Còn hàng':'Hết hàng' ?></td>

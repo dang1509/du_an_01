@@ -28,6 +28,7 @@ session_start();
         // Sản phẩm
         'san-pham' => (new AdminSanPhamController())->danhSachSanPham(),
         'form-them-san-pham' => (new AdminSanPhamController())->formThemSanPham(),
+        'post-them-san-pham' => (new AdminSanPhamController()) -> postThemSanPham(),
         
 
 
