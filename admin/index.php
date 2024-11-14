@@ -29,7 +29,9 @@ session_start();
         'san-pham' => (new AdminSanPhamController())->danhSachSanPham(),
         'form-them-san-pham' => (new AdminSanPhamController())->formThemSanPham(),
         'post-them-san-pham' => (new AdminSanPhamController()) -> postThemSanPham(),
-        
+        'form-edit-san-pham' => (new AdminSanPhamController()) -> formEditSanPham(),
+        'post-edit-san-pham' => (new AdminSanPhamController()) -> postEditSanPham(),
+        'sua-album-anh-san-pham' => (new AdminSanPhamController()) -> postEditAnhSanPham(),
 
 
         // Danh mục
