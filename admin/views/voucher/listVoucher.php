@@ -1,3 +1,8 @@
+<style>
+  .table-striped td{
+  max-width:650px;}
+</style>
+
 <?php include './views/layout/header.php'; ?>
   <!-- Navbar -->
   <?php include './views/layout/navbar.php'; ?>
@@ -11,7 +16,8 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Admin Bình Luận</h1>
+            <h1>Admin Danh Mục</h1>
+            
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -23,45 +29,52 @@
        
             <!-- /.card -->
             <div class="card">
+            <div class="card-header">
+                <a href="<?= BASE_URL_ADMIN.'?act=form-them-danh-muc';?>">
+            
+              </a>
+              </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">   
                 <thead>
                   <tr>
                     <th>STT</th>
-                    <th>Sản phẩm được bình luận</th>
-                    <th>Người bình luận</th>
-                    <th>Nội dung</th>
-                    <th>Ngày đăng</th>
-                    <th>Trạng thái</th>
-                    <th>Thao tác</th>
+                    <th>Mã Voucher</th>
+                    <th>Giảm giá</th>
+                    <th>Ngày bắt đầu</th>
+                    <th>Ngày kết thúc</th>
+                    <th>Số lượng</th>
+                 
                    
                   </tr>
                   </thead>    
                   <tbody>
-                        <?php foreach($listBinhLuan as $key=>$item): ?>
+                        <?php foreach($listVoucher as $key=>$item): ?>
                             <tr>
-                            <td><?= $key+1 ?></td>
-                            <td><?= $item['san_pham_id'] ?></td>
-                            <td><?= $item['tai_khoan_id'] ?></td>
-                            <td><?= $item['noi_dung'] ?></td>
-                            <td><?= $item['ngay_dang'] ?></td>
-                            <td><?= $item['trang_thai'] === 1 ? 'hiện' : 'ẩn'    ?></td>
+                            <td><?= $key+1;?></td>
+                            <td><?= $item['ma_voucher']?></td>
+                            <td><?= $item['gia_tri_giam_gia']?>%</td>
+                            <td><?= $item['ngay_bat_dau']?></td>
+                            <td><?= $item['ngay_ket_thuc']?></td>
+                            <td><?= $item['so_luong']?></td>
+                            <td><?= $item['trang_thai']?></td>
+                           
                             <td>
                                 
                                 <a href="?act=trang-thai&id=<?php echo htmlspecialchars($item['id']) ?>">
                                 <button class="btn btn-warning">
-                                <?php echo $item['trang_thai'] ? 'Ẩn' : 'Hiện' ?></button>
+                                <?php echo $item['trang_thai'] ? 'Có hiệu lực' : 'Vô hiệu hóa' ?></button>
                                 </a>
                                 
                             </td>
-                            
-                            </tr>
+                          
+                          </tr>
+                          
                         <?php endforeach;?>
                       
                   </tbody>
                         </table>
-
                         </div>
               <!-- /.card-body -->
             </div>
@@ -74,6 +87,9 @@
       <!-- /.container-fluid -->
     </section>
       </div>
+    
+    <!-- /.content -->
+ 
 
 
   <?php include './views/layout/footer.php';?>
