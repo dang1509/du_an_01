@@ -13,6 +13,7 @@
         public function ChiTietDonHang(){
             $don_hang_id = $_GET['id_don_hang'];
             $donHang = $this->modelDonHang->getOneDonHang($don_hang_id);
+            // var_dump($donHang);die();
             $sanPhamDonHang = $this->modelDonHang->getListSpDonHang($don_hang_id);
             require_once './views/donhang/detailDonHang.php';
         }
