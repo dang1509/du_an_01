@@ -16,7 +16,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Admin Danh Mục</h1>
+            <h1>Admin Quản Trị</h1>
             
           </div>
         </div>
@@ -31,7 +31,7 @@
             <div class="card">
             <div class="card-header">
                 <a href="<?= BASE_URL_ADMIN.'?act=form-them-danh-muc';?>">
-            
+           
               </a>
               </div>
               <!-- /.card-header -->
@@ -40,42 +40,44 @@
                 <thead>
                   <tr>
                     <th>STT</th>
-                    <th>Mã Voucher</th>
-                    <th>Giảm giá</th>
-                    <th>Ngày bắt đầu</th>
-                    <th>Ngày kết thúc</th>
-                    <th>Số lượng</th>
+                    <th>Họ tên</th>
+                    <th>Ảnh đại diện</th>
+                    <th>Ngày Sinh</th>
+                    <th>Email</th>
+                    <th>SĐT</th>
+                    <th>Giới Tính</th>
+                    <th>Địa Chỉ</th>
+                    <th>Mật khẩu</th>
+                    <th>Chức vụ</th>
                     <th>Trạng thái</th>
-                    <th>Thao tác</th>
-                 
+
                    
                   </tr>
                   </thead>    
                   <tbody>
-
-                        <?php  
-                         foreach($vouchers as $key=>$item): ?>
-
+                  <?php foreach($listQuanTri as $key=>$item): ?>
                             <tr>
                             <td><?= $key+1;?></td>
-                            <td><?= $item['ma_voucher']?></td>
-                            <td><?= $item['giam_gia']?>%</td>
-                            <td><?= $item['ngay_bat_dau']?></td>
-                            <td><?= $item['ngay_ket_thuc']?></td>
-                            <td><?= $item['so_luong']?></td>
-                            <td><?= $item['trang_thai'] == 1 ? 'Có hiệu lực' : 'Vô hiệu hóa' ?></td>
-                            <td>   
-                                <a href="?act=update_voucher&id=<?php echo htmlspecialchars($item['id']) ?>">
-                                <button class="btn btn-warning" <?php echo $item['trang_thai'] == 0 ? 'disabled' : ''; ?>>
-                                <?php echo $item['trang_thai'] ? 'Vô hiệu hóa' : 'Có hiệu lực'; ?>
-                                </button>
-                                <!-- <button class="btn btn-warning">
-                                <?php echo $item['trang_thai'] ? 'Vô hiệu hóa' : 'Có hiệu lực' ?></button> -->
-
-                                </a>        
-
+                            <td><?= $item['ho_ten']?></td>
+                            <td><?= $item['anh_dai_dien']?></td>
+                            <td><?= $item['ngay_sinh']?></td>
+                            <td><?= $item['email']?></td>
+                            <td><?= $item['so_dien_thoai']?></td>
+                            <td><?= $item['gioi_tinh'] ==1 ? 'nam' : 'nữ' ?></td>
+                            <td><?= $item['dia_chi']?></td>
+                            <td><?= $item['mat_khau']?></td>
+                            <td><?= $item['chuc_vu_id'] ==1 ? 'admin' : 'khách' ?></td>
+                            <td>
+                                
+                                <a href="?act=trang_thai&id=<?php echo htmlspecialchars($item['id']) ?>">
+                                <button class="btn btn-warning">
+                                <?php echo $item['trang_thai'] ? 'Có hiệu lực' : 'Vô hiệu hóa' ?></button>
+                                </a>
+                                
                             </td>
-                          </tr>  
+                          
+                          </tr>
+                          
                         <?php endforeach;?>
                   </tbody>
                         </table>

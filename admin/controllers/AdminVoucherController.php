@@ -33,6 +33,8 @@ class AdminVoucherController {
         $endDate = $voucher['ngay_ket_thuc'];
         if ($currentDate < $startDate || $currentDate > $endDate) {
             $this->modelVoucher->updateTrangThai($id, 0);
+        } else{
+            $this->modelVoucher->updateTrangThai($id, 1);
         }
         }
         require_once './views/voucher/listVoucher.php';
