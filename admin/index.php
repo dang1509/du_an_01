@@ -4,7 +4,9 @@ session_start();
     require_once '../commons/function.php';
 
     require_once './controllers/AdminThongKeController.php';
+
     require_once './models/AdminSanPhamModel.php';
+    require_once './controllers/AdminSanPhamController.php';
 
     require_once './controllers/AdminDanhMucController.php';
     require_once './models/AdminDanhMucModel.php';
@@ -15,11 +17,14 @@ session_start();
     require_once './controllers/AdminVoucherController.php';
     require_once './models/AdminVoucherModel.php';
 
-    require_once './controllers/AdminQuanTriTaiKhoanController.php';
-    require_once './models/AdminQuanTriTaiKhoanModel.php';
+    require_once './controllers/AdminTaiKhoanController.php';
+    require_once './models/AdminTaiKhoanModel.php';
+
+    require_once './controllers/AdminDonHangController.php';
+    require_once './models/AdminDonHangModel.php';
     
 
-    require_once './controllers/AdminSanPhamController.php';
+    
     $act = $_GET['act'] ?? '/';
     match($act){
         '/'=>(new AdminThongKeController())->ThongKe(),
@@ -49,8 +54,21 @@ session_start();
         'voucher' => (new AdminVoucherController())->setVoucher(),
         'update_voucher' => (new AdminVoucherController())->updateVoucher(),
         // tai khoan
-       'tai-khoan-khach-hang' => (new AdminQuanTriTaiKhoanController())->danhSachKhach(),
-        'tai-khoan-quan-tri' => (new AdminQuanTriTaiKhoanController())->danhSachQuanTri(),
-
+        //   Tài khoản quản trị
+        'tai-khoan-quan-tri'=>(new AdminTaiKhoanController)->danhSachQuanTri(),
+        'form-them-quan-tri'=>(new AdminTaiKhoanController)->formThemQuanTri(),
+        'them-quan-tri'=>(new AdminTaiKhoanController)->ThemQuanTri(),
+        'form-sua-quan-tri'=>(new AdminTaiKhoanController)->formSuaQuanTri(),
+        'sua-quan-tri'=>(new AdminTaiKhoanController)->SuaQuanTri(),
+        // Tài khoản khách hàng
+        'tai-khoan-khach-hang'=>(new AdminTaiKhoanController)->danhSachKhachHang(),
+        'form-sua-khach-hang'=>(new AdminTaiKhoanController)->formSuaKhachHang(),
+        'sua-khach-hang'=>(new AdminTaiKhoanController)->SuaKhachHang(),
+        'chi-tiet-khach-hang'=>(new AdminTaiKhoanController)->ChiTietKhachHang(),
+        // route đơn hàng
+        'don-hang' => (new AdminDonHangController())->danhSachDonHang(),
+        'form-sua-don-hang'=> (new AdminDonHangController())->formSuaDonHang(),
+        'sua-don-hang'=> (new AdminDonHangController())->SuaDonHang(),
+        'chi-tiet-don-hang'=>(new AdminDonHangController())->ChiTietDonHang(),
     };
 ?>
