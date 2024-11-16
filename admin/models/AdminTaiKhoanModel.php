@@ -38,8 +38,8 @@
         try{
             $sql = "UPDATE tai_khoans SET ho_ten =:ho_ten 
             ,email=:email
-            ,so_dien_thoai=:so_dien_thoai
-            ,ngay_sinh=:ngay_sinh,
+            ,so_dien_thoai=:so_dien_thoai,
+            ngay_sinh=:ngay_sinh,
             gioi_tinh=:gioi_tinh,
             mat_khau=:mat_khau,
             trang_thai=:trang_thai,

@@ -55,7 +55,7 @@
                       <td><?= $item['so_dien_thoai']?></td>
                       <td><?= $item['trang_thai']== 1 ? 'Hoạt động': 'Vô hiệu hóa'?></td>
                       <td>
-                        <a href="<?= BASE_URL_ADMIN.'?act=form-sua-quan-tri&id_quan_tri='.$item['id']?>"><button class="btn btn-warning">Sửa</button></a>                       
+                        <a href="<?= BASE_URL_ADMIN.'?act=form-sua-quan-tri&quan_tri_id='.$item['id']?>"><button class="btn btn-warning">Sửa</button></a>                       
                       </td>
                       </tr>
                     <?php endforeach; ?>

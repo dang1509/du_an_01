@@ -71,7 +71,7 @@ class AdminSanPhamController
             $_SESSION['error'] = $error;
             if (empty($error)) {
                 
-                $san_pham_id=$this->modelSanPham->ThemSanPham($ten_san_pham, $chat_lieu, $gia_san_pham, $gia_khuyen_mai, $so_luong, $ngay_nhap, $danh_muc_id, $trang_thai, $mo_ta, $file_thumb);
+                $san_pham_id=$this->modelSanPham->addSanPham($ten_san_pham, $chat_lieu, $gia_san_pham, $gia_khuyen_mai, $so_luong, $ngay_nhap, $danh_muc_id, $trang_thai, $mo_ta, $file_thumb);
                 if(!empty($img_array['name'])){
                     foreach($img_array['name'] as $key=>$value){
                         $file = [

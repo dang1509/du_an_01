@@ -8,6 +8,7 @@
         }
         public function danhsachDonHang(){
         $listDonHang = $this->modelDonHang->getAllDonHang();
+        // var_dump($listDonHang);die();
         require_once "./views/donhang/listDonHang.php";
         } 
         public function ChiTietDonHang(){
@@ -20,6 +21,7 @@
         public function formSuaDonHang(){
             $id = $_GET['id_don_hang'];
             $DonHang = $this->modelDonHang->getOneDonHang($id);
+            // var_dump($DonHang);die();
             $listTrangThaiDonHang = $this->modelDonHang->getAllTrangThaiDonHang();
             if($DonHang){
                 require_once "./views/donhang/formSuaDonHang.php";
