@@ -20,7 +20,7 @@ class AdminDanhMucController{
     }
     public function insertDanhMuc(){
         
-        if(isset($_POST['btn_insert'])){
+        if($_SERVER['REQUEST_METHOD'] == "POST"){
             $tenDanhMuc = $_POST['ten_danh_muc'];
             $moTa = $_POST['mo_ta'];
 

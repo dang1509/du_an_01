@@ -48,8 +48,8 @@ session_start();
         'update' => (new AdminDanhMucController())->updateDanhMuc(),
 
         // Bình luận
-        'binh-luan' => (new AdminBinhLuanController())->danhSachBinhLuan(),
-        'trang-thai' => (new AdminBinhLuanController())->updateTrangThai(),
+        'binh-luan' => (new AdminBinhLuanController())->danhsachBinhLuan(),
+        'update-binh-luan' =>(new AdminBinhLuanController())->UpdateBinhLuan(),
         // voucher
         'voucher' => (new AdminVoucherController())->setVoucher(),
         'edit' => (new AdminVoucherController())->editVoucher(),

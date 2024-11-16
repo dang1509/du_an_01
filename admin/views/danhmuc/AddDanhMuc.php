@@ -27,6 +27,7 @@
               <div class="card-body">
                
               <form action="<?php echo BASE_URL_ADMIN.'?act=add' ?>" method="post">
+<<<<<<< HEAD
             <div class="mb-3">
               <label for="tenDanhMuc" class="form-label">Tên Danh Mục</label>
               <input type="text" class="form-control" id="tenDanhMuc" name="ten_danh_muc">
@@ -42,6 +43,23 @@
             <div class="card-footer">
                             <button type="submit" class="btn btn-primary" name="btn_insert">Submit</button>
                         </div>
+=======
+  <div class="mb-3">
+    <label for="tenDanhMuc" class="form-label">Tên Danh Mục</label>
+    <input type="text" class="form-control" id="tenDanhMuc" name="ten_danh_muc">
+    <?php if(isset($_SESSION['error']['ten_danh_muc'])){ ?>
+          <p class="text-danger"><?= $_SESSION['error']['ten_danh_muc'] ?></p>
+     <?php   }  ?>
+  </div>
+  <div class="mb-3">
+    <label for="moTa" class="form-label">Mô Tả</label>
+    <input type="text" class="form-control" id="moTa" name="mo_ta">
+   
+  </div>
+  <div class="card-footer">
+                  <button  type="submit" class="btn btn-primary">Submit</button>
+              </div>
+>>>>>>> b3373e1ebc4437cfea42bdccae80c7c43ed92b5b
 </form>
 </div>        
           </div>

@@ -28,9 +28,9 @@
             <?php
             if($donHang['trang_thai_id']==1){
                 $colorAlert = 'primary';
-            }elseif($donHang['trang_thai_id']>=2 &&$donHang['trang_thai_id']<=5){
+            }elseif($donHang['trang_thai_id']>=2 &&$donHang['trang_thai_id']<=4){
                 $colorAlert = 'warning';
-            }elseif($donHang['trang_thai_id']>=6 &&$donHang['trang_thai_id']<=8){
+            }elseif($donHang['trang_thai_id']>=5 &&$donHang['trang_thai_id']<=6){
                 $colorAlert = 'success';
             }else{
                 $colorAlert = 'danger';
@@ -101,7 +101,7 @@
                             <td><?=$sanPham['ten_san_pham']?></td>
                             <td>$<?=$sanPham['don_gia']?></td>
                             <td><?=$sanPham['so_luong']?></td>
-                            <td>$<?=$sanPham['thanh_tien']?></td>
+                            <td>$<?=$sanPham['don_gia']*$sanPham['so_luong']?></td> 
                         </tr>
                         <?php $tong_tien +=  $sanPham['thanh_tien'];?>
                     <?php endforeach; ?>
@@ -127,11 +127,11 @@
                       </tr>                   
                       <tr>
                         <th>Phí ship:</th>
-                        <td>$5</td>
+                        <td><?php $phiShip = ''; if($donHang['dia_chi']==="Hà Nội"){ $phiShip = 0 ;} else {$phiShip = 20 ;}  ?><?= $phiShip ?></td>
                       </tr>
                       <tr>
                         <th>Tổng tiền:</th>
-                        <td>$<?php echo $tong_tien+ 5 ?></td>
+                        <td>$<?php echo $tong_tien+ $phiShip; ?></td>
                       </tr>
                     </table>
                   </div>

@@ -16,7 +16,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Admin Danh Mục</h1>
+            <h1>Quản lí Voucher</h1>
             
           </div>
         </div>
@@ -68,7 +68,7 @@
                             
                             <td>   
                                 <a href="?act=form-sua-voucher&id=<?php echo $item['id'] ?>"> <button type="submit" class="btn btn-primary" > Sửa</button></a>
-                                <hr>
+                                
                                 <a href="?act=update_voucher&id=<?php echo htmlspecialchars($item['id']) ?>">
                                 <button class="btn btn-warning" <?php echo $item['trang_thai'] == 0 ? 'disabled' : ''; ?>>
                                 <?php echo $item['trang_thai'] ? 'Vô hiệu hóa' : 'Có hiệu lực'; ?>
