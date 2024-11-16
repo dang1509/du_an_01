@@ -6,7 +6,7 @@ class DonHang{
     }
     public function getAllDonHang(){
         try{
-            $sql = 'SELECT don_hangs.*, trang_thai_don_hangs.ten_trang_thai FROM don_hangs INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_id= trang_thai_don_hangs.id';
+            $sql = 'SELECT don_hangs.*, don_hangs.id AS don_hang_id, trang_thai_don_hangs.ten_trang_thai FROM don_hangs INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_id= trang_thai_don_hangs.id';
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -16,7 +16,7 @@ class DonHang{
     }
     public function getOneDonHang($id){
         try{
-            $sql = 'SELECT don_hangs.*, trang_thai_don_hangs.ten_trang_thai,tai_khoans.*,phuong_thuc_thanh_toans.ten_phuong_thuc
+            $sql = 'SELECT don_hangs.*,don_hangs.id as don_hang_id, trang_thai_don_hangs.ten_trang_thai,tai_khoans.*,tai_khoan.id as tai_khoan_id,phuong_thuc_thanh_toans.ten_phuong_thuc
             FROM don_hangs INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_id= trang_thai_don_hangs.id
             INNER JOIN tai_khoans ON don_hangs.tai_khoan_id= tai_khoans.id
             INNER JOIN phuong_thuc_thanh_toans ON don_hangs.phuong_thuc_thanh_toan_id= phuong_thuc_thanh_toans.id
@@ -61,6 +61,7 @@ class DonHang{
             trang_thai_id=:trang_thai_id
              
             WHERE id=:id";
+            // var_dump($id);die();
             
             $stmt = $this->conn->prepare($sql);   
             $stmt->execute([':ten_nguoi_nhan'=>$ten_nguoi_nhan,':sdt_nguoi_nhan'=>$sdt_nguoi_nhan,

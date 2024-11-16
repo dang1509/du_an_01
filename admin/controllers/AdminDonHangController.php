@@ -23,6 +23,7 @@
             $listTrangThaiDonHang = $this->modelDonHang->getAllTrangThaiDonHang();
             if($DonHang){
                 require_once "./views/donhang/formSuaDonHang.php";
+                // var_dump($DonHang);die();
                 deleteSessionError();
             }else{
                 header("location:".BASE_URL_ADMIN.'?act=don-hang');
@@ -32,7 +33,7 @@
         }
         public function SuaDonHang(){
             if($_SERVER['REQUEST_METHOD']=="POST"){
-                $don_hang_id = $_POST['don_hang_id']??'';
+                $don_hang_id = $_POST['don_hang_id'] ??'';
                 $ten_nguoi_nhan = $_POST['ten_nguoi_nhan']??'';
                 $sdt_nguoi_nhan = $_POST['sdt_nguoi_nhan']??'';
                 $email_nguoi_nhan = $_POST['email_nguoi_nhan']??'';
@@ -57,7 +58,9 @@
                 }                      
                 $_SESSION['error'] = $error;
                 if(empty($error)){
-                   $this->modelDonHang->updateDonHang($ten_nguoi_nhan,$sdt_nguoi_nhan,$email_nguoi_nhan,$dia_chi_nguoi_nhan,$ghi_chu,$trang_thai_id,$don_hang_id);
+                    $don_hang=$this->modelDonHang->updateDonHang($ten_nguoi_nhan,$sdt_nguoi_nhan,$email_nguoi_nhan,$dia_chi_nguoi_nhan,$ghi_chu,$trang_thai_id,$don_hang_id);
+                   
+                // var_dump($don_hang);die();
                     header("location:".BASE_URL_ADMIN.'?act=don-hang');
                     exit();
                 }else{

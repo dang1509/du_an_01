@@ -57,8 +57,8 @@
                       <td><?= $item['tong_tien']?></td>
                       <td><?= $item['ten_trang_thai'] ;?></td>
                       <td>
-                        <a href="<?= BASE_URL_ADMIN.'?act=chi-tiet-don-hang&id_don_hang='.$item['id']?>"><button class="btn btn-warning">Chi tiết</button></a>
-                        <a href="<?= BASE_URL_ADMIN.'?act=form-sua-don-hang&id_don_hang='.$item['id']?>"><button class="btn btn-danger" >Sửa</button></a>
+                        <a href="<?= BASE_URL_ADMIN.'?act=chi-tiet-don-hang&id_don_hang='.$item['don_hang_id']?>"><button class="btn btn-warning">Chi tiết</button></a>
+                        <a href="<?= BASE_URL_ADMIN.'?act=form-sua-don-hang&id_don_hang='.$item['don_hang_id']?>"><button class="btn btn-danger" >Sửa</button></a>
                       </td>
                       </tr>
                     <?php endforeach; ?>

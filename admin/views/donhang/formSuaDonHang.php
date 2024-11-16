@@ -26,7 +26,7 @@ require_once './views/layout/sidebar.php';
               </div>
               
               <form action="<?= BASE_URL_ADMIN.'?act=sua-don-hang' ?>" method="post" >
-                <input type="hidden" name="don_hang_id" value="<?= $DonHang['id']?>" >
+                <input type="hidden" name="don_hang_id" value="<?= $DonHang['don_hang_id']?>" >
                 <div class="card-body">
                   <div class="form-group">
                     <label for="">Tên người nhận</label>
