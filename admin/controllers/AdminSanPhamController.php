@@ -3,10 +3,12 @@ class AdminSanPhamController
 {
     public $modelSanPham;
     public $modelDanhMuc;
+    public $modelBinhLuan;
     public function __construct()
     {
         $this->modelSanPham = new SanPham();
         $this->modelDanhMuc = new DanhMuc();
+        $this->modelBinhLuan = new BinhLuan();
     }
     public function danhSachSanPham()
     {
@@ -231,6 +233,7 @@ class AdminSanPhamController
     }
     public function detailSanPham(){
         $id = $_GET['id_san_pham'];
+        $BinhLuan = $this->modelBinhLuan->getBinhLuanFromSanPham($id);
         $SanPham = $this->modelSanPham->getOneSanPham($id);
         $listAnhSanPham = $this->modelSanPham->getAlbumAnhSanPham($id);
         

@@ -72,7 +72,14 @@
                     <th>Ngày đăng</th>
                 </thead>
                 <tbody>
-                    
+                    <?php foreach($BinhLuan as $key=>$item): ?>
+                      <tr>
+                          <td><?= $key+1 ?></td>
+                          <td><?= $item['ho_ten'] ?></td>
+                          <td><?= $item['noi_dung'] ?></td>
+                          <td><?= $item['ngay_dang'] ?></td>
+                      </tr>
+                      <?php endforeach; ?>
                 </tbody>
             </table>
     </div>
