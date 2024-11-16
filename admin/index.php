@@ -52,7 +52,11 @@ session_start();
         'trang-thai' => (new AdminBinhLuanController())->updateTrangThai(),
         // voucher
         'voucher' => (new AdminVoucherController())->setVoucher(),
+        'edit' => (new AdminVoucherController())->editVoucher(),
+        'form-sua-voucher' => (new AdminVoucherController())->formSuaVoucher(),
         'update_voucher' => (new AdminVoucherController())->updateVoucher(),
+        'insert' => (new AdminVoucherController())->insertVoucher(),
+        'form-them-voucher' => (new AdminVoucherController())->formThemVoucher(),
         // tai khoan
         //   Tài khoản quản trị
         'tai-khoan-quan-tri'=>(new AdminTaiKhoanController)->danhSachQuanTri(),

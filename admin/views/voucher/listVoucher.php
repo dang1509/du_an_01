@@ -30,7 +30,8 @@
             <!-- /.card -->
             <div class="card">
             <div class="card-header">
-                <a href="<?= BASE_URL_ADMIN.'?act=form-them-danh-muc';?>">
+                <a href="<?= BASE_URL_ADMIN.'?act=form-them-voucher';?>">
+                <button class="btn btn-success">Thêm voucher</button>
             
               </a>
               </div>
@@ -64,7 +65,10 @@
                             <td><?= $item['ngay_ket_thuc']?></td>
                             <td><?= $item['so_luong']?></td>
                             <td><?= $item['trang_thai'] == 1 ? 'Có hiệu lực' : 'Vô hiệu hóa' ?></td>
+                            
                             <td>   
+                                <a href="?act=form-sua-voucher&id=<?php echo $item['id'] ?>"> <button type="submit" class="btn btn-primary" > Sửa</button></a>
+                                <hr>
                                 <a href="?act=update_voucher&id=<?php echo htmlspecialchars($item['id']) ?>">
                                 <button class="btn btn-warning" <?php echo $item['trang_thai'] == 0 ? 'disabled' : ''; ?>>
                                 <?php echo $item['trang_thai'] ? 'Vô hiệu hóa' : 'Có hiệu lực'; ?>
@@ -72,8 +76,10 @@
                                 <!-- <button class="btn btn-warning">
                                 <?php echo $item['trang_thai'] ? 'Vô hiệu hóa' : 'Có hiệu lực' ?></button> -->
 
-                                </a>        
 
+                                </a>    
+
+                              
                             </td>
                           </tr>  
                         <?php endforeach;?>

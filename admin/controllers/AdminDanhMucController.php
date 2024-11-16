@@ -58,9 +58,9 @@ class AdminDanhMucController{
     public function updateDanhMuc(){
         
         if($_SERVER['REQUEST_METHOD']=="POST"){
+            $id = $_POST['id'];
             $ten_danh_muc = $_POST['ten_danh_muc'];
             $mo_ta = $_POST['mo_ta'];
-            $id = $_POST['id'];
             $error = [];
             if(empty($ten_danh_muc)){
                 $error['ten_danh_muc']='Tên danh mục không được để trống';
