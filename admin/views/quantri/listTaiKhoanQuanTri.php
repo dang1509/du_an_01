@@ -59,7 +59,7 @@
                             <tr>
                             <td><?= $key+1;?></td>
                             <td><?= $item['ho_ten']?></td>
-                            <td><?= $item['anh_dai_dien']?>%</td>
+                            <td><?= $item['anh_dai_dien']?></td>
                             <td><?= $item['ngay_sinh']?></td>
                             <td><?= $item['email']?></td>
                             <td><?= $item['so_dien_thoai']?></td>
@@ -67,7 +67,6 @@
                             <td><?= $item['dia_chi']?></td>
                             <td><?= $item['mat_khau']?></td>
                             <td><?= $item['chuc_vu_id'] ==1 ? 'admin' : 'khách' ?></td>
-
                             <td>
                                 
                                 <a href="?act=trang_thai&id=<?php echo htmlspecialchars($item['id']) ?>">

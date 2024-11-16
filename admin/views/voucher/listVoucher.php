@@ -52,21 +52,28 @@
                   </tr>
                   </thead>    
                   <tbody>
-                        <?php foreach($vouchers as $key=>$item): ?>
+
+                        <?php  
+                         foreach($vouchers as $key=>$item): ?>
+
                             <tr>
                             <td><?= $key+1;?></td>
                             <td><?= $item['ma_voucher']?></td>
-                            <td><?= $item['giam_gia']?></td>
+                            <td><?= $item['giam_gia']?>%</td>
                             <td><?= $item['ngay_bat_dau']?></td>
                             <td><?= $item['ngay_ket_thuc']?></td>
                             <td><?= $item['so_luong']?></td>
                             <td><?= $item['trang_thai'] == 1 ? 'Có hiệu lực' : 'Vô hiệu hóa' ?></td>
                             <td>   
                                 <a href="?act=update_voucher&id=<?php echo htmlspecialchars($item['id']) ?>">
-                                <button class="btn btn-warning">
-                                <?php echo $item['trang_thai'] ? 'Vô hiệu hóa' : 'Có hiệu lực' ?></button>
+                                <button class="btn btn-warning" <?php echo $item['trang_thai'] == 0 ? 'disabled' : ''; ?>>
+                                <?php echo $item['trang_thai'] ? 'Vô hiệu hóa' : 'Có hiệu lực'; ?>
+                                </button>
+                                <!-- <button class="btn btn-warning">
+                                <?php echo $item['trang_thai'] ? 'Vô hiệu hóa' : 'Có hiệu lực' ?></button> -->
 
                                 </a>        
+
                             </td>
                           </tr>  
                         <?php endforeach;?>
