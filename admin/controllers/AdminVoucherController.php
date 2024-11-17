@@ -120,46 +120,48 @@ class AdminVoucherController {
                 $trangThai = $_POST['trang_thai'];
     
                 $error = [];
+                
     
                 if (empty($maVoucher)) {
-                    $error[] = "Mã voucher không được để trống.";
+                    $error['ma_voucher'] = "Mã voucher không được để trống.";
                 }
                 if (!is_numeric($giamGia) || $giamGia <= 0 || $giamGia > 100) {
-                    $error[] = "Giảm giá phải là một số trong khoảng từ 0 đến 100.";
+                    $error['giam_gia'] = "Giảm giá phải là một số trong khoảng từ 0 đến 100.";
                 }
                 if (empty($batdau)) {
-                    $error[] = "Ngày bắt đầu không được để trống.";
+                    $error['ngay_bat_dau'] = "Ngày bắt đầu không được để trống.";
                 } else {
                     $batdau = date('Y-m-d', strtotime($batdau));  
                     if (!$batdau) {
-                        $error[] = "Ngày bắt đầu không hợp lệ.";
+                        $error['ngay_bat_dau'] = "Ngày bắt đầu không hợp lệ.";
                     }
                 }
                 if (empty($ketthuc)) {
-                    $error[] = "Ngày kết thúc không được để trống.";
+                    $error['ngay_ket_thuc'] = "Ngày kết thúc không được để trống.";
                 } else {
                     $ketthuc = date('Y-m-d', strtotime($ketthuc)); 
                     if (!$ketthuc) {
-                        $error[] = "Ngày kết thúc không hợp lệ.";
+                        $error['ngay_ket_thuc'] = "Ngày kết thúc không hợp lệ.";
                     } elseif ($ketthuc < $batdau) {
-                        $error[] = "Ngày kết thúc phải sau ngày bắt đầu.";
+                        $error['ngay_ket_thuc'] = "Ngày kết thúc phải sau ngày bắt đầu.";
                     }
                 }
                 if (!is_numeric($soLuong) || $soLuong <= 0) {
-                    $error[] = "Số lượng phải là một số nguyên lớn hơn 0.";
+                    $error['so_luong'] = "Số lượng phải là một số nguyên lớn hơn 0.";
                 }
                 if ($trangThai !== '0' && $trangThai !== '1') {
                     $error['trang_thai'] = "Trạng thái không hợp lệ. Chỉ chấp nhận 0 hoặc 1.";
                 }
- 
+               
                 if (empty($error)) {
                     $this->modelVoucher->update($id,$maVoucher, $giamGia, $batdau, $ketthuc, $soLuong, $trangThai);
+                    
                     header('Location: ?act=voucher');
                     exit;
                 } else {
-                    foreach ($error as $err) {
-                        echo "<p class='error'>$err</p>";
-                    }
+                    
+                    $voucher = ['id'=>$id,'ma_voucher'=>$maVoucher,'giam_gia'=>$giamGia,'ngay_bat_dau'=>$batdau,'ngay_ket_thuc'=>$ketthuc,'so_luong'=>$soLuong,'trang_thai'=>$trangThai];
+                    require_once './views/voucher/EditVoucher.php';
                 }
             }
         }

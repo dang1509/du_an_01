@@ -56,7 +56,7 @@
               <!-- info row -->
               <div class="row invoice-info">
                 <div class="col-sm-4 invoice-col">
-                  Thông tin người đặt  
+                  Thông tin người nhận 
                   <address>
                     <strong><?= $donHang['ho_ten']?></strong><br>
                     Địa chỉ: <?= $donHang['dia_chi']?><br>
@@ -71,7 +71,6 @@
                   Thông tin đơn hàng  
                   <address>
                     <strong>Mã đơn hàng: <?= $donHang['ma_don_hang']?></strong><br>
-                    Tổng tiền: <?= $donHang['tong_tien']?><br>
                     Phương thức thanh toán: <?= $donHang['ten_phuong_thuc']?><br>
                     Ghi chú: <?= $donHang['ghi_chu']?>
                   </address>
