@@ -44,22 +44,24 @@
             }
         }
         public function formSuaQuanTri(){
-            $quan_tri_id=$_GET['id_quan_tri'];
+            $quan_tri_id=$_GET['quan_tri_id'];
             $quanTri=$this->modelTaiKhoan->getOneQuanTri($quan_tri_id);
+            // var_dump($quanTri);die();
             require_once './views/taikhoan/quantri/suaQuanTri.php';
             deleteSessionError();
         }
         public function SuaQuanTri(){
             if($_SERVER['REQUEST_METHOD']=="POST"){
-                $quan_tri_id = $_POST['quan_tri_id']??'';
-
-                $quanTriOld = $this->modelTaiKhoan->getOneQuanTri($quan_tri_id);
+                $quan_tri_id = $_POST['quan_tri_id'];
+                // var_dump($quan_tri_id);die();
+                $quanTriOld=$this->modelTaiKhoan->getOneQuanTri($quan_tri_id);
+                // var_dump($quanTriOld);die();
                 $old_file = $quanTriOld['anh_dai_dien'];
                 
                 $ho_ten = $_POST['ho_ten'] ?? "";
                 $email = $_POST['email'] ?? ""; 
                 $so_dien_thoai = $_POST['so_dien_thoai'] ?? 0;
-                $ngay_sinh = $_POST['ngay_sinh'] ?? ""; 
+                $ngay_sinh = $_POST['ngay_sinh']??"" ; 
                 
                 $gioi_tinh = $_POST['gioi_tinh'] ?? "";
                 $mat_khau = $_POST['mat_khau']?? "";
@@ -86,19 +88,23 @@
                 if(empty($so_dien_thoai)){
                     $error['so_dien_thoai']='Số điện thoại không được để trống';
                 }
-                if(empty($mat_khau)){
+                if(empty($ngay_sinh)){
+                    $error['ngay_sinh']='Ngày sinh không được để trống';
+                
+                }if(empty($mat_khau)){
                     $error['mat_khau']='Mật khẩu không được để trống';
                 }
                 
                 
                 $_SESSION['error'] = $error;
                 if(empty($error)){
-                   $this->modelTaiKhoan->updateQuanTri($quan_tri_id,$ho_ten,$email,$so_dien_thoai,$ngay_sinh,$gioi_tinh,$mat_khau,$trang_thai,$dia_chi,$newFile);
-                 header("location:".BASE_URL_ADMIN.'?act=tai-khoan-quan-tri');
+                    $this->modelTaiKhoan->updateQuanTri($quan_tri_id,$ho_ten,$email,$so_dien_thoai,$ngay_sinh,$gioi_tinh,$mat_khau,$trang_thai,$dia_chi,$newFile);
+                    // var_dump($tai_khoan);die();
+                   header("location:".BASE_URL_ADMIN.'?act=tai-khoan-quan-tri');
                     exit();
                 }else{
                     $_SESSION['flash'] = true;
-                    header("location:".BASE_URL_ADMIN.'?act=form-sua-quan_tri&&id_quan_tri='.$quan_tri_id);
+                    header("location:".BASE_URL_ADMIN.'?act=form-sua-quan-tri&quan_tri_id='.$quan_tri_id);
                     exit();
                 }
             }

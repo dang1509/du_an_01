@@ -59,7 +59,10 @@ require_once './views/layout/sidebar.php';
                   <div class="form-group">
                     <label for="">Ngày sinh</label>
                     <input type="date" class="form-control" name="ngay_sinh" value="<?= $quanTri['ngay_sinh']?>" placeholder="Nhập ngày sinh">
-
+                    <?php if(isset($_SESSION['error']['ngay_sinh'])){ ?>
+                        <p class="text-danger"><?= $_SESSION['error']['ngay_sinh'] ?></p>
+                 <?php   }
+                     ?>
                   </div> 
                   <div class="form-group">
                     <label for="">Địa chỉ</label>
