@@ -50,7 +50,7 @@
     <!-- Giảm Giá -->
     <div class="mb-3">
         <label for="giamGia" class="form-label">Giảm Giá</label>
-        
+        <input type="number" class="form-control" id="giamGia" name="giam_gia" value="<?= htmlspecialchars($voucher['giam_gia']) ?>" >
         <?php if (isset($error['giam_gia'])) { ?>
             <p class="text-danger"><?= $error['giam_gia'] ?></p>
         <?php } ?>
