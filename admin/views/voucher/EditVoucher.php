@@ -41,7 +41,7 @@
     <!-- Mã Voucher -->
     <div class="mb-3">
         <label for="maVoucher" class="form-label">Mã Voucher</label>
-        <input type="text" class="form-control" id="maVoucher" name="ma_voucher" value="<?= htmlspecialchars($voucher['ma_voucher']) ?>" required>
+        <input type="text" class="form-control" id="maVoucher" name="ma_voucher" value="<?= htmlspecialchars($voucher['ma_voucher']) ?>" >
         <?php if (isset($error['ma_voucher'])) { ?>
             <p class="text-danger"><?= $error['ma_voucher'] ?></p>
         <?php } ?>
@@ -50,7 +50,7 @@
     <!-- Giảm Giá -->
     <div class="mb-3">
         <label for="giamGia" class="form-label">Giảm Giá</label>
-        <input type="number" class="form-control" id="giamGia" name="giam_gia" value="<?= htmlspecialchars($voucher['giam_gia']) ?>" required min="0" max="100">
+        <input type="number" class="form-control" id="giamGia" name="giam_gia" value="<?= htmlspecialchars($voucher['giam_gia']) ?>"  min="0" max="100">
         <?php if (isset($error['giam_gia'])) { ?>
             <p class="text-danger"><?= $error['giam_gia'] ?></p>
         <?php } ?>
@@ -59,7 +59,7 @@
     <!-- Ngày Bắt Đầu -->
     <div class="mb-3">
         <label for="ngayBatDau" class="form-label">Ngày Bắt Đầu</label>
-        <input type="date" class="form-control" id="ngayBatDau" name="ngay_bat_dau" value="<?= htmlspecialchars($voucher['ngay_bat_dau']) ?>" required>
+        <input type="date" class="form-control" id="ngayBatDau" name="ngay_bat_dau" value="<?= htmlspecialchars($voucher['ngay_bat_dau']) ?>" >
         <?php if (isset($error['ngay_bat_dau'])) { ?>
             <p class="text-danger"><?= $error['ngay_bat_dau'] ?></p>
         <?php } ?>
@@ -68,7 +68,7 @@
     <!-- Ngày Kết Thúc -->
     <div class="mb-3">
         <label for="ngayKetThuc" class="form-label">Ngày Kết Thúc</label>
-        <input type="date" class="form-control" id="ngayKetThuc" name="ngay_ket_thuc" value="<?= htmlspecialchars($voucher['ngay_ket_thuc']) ?>" required>
+        <input type="date" class="form-control" id="ngayKetThuc" name="ngay_ket_thuc" value="<?= htmlspecialchars($voucher['ngay_ket_thuc']) ?>" >
         <?php if (isset($error['ngay_ket_thuc'])) { ?>
             <p class="text-danger"><?= $error['ngay_ket_thuc'] ?></p>
         <?php } ?>
@@ -77,7 +77,7 @@
     <!-- Số Lượng -->
     <div class="mb-3">
         <label for="soLuong" class="form-label">Số Lượng</label>
-        <input type="number" class="form-control" id="soLuong" name="so_luong" value="<?= htmlspecialchars($voucher['so_luong']) ?>" required min="1">
+        <input type="number" class="form-control" id="soLuong" name="so_luong" value="<?= htmlspecialchars($voucher['so_luong']) ?>"  min="1">
         <?php if (isset($error['so_luong'])) { ?>
             <p class="text-danger"><?= $error['so_luong'] ?></p>
         <?php } ?>
@@ -86,7 +86,7 @@
     <!-- Trạng Thái -->
     <div class="mb-3">
         <label for="trangThai" class="form-label">Trạng Thái</label>
-        <select class="form-control" id="trangThai" name="trang_thai" required>
+        <select class="form-control" id="trangThai" name="trang_thai" >
             <option value="1" <?= $voucher['trang_thai'] == 1 ? 'selected' : '' ?>>Có Hiệu Lực</option>
             <option value="0" <?= $voucher['trang_thai'] == 0 ? 'selected' : '' ?>>Vô Hiệu Hóa</option>
         </select>
