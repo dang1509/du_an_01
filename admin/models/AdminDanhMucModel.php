@@ -22,6 +22,17 @@ class DanhMuc{
         return $result->execute();
 
     }
+    public function updateDanhMucSanPham($id){
+        try {
+            $sql = 'UPDATE san_phams SET danh_muc_id = 0 WHERE danh_muc_id=:id';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':id'=>$id]);
+            return true;
+
+        } catch (PDOException $e) {
+            echo 'Lỗi: ' . $e->getMessage();
+        }
+    }
     function insert($tenDanhMuc,$mota){
         $sql_one="INSERT INTO danh_mucs (ten_danh_muc,mo_ta) VALUES ('$tenDanhMuc' ,'$mota') " ;
         $result=$this->conn->prepare($sql_one);

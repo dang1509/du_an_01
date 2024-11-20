@@ -8,7 +8,8 @@ require_once './commons/function.php'; // Hàm hỗ trợ
 require_once './controllers/TrangChuController.php';
 
 // Require toàn bộ file Models
-// require_once './models/User.php';
+require_once './models/TrangChuModel.php';
+
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -18,7 +19,8 @@ $act = $_GET['act'] ?? '/';
 match ($act) {
     // Trang chủ
     '/'=>(new TrangchuController())->trangChu(),
-
+    // Lấy sản phẩm
+    
 
     
 };

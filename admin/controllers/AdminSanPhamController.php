@@ -27,7 +27,7 @@ class AdminSanPhamController
             $ten_san_pham = $_POST['ten_san_pham'] ?? "";
             $chat_lieu = $_POST['chat_lieu'] ?? "";
             $gia_san_pham = $_POST['gia_san_pham'] ?? "";
-            $gia_khuyen_mai = $_POST['gia_khuyen_mai'] ?? "";
+            $gia_khuyen_mai = $_POST['gia_khuyen_mai'] ?? 0;
             $so_luong = $_POST['so_luong'] ?? "";
             $ngay_nhap = $_POST['ngay_nhap'] ?? "";
             $danh_muc_id = $_POST['danh_muc_id'] ?? "";
@@ -50,9 +50,7 @@ class AdminSanPhamController
             if (empty($gia_san_pham)) {
                 $error['gia_san_pham'] = 'Giá sản phẩm không được để trống';
             }
-            if (empty($gia_khuyen_mai)) {
-                $error['gia_khuyen_mai'] = 'Giá khuyến mãi không được để trống';
-            }
+            
             if (empty($so_luong)) {
                 $error['so_luong'] = 'Số lượng không được để trống';
             }
@@ -115,8 +113,8 @@ class AdminSanPhamController
             $old_file = $sanPhamOld['hinh_anh'];
             $ten_san_pham = $_POST['ten_san_pham'] ?? "";
             $chat_lieu = $_POST['chat_lieu'] ?? "";
-            $gia_san_pham = $_POST['gia_san_pham'] ?? "";
-            $gia_khuyen_mai = $_POST['gia_khuyen_mai'] ?? "";
+            $gia_san_pham = $_POST['gia_san_pham'] ?? 0;
+            $gia_khuyen_mai = $_POST['gia_khuyen_mai'] ?? 0;
             $so_luong = $_POST['so_luong'] ?? "";
             $ngay_nhap = $_POST['ngay_nhap'] ?? "";
             $danh_muc_id = $_POST['danh_muc_id'] ?? "";
@@ -143,9 +141,7 @@ class AdminSanPhamController
             if (empty($gia_san_pham)) {
                 $error['gia_san_pham'] = 'Giá sản phẩm không được để trống';
             }
-            if (empty($gia_khuyen_mai)) {
-                $error['gia_khuyen_mai'] = 'Giá khuyến mãi không được để trống';
-            }
+            
             if (empty($so_luong)) {
                 $error['so_luong'] = 'Số lượng không được để trống';
             }
