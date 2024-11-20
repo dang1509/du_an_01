@@ -9,6 +9,7 @@ require_once './controllers/TrangChuController.php';
 
 // Require toàn bộ file Models
 require_once './models/TrangChuModel.php';
+require_once './models/SanPham.php';
 
 
 // Route

@@ -42,7 +42,7 @@
         <h5 class="mb-3">Số lượng: <small><?= $SanPham['so_luong']?></small></h5>
         <h5 class="mb-3">Lượt xem: <small><?= $SanPham['luot_xem']?></small></h5>
         <h5 class="mb-3">Ngày nhập hàng: <small><?= $SanPham['ngay_nhap']?></small></h5>
-        <h5 class="mb-3">Chất liệu: <small><?= $SanPham['chat_lieu']?></small> <</h5>
+        <h5 class="mb-3">Chất liệu: <small><?= $SanPham['chat_lieu']?></small> </h5>
         <h5 class="mb-3 <?= $item['trang_thai'] == 1 ?'text-danger':'text-success' ?>">Trạng thái: <?= $SanPham['trang_thai']== 1 ?'Còn hàng':'Hết hàng' ?></h5>
 
         <div class="bg-gray py-1 px-1 mt-1">
@@ -50,7 +50,7 @@
             Giá tiền: <?= $SanPham['gia_san_pham'] ?>
           </h2>
           <h4 class="mt-0">
-            <small>Giá khuyến mãi: <?= $SanPham['gia_san_pham'] ?> </small>
+            <small>Giá khuyến mãi: <?= $SanPham['gia_khuyen_mai'] ?> </small>
           </h4>
         </div>
     </div>
