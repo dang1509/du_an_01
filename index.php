@@ -10,7 +10,10 @@ require_once './commons/function.php'; // Hàm hỗ trợ
 require_once './controllers/TrangChuController.php';
 
 // Require toàn bộ file Models
-// require_once './models/User.php';
+require_once './models/TrangChuModel.php';
+require_once './models/taiKhoanModel.php';
+require_once './models/SanPham.php';
+
 
 // Route
 $act = $_GET['act'] ?? '/';
@@ -20,7 +23,9 @@ $act = $_GET['act'] ?? '/';
 match ($act) {
     // Trang chủ
     '/'=>(new TrangchuController())->trangChu(),
-
-
-    
+    'dangki'=>(new TrangchuController())->dangki(),
+    'dangnhap'=>(new TrangchuController())->dangnhap(),
+    'sign-up'   =>  (new TrangchuController())->signUp(),
+    'logout' => (new TrangchuController())->logout(),
+    // Lấy sản phẩm
 };

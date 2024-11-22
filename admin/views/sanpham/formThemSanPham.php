@@ -57,9 +57,7 @@
                                     <label for="giaKhuyenMai" class="form-label">Giá Khuyến Mãi</label>
                                     <input type="number" class="form-control" id="gia_khuyen_mai" name="gia_khuyen_mai"
                                         placeholder="Nhập giá khuyến mãi">
-                                    <?php if (isset($_SESSION['error']['gia_khuyen_mai'])) { ?>
-                                        <p class="text-danger"><?= $_SESSION['error']['gia_khuyen_mai'] ?></p>
-                                    <?php } ?>
+                                    
                                 </div>
                                 <div class="form-group col-6">
                                     <label for="hinhAnh" class="form-label">Hình ảnh</label>

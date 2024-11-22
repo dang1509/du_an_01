@@ -2,17 +2,19 @@
 ob_start();
 class AdminDanhMucController{
     public $modelDanhMuc;
+   
     public function __construct(){  
         $this->modelDanhMuc = new DanhMuc();
-
+        
     }
     public function danhSachDanhMuc(){
         $listDanhMuc = $this->modelDanhMuc->getAllDanhMuc();
         require_once './views/danhmuc/listDanhMuc.php';
     }
     public function deleteDanhMuc($id){
-        $this->modelDanhMuc->delete($id);
-        header('Location: ?act=danh-muc');
+       $this->modelDanhMuc->updateDanhMucSanPham($id);
+       $this->modelDanhMuc->delete($id);
+       header("location:".BASE_URL_ADMIN.'?act=danh-muc');
     }
     public function formThemDanhMuc(){
         require_once './views/danhmuc/AddDanhMuc.php';

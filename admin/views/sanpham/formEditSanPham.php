@@ -53,9 +53,7 @@
                                 <label for="giaKhuyenMai">Giá Khuyến Mãi</label>
                                 <input type="number" id="gia_khuyen_mai" name="gia_khuyen_mai" class="form-control"
                                     value="<?= $SanPham['gia_khuyen_mai'] ?>">
-                                <?php if (isset($_SESSION['error']['gia_khuyen_mai'])) { ?>
-                                    <p class="text-danger"><?= $_SESSION['error']['gia_khuyen_mai'] ?></p>
-                                <?php } ?>
+                                
                             </div>
                             <div class="form-group">
                                 <label for="hinhAnh">Hình ảnh</label>
