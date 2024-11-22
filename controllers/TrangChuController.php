@@ -28,48 +28,52 @@ class TrangChuController
     }
     public function signUp()
     {
+        // Initialize variables to hold the values and error messages
+        $name = $email = $pass = $dia_chi = '';
+        $errors_name = $errors_email = $errors_pass = $errors_dia_chi = '';
+    
+        // Check if the form is submitted
         if (isset($_POST['signup'])) {
+            // Capture the form values
             $name = $_POST['name'];
             $email = $_POST['email'];
             $pass = $_POST['pass'];
             $dia_chi = $_POST['dia_chi'];
-
-            $errors = [];
+    
+            // Validate each field and store error messages if necessary
             if (empty($name)) {
-                $errors[] = "Họ và tên là bắt buộc.";
+                $errors_name = "Họ và tên là bắt buộc.";
             }
             if (empty($email)) {
-                $errors[] = "Email là bắt buộc.";
+                $errors_email = "Email là bắt buộc.";
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $errors[] = "Email không hợp lệ.";
+                $errors_email = "Email không hợp lệ.";
             }
             if (empty($pass)) {
-                $errors[] = "Mật khẩu là bắt buộc.";
+                $errors_pass = "Mật khẩu là bắt buộc.";
             }
             if (empty($dia_chi)) {
-                $errors[] = "Địa chỉ là bắt buộc.";
+                $errors_dia_chi = "Địa chỉ là bắt buộc.";
             }
-            if (empty($errors)) {
-
+    
+            // If there are no errors, insert the new account into the database
+            if (empty($errors_name) && empty($errors_email) && empty($errors_pass) && empty($errors_dia_chi)) {
                 $result = $this->modelTaiKhoan->insert_taikhoan($name, $email, $pass, $dia_chi);
                 if ($result) {
-          
+                    // Success message and redirect
                     echo "<script>alert('Đăng ký thành công');</script>";
-               
                     header('Location: ./index.php?act=dangnhap');
-                    exit(); 
+                    exit(); // Ensure no further code is executed after the redirect
                 } else {
                     echo "Đã có lỗi xảy ra khi đăng ký.";
                 }
-                
-            } else {
-
-                require_once 'views/taikhoan/dangki.php';
             }
-        } else {
-            require_once 'views/taikhoan/dangki.php';
         }
+    
+        // If there were errors, or if it's a first-time request, display the registration form
+        require_once 'views/taikhoan/dangki.php';
     }
+    
     function logout() {
         session_unset();           
         session_destroy(); 
