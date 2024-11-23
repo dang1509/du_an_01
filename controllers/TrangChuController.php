@@ -15,7 +15,7 @@ class TrangChuController
 
     public function trangChu()
     {
-        $DanhMuc = $this->modelTrangchu->getAllDanhMuc();      
+        $DanhMuc = $this->modelTrangChu->getAllDanhMuc();      
         $Top4SanPham = $this->modelSanPham->get4SanPham();
         $SanPhamKhuyenMai = $this->modelSanPham->getSale();
         $SanPhamMoi = $this->modelSanPham->getSanPhamMoi();
@@ -41,6 +41,7 @@ class TrangChuController
         // Check if the form is submitted
         if (isset($_POST['signup'])) {
             // Capture the form values
+            $chuc_vu_id = 2;
             $name = $_POST['name'];
             $email = $_POST['email'];
             $pass = $_POST['pass'];
@@ -64,7 +65,7 @@ class TrangChuController
     
             // If there are no errors, insert the new account into the database
             if (empty($errors_name) && empty($errors_email) && empty($errors_pass) && empty($errors_dia_chi)) {
-                $result = $this->modelTaiKhoan->insert_taikhoan($name, $email, $pass, $dia_chi);
+                $result = $this->modelTaiKhoan->insert_taikhoan($name, $email, $pass, $dia_chi,$chuc_vu_id);
                 if ($result) {
                     // Success message and redirect
                     echo "<script>alert('Đăng ký thành công');</script>";
@@ -99,7 +100,7 @@ class TrangChuController
                 $_SESSION['name'] = $account['ho_ten'];
                 $_SESSION['email'] = $account['email'];
                 $_SESSION['login'] = true;
-          
+                $_SESSION['chuc_vu'] = $account['chuc_vu_id'];
                     header("Location: ./index.php?act=/");
              
             } else {

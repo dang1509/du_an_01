@@ -13,7 +13,8 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -23,7 +24,38 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="./assets/css/style.css" rel="stylesheet">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.10.0-beta1/dist/js/bootstrap.bundle.min.js"></script> -->
+    
+   <style>
+    /* Đảm bảo dropdown không tràn ra ngoài màn hình */
+.dropdown-menu {
+  max-width: 200px; /* Đặt độ rộng tối đa cho dropdown */
+  white-space: nowrap; /* Không cho nội dung trong dropdown xuống dòng */
+  overflow: hidden; /* Ẩn nội dung nếu bị tràn */
+}
+
+/* Điều chỉnh vị trí để dropdown không bị tràn ra ngoài */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: auto;
+  right: 0; /* Căn phải để dropdown không bị tràn qua trái màn hình */
+}
+
+/* Đảm bảo khi menu mở không bị che khuất khi gần mép màn hình */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: static; /* Sử dụng static cho menu trong màn hình nhỏ */
+    top: auto;
+    right: auto;
+  }
+}
+
+   </style>
+
+
 </head>
+
 <body>
     <!-- Topbar Start -->
     <div class="container-fluid">
@@ -60,7 +92,8 @@
         <div class="row align-items-center py-3 px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
                 <a href="" class="text-decoration-none">
-                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">J</span>Shopper</h1>
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span
+                            class="text-primary font-weight-bold border px-3 mr-1">J</span>Shopper</h1>
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left">

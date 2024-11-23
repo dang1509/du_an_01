@@ -14,9 +14,18 @@ class taiKhoan{
             echo "Lỗi: ".$e->getMessage();
         }
     }
-    function insert_taikhoan($name, $email, $pass, $diachi) {
-        $sql = "INSERT INTO tai_khoans VALUES (null, '$name', null, null,'$email', null, null, '$diachi', '$pass',null,'1')";
-        return $this->conn->prepare($sql)->execute();
+    function insert_taikhoan($name, $email, $pass, $diachi,$chuc_vu_id) {
+        try{
+            $sql = "INSERT INTO tai_khoans(ho_ten,email,mat_khau,dia_chi,chuc_vu_id) VALUES (:ho_ten,:email,:mat_khau,:dia_chi,:chuc_vu_id)";
+            $stmt = $this->conn->prepare($sql);;
+            $stmt->execute([':ho_ten'=>$name,':email'=>$email,':mat_khau'=>$pass,'dia_chi'=>$diachi,'chuc_vu_id'=>$chuc_vu_id]);
+            return true;
+        }
+        catch(PDOException $e){
+            echo "Lỗi: ".$e->getMessage();
+        }
+        ;
+       
     }
     function login($user, $pass)
     {
