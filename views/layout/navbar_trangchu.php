@@ -22,7 +22,7 @@
         </div>
         <div class="col-lg-9">
             <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-                <a href="" class="text-decoration-none d-block d-lg-none">
+                <a href="<?=BASE_URL?>" class="text-decoration-none d-block d-lg-none">
                     <h1 class="m-0 display-5 font-weight-semi-bold"><span
                             class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
                 </a>
@@ -31,7 +31,7 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="#" class="nav-item nav-link active">Trang chủ</a>
+                        <a href="<?=BASE_URL?>" class="nav-item nav-link active">Trang chủ</a>
                         <a href="<?php echo BASE_URL . '?act=list-san-pham' ?>" class="nav-item nav-link">Sản phẩm</a>
                         <a href="#" class="nav-item nav-link">Tin tức</a>
                         <a href="#" class="nav-item nav-link">Giới thiệu</a>

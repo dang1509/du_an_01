@@ -128,7 +128,7 @@ class TrangChuController
             $noi_dung = $_POST['noi_dung'];
             $tai_khoan_id = $_SESSION['id'];
             $san_pham_id = $_GET['id_san_pham'];
-            var_dump($tai_khoan_id);
+            // var_dump($tai_khoan_id);
             $ngay_dang = date('Y-m-d');
             $trang_thai = 1;
             $binhluan=$this->modelBinhLuan->ThemBinhLuan($san_pham_id,$tai_khoan_id,$noi_dung,$ngay_dang,$trang_thai);
