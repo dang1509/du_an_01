@@ -129,7 +129,7 @@
                     <div class="tab-pane fade" id="tab-pane-2">
                         <div class="row">
                             <div class="col-md-6">
-                                <h4 class="mb-4">1 review for "Colorful Stylish Shirt"</h4>
+                                <h4 class="mb-4">Bình luận của sản phẩm</h4>
                                 <?php foreach($BinhLuan as $key=>$item) :?>
                                 <div class="media mb-4">
                                     
