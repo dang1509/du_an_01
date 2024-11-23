@@ -1,5 +1,15 @@
 <?php include "./views/layout/header.php" ?>
 <?php include "./views/layout/navbar.php" ?>
+<div class="container-fluid bg-secondary mb-5">
+        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
+            <h1 class="font-weight-semi-bold text-uppercase mb-3">Trang Sản Phẩm</h1>
+            <div class="d-inline-flex">
+                <p class="m-0">Trang chủ</p>
+                <p class="m-0 px-2">-</p>
+                <p class="m-0">Trang sản phẩm</p>
+            </div>
+        </div>
+    </div>
 <div class="container-fluid pt-5">
         <div class="row px-xl-5">
             <!-- Shop Sidebar Start -->
@@ -167,7 +177,7 @@
                         </div>
                             </div>
                             <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Xem Chi Tiết</a>
+                            <a href="<?= BASE_URL.'?act=chi-tiet-san-pham&id_san_pham='.$item['id'] ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Xem Chi Tiết</a>
                             <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ hàng</a>
                             </div>
                         </div>

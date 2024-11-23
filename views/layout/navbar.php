@@ -35,9 +35,42 @@
                             <a href="#" class="nav-item nav-link">Liên hệ</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="" class="nav-item nav-link">Đăng nhập</a>
-                            <a href="" class="nav-item nav-link">Đăng ký</a>
-                        </div>
+                        <?php
+                        if (isset($_SESSION['login']) && isset($_SESSION['name']) && isset($_SESSION['chuc_vu']) && $_SESSION['chuc_vu'] == 2) { ?>
+
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="#">Thông tin cá nhân</a></li>
+                                    <li><a class="dropdown-item" href="#">Lịch sử đơn hàng</a></li>
+                                    <li><a class="dropdown-item text-danger" href="?act=logout">Đăng xuất</a></li>
+                                </ul>
+                            </div>
+
+                        <?php
+                        }elseif(isset($_SESSION['login']) && isset($_SESSION['name']) && isset($_SESSION['chuc_vu']) && $_SESSION['chuc_vu'] == 1){
+?>
+                                <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li><a class="dropdown-item" href="<?php echo BASE_URL_ADMIN.'?act=/' ?>">Vào Quản Trị</a></li>
+                                    <li><a class="dropdown-item text-danger" href="?act=logout">Đăng xuất</a></li>
+                                </ul>
+                            </div>
+               <?php         }else{
+                            // Nếu chưa đăng nhập, hiển thị liên kết đăng nhập và đăng ký
+                            echo '<a href="index.php?act=dangnhap" class="nav-item nav-link">Đăng nhập</a>';
+                            echo '<a href="index.php?act=dangki" class="nav-item nav-link">Đăng ký</a>';
+                        }
+                        ?>
+
+                    </div>
                     </div>
                 </nav>
             </div>
@@ -45,14 +78,5 @@
     </div>
     <!-- Navbar End -->
          <!-- Page Header Start -->
-    <div class="container-fluid bg-secondary mb-5">
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-            <h1 class="font-weight-semi-bold text-uppercase mb-3">Trang Sản Phẩm</h1>
-            <div class="d-inline-flex">
-                <p class="m-0">Trang chủ</p>
-                <p class="m-0 px-2">-</p>
-                <p class="m-0">Trang sản phẩm</p>
-            </div>
-        </div>
-    </div>
+    
     <!-- Page Header End -->

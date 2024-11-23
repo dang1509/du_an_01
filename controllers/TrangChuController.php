@@ -5,12 +5,13 @@ class TrangChuController
     public $modelTrangChu;
     public $modelSanPham;
     public $modelTaiKhoan;
-
+    public $modelBinhLuan;
     public function __construct()
     {
         $this->modelTrangChu = new TrangChu();   
         $this->modelSanPham = new SanPham();
         $this->modelTaiKhoan = new TaiKhoan();
+        $this->modelBinhLuan = new BinhLuan();
     }
 
     public function trangChu()
@@ -106,6 +107,33 @@ class TrangChuController
             } else {
                 echo "<script>alert('Tài khoản hoặc mật khẩu không chính xác!')</script>";
             }
+        }
+    }
+    public function chiTietSanPham(){
+        $id_san_pham = $_GET['id_san_pham'];
+        $Top4SanPham = $this->modelSanPham->get4SanPham();
+        $BinhLuan = $this->modelBinhLuan->getBinhLuanFromSanPham($id_san_pham);
+        
+        $SanPham = $this->modelSanPham->getDetailSanPham($id_san_pham);
+        
+        $listAnhSanPham = $this->modelSanPham->getAlbumAnhSanPham($id_san_pham);
+        // var_dump($BinhLuan);die(); 
+        // var_dump($listAnhSanPham);die();
+        if($SanPham){
+            require_once "./views/ChiTietSanPham.php";
+        }
+    }
+    public function addBinhLuan(){
+        if(isset($_POST['addBinhLuan'])){
+            $noi_dung = $_POST['noi_dung'];
+            $tai_khoan_id = $_SESSION['id'];
+            $san_pham_id = $_GET['id_san_pham'];
+            var_dump($tai_khoan_id);
+            $ngay_dang = date('Y-m-d');
+            $trang_thai = 1;
+            $binhluan=$this->modelBinhLuan->ThemBinhLuan($san_pham_id,$tai_khoan_id,$noi_dung,$ngay_dang,$trang_thai);
+            // var_dump($binhluan);die();
+            header("location:?act=chi-tiet-san-pham&id_san_pham=".$san_pham_id )  ; 
         }
     }
 

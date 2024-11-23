@@ -7,12 +7,13 @@ require_once './commons/function.php'; // Hàm hỗ trợ
 
 // Require toàn bộ file Controllers
 require_once './controllers/TrangChuController.php';
-require_once './controllers/ChiTietSanPhamController.php';
+// require_once './controllers/ChiTietSanPhamController.php';
 
 // Require toàn bộ file Models
 require_once './models/TrangChuModel.php';
 require_once './models/taiKhoanModel.php';
 require_once './models/SanPham.php';
+require_once './models/BinhLuan.php';
 
 
 // Route
@@ -29,7 +30,12 @@ match ($act) {
     'logout' => (new TrangchuController())->logout(),
     // Lấy sản phẩm
     'list-san-pham' => (new TrangChuController())->getListSanPham(),
-    // 'chi-tiet-san-pham'=>(new ChiTietSanPhamConTroller())->chiTietSanPham(),
+    'chi-tiet-san-pham'=>(new TrangChuController())->chiTietSanPham(),
+
+    // Bình luận
+    'add-binh-luan' => (new TrangChuController())->addBinhLuan(),
+    
+
 
     
 
