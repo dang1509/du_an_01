@@ -1,4 +1,5 @@
 <?php 
+session_start();
 
 // Require file Common
 require_once './commons/env.php'; // Khai báo biến môi trường
@@ -6,6 +7,7 @@ require_once './commons/function.php'; // Hàm hỗ trợ
 
 // Require toàn bộ file Controllers
 require_once './controllers/TrangChuController.php';
+require_once './controllers/ChiTietSanPhamController.php';
 
 // Require toàn bộ file Models
 require_once './models/TrangChuModel.php';
@@ -20,7 +22,11 @@ $act = $_GET['act'] ?? '/';
 match ($act) {
     // Trang chủ
     '/'=>(new TrangchuController())->trangChu(),
+    
     // Lấy sản phẩm
+    'list-san-pham' => (new TrangChuController())->getListSanPham(),
+    // 'chi-tiet-san-pham'=>(new ChiTietSanPhamConTroller())->chiTietSanPham(),
+
     
 
     
