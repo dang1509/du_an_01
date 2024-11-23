@@ -1,4 +1,4 @@
- <!-- Navbar Start -->
+
  <div class="container-fluid mb-5">
         <div class="row border-top px-xl-5">
             <div class="col-lg-3 d-none d-lg-block">
@@ -36,9 +36,18 @@
                             <a href="#" class="nav-item nav-link">Liên hệ</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
-                            <a href="" class="nav-item nav-link">Đăng nhập</a>
-                            <a href="" class="nav-item nav-link">Đăng ký</a>
-                        </div>
+                        <?php
+if (isset($_SESSION['login']) && $_SESSION['login'] === true) {
+    // Nếu đã đăng nhập, hiển thị tên người dùng và nút đăng xuất
+    echo '<a href="index.php?act=logout" class="nav-item nav-link">' . $_SESSION['name'] . ', Đăng xuất</a>';
+} else {
+    // Nếu chưa đăng nhập, hiển thị liên kết đăng nhập và đăng ký
+    echo '<a href="index.php?act=dangnhap" class="nav-item nav-link">Đăng nhập</a>';
+    echo '<a href="index.php?act=dangki" class="nav-item nav-link">Đăng ký</a>';
+}
+?>
+
+                        </div> 
                     </div>
                 </nav>
                 <div id="header-carousel" class="carousel slide" data-ride="carousel">
