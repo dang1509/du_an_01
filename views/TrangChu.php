@@ -26,7 +26,7 @@
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
                         <a href="<?= BASE_URL.'?act=chi-tiet-san-pham&id_san_pham='.$item['id'] ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Xem Chi Tiết</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ hàng</a>
+                        <a href="<?= BASE_URL.'?act=them-vao-gio-hang&id_san_pham='.$item['id'] ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ hàng</a>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
                         <a href="<?= BASE_URL.'?act=chi-tiet-san-pham&id_san_pham='.$item['id'] ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Xem Chi Tiết</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ hàng</a>
+                        <a href="<?= BASE_URL.'?act=them-vao-gio-hang&id_san_pham='.$item['id'] ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ hàng</a>
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
                         <a href="<?= BASE_URL.'?act=chi-tiet-san-pham&id_san_pham='.$item['id'] ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>Xem Chi Tiết</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ hàng</a>
+                        <a href="<?= BASE_URL.'?act=them-vao-gio-hang&id_san_pham='.$item['id'] ?>" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Thêm vào giỏ hàng</a>
                     </div>
                 </div>
             </div>
@@ -101,3 +101,4 @@
     </div>
     <!-- Products End -->
 <?php include "./views/layout/footer.php" ?>
+

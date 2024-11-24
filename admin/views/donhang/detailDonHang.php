@@ -98,9 +98,9 @@
                         <tr>
                             <td><?=$key +1?></td>
                             <td><?=$sanPham['ten_san_pham']?></td>
-                            <td>$<?=$sanPham['don_gia']?></td>
+                            <td><?=$sanPham['don_gia']?></td>
                             <td><?=$sanPham['so_luong']?></td>
-                            <td>$<?=$sanPham['don_gia']*$sanPham['so_luong']?></td> 
+                            <td><?=$sanPham['don_gia']*$sanPham['so_luong']?></td> 
                         </tr>
                         <?php $tong_tien +=  $sanPham['thanh_tien'];?>
                     <?php endforeach; ?>

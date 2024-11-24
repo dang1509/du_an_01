@@ -14,6 +14,7 @@ require_once './models/TrangChuModel.php';
 require_once './models/taiKhoanModel.php';
 require_once './models/SanPham.php';
 require_once './models/BinhLuan.php';
+require_once './models/GioHang.php';
 
 
 // Route
@@ -35,9 +36,13 @@ match ($act) {
     // Bình luận
     'add-binh-luan' => (new TrangChuController())->addBinhLuan(),
     
-
-
-    
+    // Giỏ hàng
+    'xem-gio-hang' => (new TrangChuController())->xemGioHang(),
+    'tang-so-luong' => (new TrangChuController())->tangSoLuong(),
+    'giam-so-luong' => (new TrangChuController())->giamSoluong(),
+    'them-vao-gio-hang' => (new TrangChuController())->themGioHang(),
+    'them-tu-san-pham' => (new TrangChuController())->themTuSanPham(),
+    'them-tu-chi-tiet' => (new TrangChuController())->themTuChiTiet(),
 
     
 };

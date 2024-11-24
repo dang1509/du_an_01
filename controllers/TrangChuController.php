@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class TrangChuController
 {
@@ -6,29 +6,32 @@ class TrangChuController
     public $modelSanPham;
     public $modelTaiKhoan;
     public $modelBinhLuan;
+    public $modelGioHang;
     public function __construct()
     {
-        $this->modelTrangChu = new TrangChu();   
+        $this->modelTrangChu = new TrangChu();
         $this->modelSanPham = new SanPham();
         $this->modelTaiKhoan = new TaiKhoan();
         $this->modelBinhLuan = new BinhLuan();
+        $this->modelGioHang = new GioHang();
     }
 
     public function trangChu()
     {
-        $DanhMuc = $this->modelTrangChu->getAllDanhMuc();      
+        $DanhMuc = $this->modelTrangChu->getAllDanhMuc();
         $Top4SanPham = $this->modelSanPham->get4SanPham();
         $SanPhamKhuyenMai = $this->modelSanPham->getSale();
         $SanPhamMoi = $this->modelSanPham->getSanPhamMoi();
         require_once "./views/TrangChu.php";
     }
-    public function getListSanPham(){
+    public function getListSanPham()
+    {
         $DanhMuc = $this->modelTrangChu->getAllDanhMuc();
-            // var_dump($DanhMuc);die();
+        // var_dump($DanhMuc);die();
         $SanPham = $this->modelSanPham->getAllSanPham();
         require_once "./views/TrangSanPham.php";
     }
-    
+
     public function dangki()
     {
         require_once "./views/taikhoan/dangki.php";
@@ -38,7 +41,7 @@ class TrangChuController
         // Initialize variables to hold the values and error messages
         $name = $email = $pass = $dia_chi = '';
         $errors_name = $errors_email = $errors_pass = $errors_dia_chi = '';
-    
+
         // Check if the form is submitted
         if (isset($_POST['signup'])) {
             // Capture the form values
@@ -47,7 +50,7 @@ class TrangChuController
             $email = $_POST['email'];
             $pass = $_POST['pass'];
             $dia_chi = $_POST['dia_chi'];
-    
+
             // Validate each field and store error messages if necessary
             if (empty($name)) {
                 $errors_name = "Họ và tên là bắt buộc.";
@@ -63,10 +66,10 @@ class TrangChuController
             if (empty($dia_chi)) {
                 $errors_dia_chi = "Địa chỉ là bắt buộc.";
             }
-    
+
             // If there are no errors, insert the new account into the database
             if (empty($errors_name) && empty($errors_email) && empty($errors_pass) && empty($errors_dia_chi)) {
-                $result = $this->modelTaiKhoan->insert_taikhoan($name, $email, $pass, $dia_chi,$chuc_vu_id);
+                $result = $this->modelTaiKhoan->insert_taikhoan($name, $email, $pass, $dia_chi, $chuc_vu_id);
                 if ($result) {
                     // Success message and redirect
                     echo "<script>alert('Đăng ký thành công');</script>";
@@ -77,15 +80,16 @@ class TrangChuController
                 }
             }
         }
-    
+
         // If there were errors, or if it's a first-time request, display the registration form
         require_once 'views/taikhoan/dangki.php';
     }
-    
-    function logout() {
-        session_unset();           
-        session_destroy(); 
-    header('Location: ./index.php?act=/');
+
+    function logout()
+    {
+        session_unset();
+        session_destroy();
+        header('Location: ./index.php?act=/');
     }
     public function dangnhap()
     {
@@ -102,40 +106,145 @@ class TrangChuController
                 $_SESSION['email'] = $account['email'];
                 $_SESSION['login'] = true;
                 $_SESSION['chuc_vu'] = $account['chuc_vu_id'];
-                    header("Location: ./index.php?act=/");
-             
+                header("Location: ./index.php?act=/");
+
             } else {
                 echo "<script>alert('Tài khoản hoặc mật khẩu không chính xác!')</script>";
             }
         }
     }
-    public function chiTietSanPham(){
+    public function chiTietSanPham()
+    {
         $id_san_pham = $_GET['id_san_pham'];
         $Top4SanPham = $this->modelSanPham->get4SanPham();
         $BinhLuan = $this->modelBinhLuan->getBinhLuanFromSanPham($id_san_pham);
-        
+
         $SanPham = $this->modelSanPham->getDetailSanPham($id_san_pham);
-        
+
         $listAnhSanPham = $this->modelSanPham->getAlbumAnhSanPham($id_san_pham);
         // var_dump($BinhLuan);die(); 
         // var_dump($listAnhSanPham);die();
-        if($SanPham){
+        if ($SanPham) {
             require_once "./views/ChiTietSanPham.php";
         }
     }
-    public function addBinhLuan(){
-        if(isset($_POST['addBinhLuan'])){
+    public function addBinhLuan()
+    {
+        if (isset($_POST['addBinhLuan'])) {
             $noi_dung = $_POST['noi_dung'];
             $tai_khoan_id = $_SESSION['id'];
             $san_pham_id = $_GET['id_san_pham'];
             // var_dump($tai_khoan_id);
             $ngay_dang = date('Y-m-d');
             $trang_thai = 1;
-            $binhluan=$this->modelBinhLuan->ThemBinhLuan($san_pham_id,$tai_khoan_id,$noi_dung,$ngay_dang,$trang_thai);
+            $binhluan = $this->modelBinhLuan->ThemBinhLuan($san_pham_id, $tai_khoan_id, $noi_dung, $ngay_dang, $trang_thai);
             // var_dump($binhluan);die();
-            header("location:?act=chi-tiet-san-pham&id_san_pham=".$san_pham_id )  ; 
+            header("location:?act=chi-tiet-san-pham&id_san_pham=" . $san_pham_id);
+        }
+    }
+    public function xemGioHang()
+    {
+        $DanhMuc = $this->modelTrangChu->getAllDanhMuc();
+        $tai_khoan_id = $_SESSION['id'];
+        if (!isset($_SESSION['name'])) {
+           echo  "<script>
+        alert('Vui lòng đăng nhập để sử dụng giỏ hàng!');
+        window.location.href = '?act=dangnhap';
+                 </script>";
+            
+        } else {
+            $gioHang = $this->modelGioHang->getAllGioHang($tai_khoan_id);
+            require_once './views/GioHang.php';
+        }
+    }
+    public function giamSoLuong(){
+        $id_gio_hang = $_GET['id_gio_hang'];
+        $this->modelGioHang->giam($id_gio_hang);
+        header('location:?act=xem-gio-hang');
+    }
+    public function tangSoLuong(){
+        $id_gio_hang = $_GET['id_gio_hang'];
+        $this->modelGioHang->tang($id_gio_hang);
+        header('location:?act=xem-gio-hang');
+    }
+    public function themGioHang(){
+        $tai_khoan_id = $_SESSION['id'];
+        $gio_hang = $this->modelGioHang->checkGioHang($tai_khoan_id);
+        if(isset($gio_hang)){
+            $gio_hang_id = $gio_hang['id'];
+        }else{
+            $this->modelGioHang->addGioHang($tai_khoan_id);
+        }
+        $san_pham_id = $_GET['id_san_pham'];
+        $san_pham = $this->modelGioHang->checkSanPham($san_pham_id);
+        // var_dump($san_pham);die();
+        if($san_pham == true){
+            $check = $this->modelGioHang->tang($gio_hang_id);
+            
+        }else{
+            $so_luong = 1;
+            $check = $this->modelGioHang->addChiTietGioHang($gio_hang_id,$san_pham_id,$so_luong);
+        }
+
+        if($check == true){
+            echo  "<script> 
+        alert('Thêm sản phẩm vào giỏ hàng thành công!');
+        window.location.href = '?act=/';
+                 </script>";
+        }
+    }
+    public function themTuSanPham(){
+        $tai_khoan_id = $_SESSION['id'];
+        $gio_hang = $this->modelGioHang->checkGioHang($tai_khoan_id);
+        if(isset($gio_hang)){
+            $gio_hang_id = $gio_hang['id'];
+        }else{
+            $this->modelGioHang->addGioHang($tai_khoan_id);
+        }
+        $san_pham_id = $_GET['id_san_pham'];
+        $san_pham = $this->modelGioHang->checkSanPham($san_pham_id);
+        // var_dump($san_pham);die();
+        if($san_pham == true){
+            $check = $this->modelGioHang->tang($gio_hang_id);
+            
+        }else{
+            $so_luong = 1;
+            $check = $this->modelGioHang->addChiTietGioHang($gio_hang_id,$san_pham_id,$so_luong);
+        }
+
+        if($check == true){
+            echo  "<script> 
+        alert('Thêm sản phẩm vào giỏ hàng thành công!');
+        window.location.href = '?act=list-san-pham';
+                 </script>";
+        }
+    }
+    public function themTuChiTiet(){
+        $tai_khoan_id = $_SESSION['id'];
+        $gio_hang = $this->modelGioHang->checkGioHang($tai_khoan_id);
+        if(isset($gio_hang)){
+            $gio_hang_id = $gio_hang['id'];
+        }else{
+            $this->modelGioHang->addGioHang($tai_khoan_id);
+        }
+        $san_pham_id = $_GET['id_san_pham'];
+        $san_pham = $this->modelGioHang->checkSanPham($san_pham_id);
+        // var_dump($san_pham);die();
+        if($san_pham == true){
+            $check = $this->modelGioHang->tang($gio_hang_id);
+            
+        }else{
+            $so_luong = 1;
+            $check = $this->modelGioHang->addChiTietGioHang($gio_hang_id,$san_pham_id,$so_luong);
+        }
+
+        if($check == true){
+            echo  "<script> 
+        alert('Thêm sản phẩm vào giỏ hàng thành công!');
+        window.location.href = '?act=chi-tiet-san-pham&id_san_pham=$san_pham_id';
+                 </script>";
         }
     }
 
-  
+
 }
