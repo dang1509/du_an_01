@@ -47,8 +47,13 @@
                                     <i class="fas fa-user"></i>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+<<<<<<< HEAD
                                     <li><a class="dropdown-item" href="?act=thongtin" >Thông tin cá nhân</a></li>
                                     <li><a class="dropdown-item" href="?act=lichsu">Lịch sử đơn hàng</a></li>
+=======
+                                <li><a class="dropdown-item" href="?act=thongtin" >Thông tin cá nhân</a></li>
+                                <li><a class="dropdown-item" href="?act=lichsu">Lịch sử đơn hàng</a></li>
+>>>>>>> 5e581a93f6b190661d1f8bf6131671534fbebecd
                                     <li><a class="dropdown-item text-danger" href="?act=logout">Đăng xuất</a></li>
                                 </ul>
                             </div>

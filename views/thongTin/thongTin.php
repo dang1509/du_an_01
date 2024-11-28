@@ -5,7 +5,6 @@
         <h1 class="font-weight-semi-bold text-uppercase mb-3">Thông tin cá nhân</h1>
     </div>
 </div>
-
 <?php if (isset($tai_khoan)): ?>
     <div class="container">
     <form action="?act=editThongtin" method="POST">
@@ -32,7 +31,4 @@
 <?php else: ?>
     <p>Không tìm thấy thông tin người dùng.</p>
 <?php endif; ?>
-
 <?php include "./views/layout/footer.php" ?>
-
-

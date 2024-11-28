@@ -97,9 +97,15 @@
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left">
+<<<<<<< HEAD
                 <form action="?act=timkiem" method="post">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm" name="search">
+=======
+            <form action="?act=timkiem" method="post">
+                    <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm" name="search">
+>>>>>>> 5e581a93f6b190661d1f8bf6131671534fbebecd
                         <div class="input-group-append">
                             <span class="input-group-text bg-transparent text-primary">
                                 <i class="fa fa-search" ></i>   
