@@ -97,12 +97,12 @@
                 </a>
             </div>
             <div class="col-lg-6 col-6 text-left">
-                <form action="">
+                <form action="?act=timkiem" method="post">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm">
+                        <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm" name="search">
                         <div class="input-group-append">
                             <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
+                                <i class="fa fa-search" ></i>   
                             </span>
                         </div>
                     </div>

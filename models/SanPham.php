@@ -67,5 +67,17 @@ class SanPham{
             echo 'Lỗi: ' . $e->getMessage();
         }
     }
-    
+    // tim kiem san pham 
+    public function searchSanPhamByName($name) {
+        try {
+            $sql = "SELECT san_phams.* FROM san_phams 
+                    WHERE san_phams.ten_san_pham LIKE :name";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':name' => '%' . $name . '%']);
+            return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo 'Lỗi: ' . $e->getMessage();
+        }
+    }
+
 }

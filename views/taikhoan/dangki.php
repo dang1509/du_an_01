@@ -37,6 +37,7 @@
                 <input type="text" name="name" placeholder="Họ Và Tên" value="<?php echo isset($name) ? $name : ''; ?>" />
                 <input type="email" name="email" placeholder="Email" value="<?php echo isset($email) ? $email : ''; ?>" />
                 <input type="password" name="pass" placeholder="Mật khẩu" />
+                <input type="password" name="so_dien_thoai" placeholder="Số điện thoại" />
                 <input type="text" name="dia_chi" placeholder="Địa chỉ" value="<?php echo isset($dia_chi) ? $dia_chi : ''; ?>" />
                 <button type="submit" name="signup">Đăng Kí</button>
                 

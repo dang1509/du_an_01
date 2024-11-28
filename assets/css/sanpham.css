@@ -1,0 +1,136 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Container Fluid to ensure the whole page is responsive */
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Header and navigation styling */
+.header, .navbar {
+    margin-bottom: 30px;
+}
+
+/* Product page header styles */
+.container-fluid.bg-secondary {
+    background-color: #f8f9fa; /* Light grey background */
+    padding: 20px 0;
+}
+.container-fluid.bg-secondary h1 {
+    font-size: 36px;
+    font-weight: 600;
+}
+.container-fluid.bg-secondary .d-inline-flex p {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+/* Sidebar Styles */
+.col-lg-3 {
+    padding-right: 15px;
+}
+
+.col-lg-3 .border-bottom {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.custom-control.custom-checkbox .custom-control-label {
+    font-size: 14px;
+    color: #495057;
+}
+
+.custom-control.custom-checkbox .badge {
+    font-size: 12px;
+    background-color: #f8f9fa;
+}
+
+.mb-5 {
+    margin-bottom: 3rem;
+}
+
+.input-group {
+    max-width: 350px; /* Set the width of the search bar */
+}
+
+.input-group input {
+    padding: 10px;
+    border-radius: 0.25rem;
+    border: 1px solid #ced4da;
+}
+
+.input-group-append {
+    background-color: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-left: none;
+}
+
+.input-group-append .input-group-text {
+    background-color: transparent;
+    border: none;
+}
+
+.input-group-append .input-group-text i {
+    font-size: 16px;
+}
+
+/* Dropdown Styles for Sorting */
+.dropdown-toggle {
+    border: 1px solid #ced4da;
+    padding: 10px 20px;
+    background-color: white;
+}
+
+.dropdown-toggle:hover {
+    background-color: #f8f9fa;
+}
+
+.dropdown-menu {
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item {
+    padding: 10px 20px;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* Product Styles */
+.card.product-item {
+    border: none;
+    margin-bottom: 30px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.card-header.product-img img {
+    max-height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.card-body h6 {
+    font-size: 16px;
+    color: #495057;
+}
+
+.card-body .d-flex {
+    justify-content: center;
+    align-items: center;
+}
+
+.card-footer {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+}
+
+.card-footer .btn {
+    padding: 8px 15px;
+}
