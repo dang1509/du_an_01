@@ -16,6 +16,7 @@ require_once './models/SanPham.php';
 require_once './models/BinhLuan.php';
 require_once './models/GioHang.php';
 require_once './models/ThanhToan.php';
+require_once './models/lichSuDonHangModel.php';
 
 
 // Route
@@ -33,6 +34,7 @@ match ($act) {
     // Lấy sản phẩm
     'list-san-pham' => (new TrangChuController())->getListSanPham(),
     'chi-tiet-san-pham'=>(new TrangChuController())->chiTietSanPham(),
+    'timkiem'=>(new TrangChuController())->timKiem(),
 
     // Bình luận
     'add-binh-luan' => (new TrangChuController())->addBinhLuan(),
@@ -48,4 +50,12 @@ match ($act) {
     // Thanh toán
     'render-thanh-toan' => (new TrangChuController())->renderThanhToan(),
     'post-thanh-toan' => (new TrangChuController())->postThanhToan(),
+  
+    //lịch sử đơn hàng 
+    'lichsu' => (new TrangChuController())->list(),
+    // thong tin 
+    'thongtin' => (new TrangChuController())->thongTinCaNhan(),
+    'editThongtin' => (new TrangChuController())->capNhatThongTin(),
+   
+
 };

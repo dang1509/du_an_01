@@ -8,6 +8,7 @@ class TrangChuController
     public $modelBinhLuan;
     public $modelGioHang;
     public $modelThanhToan;
+    public $modelDonHang;
     public function __construct()
     {
         $this->modelTrangChu = new TrangChu();
@@ -16,6 +17,7 @@ class TrangChuController
         $this->modelBinhLuan = new BinhLuan();
         $this->modelGioHang = new GioHang();
         $this->modelThanhToan = new ThanhToan();
+        $this->modelDonHang = new DonHang();
     }
 
     public function trangChu()
@@ -41,8 +43,8 @@ class TrangChuController
     public function signUp()
     {
         // Initialize variables to hold the values and error messages
-        $name = $email = $pass = $dia_chi = '';
-        $errors_name = $errors_email = $errors_pass = $errors_dia_chi = '';
+        $name = $email = $pass = $so_dien_thoai = $dia_chi = '';
+        $errors_name = $errors_email = $errors_pass = $errors_so_dien_thoai= $errors_dia_chi = '';
 
         // Check if the form is submitted
         if (isset($_POST['signup'])) {
@@ -52,6 +54,7 @@ class TrangChuController
             $email = $_POST['email'];
             $pass = $_POST['pass'];
             $dia_chi = $_POST['dia_chi'];
+            $so_dien_thoai = $_POST['so_dien_thoai'];
 
             // Validate each field and store error messages if necessary
             if (empty($name)) {
@@ -68,10 +71,13 @@ class TrangChuController
             if (empty($dia_chi)) {
                 $errors_dia_chi = "Địa chỉ là bắt buộc.";
             }
+            if (empty($so_dien_thoai)) {
+                $errors_so_dien_thoai = "Số điện thoại là bắt buộc.";
+            }
 
             // If there are no errors, insert the new account into the database
-            if (empty($errors_name) && empty($errors_email) && empty($errors_pass) && empty($errors_dia_chi)) {
-                $result = $this->modelTaiKhoan->insert_taikhoan($name, $email, $pass, $dia_chi, $chuc_vu_id);
+            if (empty($errors_name) && empty($errors_email) && empty($errors_pass)  && empty($errors_so_dien_thoai) && empty($errors_dia_chi)) {
+                $result = $this->modelTaiKhoan->insert_taikhoan($name, $email, $pass,$so_dien_thoai, $dia_chi, $chuc_vu_id);    
                 if ($result) {
                     // Success message and redirect
                     echo "<script>alert('Đăng ký thành công');</script>";
@@ -421,4 +427,66 @@ class TrangChuController
 
 
     }
+    // lich su don hang 
+    public function list() {
+        $donHangs = $this->modelDonHang->getAllDonHang();
+        include './views/lichSuDonHang.php'; 
+    }
+ // thong tin cá nhân 
+ public function thongTinCaNhan() {
+        $tai_khoan_id = $_SESSION['id'];
+        $tai_khoan = $this->modelTaiKhoan->getThongTin($tai_khoan_id);
+        include './views/thongTin/thongTin.php';
+    }
+    // cap nhat  thong tin cá nhân
+    public function capNhatThongTin(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $id = $_SESSION['id'];
+            $ho_ten = $_POST['ho_ten'];
+            $email = $_POST['email'];
+            $so_dien_thoai = $_POST['so_dien_thoai'];
+            $dia_chi = $_POST['dia_chi'];
+            $error = [];
+            if(empty($ho_ten)){
+                $error['ho_ten']='Họ tên không được để trống';
+            }
+            if(empty($email)){
+                $error['email']='Email không được để trống';
+            }
+            if(empty($so_dien_thoai)){
+                $error['so_dien_thoai']='Số điện thoại không được để trống';
+            }
+            if(empty($dia_chi)){
+                $error['dia_chi']='Địa chỉ không được để trống';
+            }
+            if(empty($error)){
+                $this->modelTaiKhoan->updateThongTin($id,$ho_ten,$email,$so_dien_thoai,$dia_chi);
+                header('Location: ?act=thongtin');                
+                
+            }else{
+                $thongtin = ['id'=>$id,'ho_ten'=>$ho_ten,'email'=>$email,'so_dien_thoai'=>$so_dien_thoai,'dia_chi'=>$dia_chi];
+                require_once "./views/thongTin/thongTin.php";
+            }
+        }
+    }
+// tim kiem 
+// Phương thức để hiển thị trang sản phẩm với tìm kiếm
+public function timKiem()
+{
+    
+    
+    $listSP = $this->modelSanPham->getAllSanPham();
+    $DanhMuc = $this->modelTrangChu->getAllDanhMuc();
+    $result = [];
+    if (isset($_POST['search']) ) {
+        foreach ($listSP as $item) {
+            if (strpos(strtolower($item['ten_san_pham']), strtolower($_POST['search'])) !== false) {
+                $result[] = $item;
+            }
+        }
+    }
+    $SanPham = $result;
+    require_once './views/TrangSanPham.php';
+    
+}
 }
