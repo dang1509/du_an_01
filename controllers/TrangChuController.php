@@ -142,7 +142,7 @@ class TrangChuController
             // var_dump($tai_khoan_id);
             $ngay_dang = date('Y-m-d');
             $trang_thai = 1;
-            $binhluan = $this->modelBinhLuan->ThemBinhLuan($san_pham_id, $tai_khoan_id, $noi_dung, $ngay_dang, $trang_thai);
+            $this->modelBinhLuan->ThemBinhLuan($san_pham_id, $tai_khoan_id, $noi_dung, $ngay_dang, $trang_thai);
             // var_dump($binhluan);die();
             header("location:?act=chi-tiet-san-pham&id_san_pham=" . $san_pham_id);
         }
@@ -150,104 +150,174 @@ class TrangChuController
     public function xemGioHang()
     {
         $DanhMuc = $this->modelTrangChu->getAllDanhMuc();
-        $tai_khoan_id = $_SESSION['id'];
-        if (!isset($_SESSION['name'])) {
-           echo  "<script>
+
+        if (!isset($_SESSION['id'])) {
+            echo "<script>
         alert('Vui lòng đăng nhập để sử dụng giỏ hàng!');
         window.location.href = '?act=dangnhap';
                  </script>";
-            
+
         } else {
+            $tai_khoan_id = $_SESSION['id'];
             $gioHang = $this->modelGioHang->getAllGioHang($tai_khoan_id);
             require_once './views/GioHang.php';
         }
     }
-    public function giamSoLuong(){
+    public function giamSoLuong()
+    {
         $id_gio_hang = $_GET['id_gio_hang'];
         $this->modelGioHang->giam($id_gio_hang);
         header('location:?act=xem-gio-hang');
     }
-    public function tangSoLuong(){
+    public function tangSoLuong()
+    {
         $id_gio_hang = $_GET['id_gio_hang'];
         $this->modelGioHang->tang($id_gio_hang);
         header('location:?act=xem-gio-hang');
     }
-    public function themGioHang(){
-        $tai_khoan_id = $_SESSION['id'];
-        $gio_hang = $this->modelGioHang->checkGioHang($tai_khoan_id);
-        if(isset($gio_hang)){
-            $gio_hang_id = $gio_hang['id'];
-        }else{
-            $this->modelGioHang->addGioHang($tai_khoan_id);
-        }
-        $san_pham_id = $_GET['id_san_pham'];
-        $san_pham = $this->modelGioHang->checkSanPham($san_pham_id);
-        // var_dump($san_pham);die();
-        if($san_pham == true){
-            $check = $this->modelGioHang->tang($gio_hang_id);
-            
-        }else{
-            $so_luong = 1;
-            $check = $this->modelGioHang->addChiTietGioHang($gio_hang_id,$san_pham_id,$so_luong);
+    public function themGioHang()
+    {
+        if (!isset($_SESSION['id'])) {
+            echo "<script>
+             alert('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!');
+             window.location.href = '?act=dangnhap';
+              </script>";
+        } else {
+            $tai_khoan_id = $_SESSION['id'];
+            $gio_hang = $this->modelGioHang->checkGioHang($tai_khoan_id);
+
+            if ($gio_hang) {
+                $gio_hang_id = $gio_hang['id'];
+            } else {
+                $this->modelGioHang->addGioHang($tai_khoan_id);
+                $gio_hang = $this->modelGioHang->checkGioHang($tai_khoan_id);
+                if (!$gio_hang) {
+                    die("Không thể tạo giỏ hàng mới.");
+                }
+                $gio_hang_id = $gio_hang['id'];
+            }
+            // var_dump($gio_hang_id);die();
+            $san_pham_id = $_GET['id_san_pham'];
+            $san_pham = $this->modelGioHang->checkSanPham($san_pham_id);
+            // var_dump($san_pham);die();
+            if ($san_pham == true) { // Sản phẩm đã tồn tại trong giỏ hàng
+                $check = $this->modelGioHang->tang($san_pham_id);
+            } else { // Sản phẩm chưa tồn tại
+                $so_luong = 1;
+                $check = $this->modelGioHang->addChiTietGioHang($gio_hang_id, $san_pham_id, $so_luong);
+            }
+
+            if ($check) {
+                echo "<script> 
+                alert('Thêm sản phẩm vào giỏ hàng thành công!');
+                window.location.href = '?act=/';
+                 </script>";
+            } else {
+                echo "<script> 
+                alert('Không thể thêm sản phẩm vào giỏ hàng!');
+                window.location.href = '?act=/';
+                 </script>";
+            }
         }
 
-        if($check == true){
-            echo  "<script> 
-        alert('Thêm sản phẩm vào giỏ hàng thành công!');
-        window.location.href = '?act=/';
+    }
+    public function themTuSanPham()
+    {
+        if (!isset($_SESSION['id'])) {
+            echo "<script>
+             alert('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!');
+             window.location.href = '?act=dangnhap';
+              </script>";
+        } else {
+            $tai_khoan_id = $_SESSION['id'];
+            $gio_hang = $this->modelGioHang->checkGioHang($tai_khoan_id);
+
+            if ($gio_hang) {
+                $gio_hang_id = $gio_hang['id'];
+            } else {
+                $this->modelGioHang->addGioHang($tai_khoan_id);
+                $gio_hang = $this->modelGioHang->checkGioHang($tai_khoan_id);
+                if (!$gio_hang) {
+                    die("Không thể tạo giỏ hàng mới.");
+                }
+                $gio_hang_id = $gio_hang['id'];
+            }
+            // var_dump($gio_hang_id);die();
+            $san_pham_id = $_GET['id_san_pham'];
+            $san_pham = $this->modelGioHang->checkSanPham($san_pham_id);
+            // var_dump($san_pham);die();
+            if ($san_pham == true) { // Sản phẩm đã tồn tại trong giỏ hàng
+                $check = $this->modelGioHang->tang($san_pham_id);
+            } else { // Sản phẩm chưa tồn tại
+                $so_luong = 1;
+                $check = $this->modelGioHang->addChiTietGioHang($gio_hang_id, $san_pham_id, $so_luong);
+            }
+
+            if ($check) {
+                echo "<script> 
+                alert('Thêm sản phẩm vào giỏ hàng thành công!');
+                window.location.href = '?act=list-san-pham';
                  </script>";
+            } else {
+                echo "<script> 
+                alert('Không thể thêm sản phẩm vào giỏ hàng!');
+                window.location.href = '?act=list-san-pham';
+                 </script>";
+            }
         }
     }
-    public function themTuSanPham(){
-        $tai_khoan_id = $_SESSION['id'];
-        $gio_hang = $this->modelGioHang->checkGioHang($tai_khoan_id);
-        if(isset($gio_hang)){
-            $gio_hang_id = $gio_hang['id'];
-        }else{
-            $this->modelGioHang->addGioHang($tai_khoan_id);
-        }
-        $san_pham_id = $_GET['id_san_pham'];
-        $san_pham = $this->modelGioHang->checkSanPham($san_pham_id);
-        // var_dump($san_pham);die();
-        if($san_pham == true){
-            $check = $this->modelGioHang->tang($gio_hang_id);
-            
-        }else{
-            $so_luong = 1;
-            $check = $this->modelGioHang->addChiTietGioHang($gio_hang_id,$san_pham_id,$so_luong);
-        }
+    public function themTuChiTiet()
+    {
+        if (!isset($_SESSION['id'])) {
+            echo "<script>
+             alert('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!');
+             window.location.href = '?act=dangnhap';
+              </script>";
+        } else {
+            $tai_khoan_id = $_SESSION['id'];
+            $gio_hang = $this->modelGioHang->checkGioHang($tai_khoan_id);
 
-        if($check == true){
-            echo  "<script> 
-        alert('Thêm sản phẩm vào giỏ hàng thành công!');
-        window.location.href = '?act=list-san-pham';
-                 </script>";
-        }
-    }
-    public function themTuChiTiet(){
-        $tai_khoan_id = $_SESSION['id'];
-        $gio_hang = $this->modelGioHang->checkGioHang($tai_khoan_id);
-        if(isset($gio_hang)){
-            $gio_hang_id = $gio_hang['id'];
-        }else{
-            $this->modelGioHang->addGioHang($tai_khoan_id);
-        }
-        $san_pham_id = $_GET['id_san_pham'];
-        $san_pham = $this->modelGioHang->checkSanPham($san_pham_id);
-        // var_dump($san_pham);die();
-        if($san_pham == true){
-            $check = $this->modelGioHang->tang($gio_hang_id);
-            
-        }else{
-            $so_luong = 1;
-            $check = $this->modelGioHang->addChiTietGioHang($gio_hang_id,$san_pham_id,$so_luong);
-        }
+            if ($gio_hang) {
+                $gio_hang_id = $gio_hang['id'];
+            } else {
+                $this->modelGioHang->addGioHang($tai_khoan_id);
+                $gio_hang = $this->modelGioHang->checkGioHang($tai_khoan_id);
+                if (!$gio_hang) {
+                    die("Không thể tạo giỏ hàng mới.");
+                }
+                $gio_hang_id = $gio_hang['id'];
+            }
+            // var_dump($gio_hang_id);die();
+            $san_pham_id = $_GET['id_san_pham'];
+            $san_pham = $this->modelGioHang->checkSanPham($san_pham_id);
+            $check_gio_hang = $this->modelGioHang->checkChiTiet($gio_hang_id);
 
-        if($check == true){
-            echo  "<script> 
-        alert('Thêm sản phẩm vào giỏ hàng thành công!');
-        window.location.href = '?act=chi-tiet-san-pham&id_san_pham=$san_pham_id';
+            // var_dump($san_pham);die();
+            if ($san_pham == true) { // Sản phẩm đã tồn tại trong giỏ hàng
+                // var_dump($san_pham);die();
+                $check = $this->modelGioHang->tang($san_pham_id);
+                // var_dump($check);die();
+                
+            } else { // Sản phẩm chưa tồn tại
+                $so_luong = 1;
+                $check = $this->modelGioHang->addChiTietGioHang($gio_hang_id, $san_pham_id, $so_luong);
+                // $san_pham = $this->modelGioHang->checkSanPham($san_pham_id);            
+            }
+            // var_dump($check_gio_hang);die();
+            // $so_luong = 1;
+            // $this->modelGioHang->addChiTietGioHang($gio_hang_id, $san_pham_id, $so_luong);
+            // var_dump($san_pham);die();
+            if ($check) {
+                echo "<script> 
+                alert('Thêm sản phẩm vào giỏ hàng thành công!');
+                window.location.href = '?act=chi-tiet-san-pham&id_san_pham=$san_pham_id';
                  </script>";
+            } else {
+                echo "<script> 
+                alert('Không thể thêm sản phẩm vào giỏ hàng!');
+                window.location.href = '?act=chi-tiet-san-pham&id_san_pham=$san_pham_id';
+                 </script>";
+            }
         }
     }
 
