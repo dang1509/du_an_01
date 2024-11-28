@@ -15,6 +15,7 @@ require_once './models/taiKhoanModel.php';
 require_once './models/SanPham.php';
 require_once './models/BinhLuan.php';
 require_once './models/GioHang.php';
+require_once './models/ThanhToan.php';
 
 
 // Route
@@ -43,6 +44,8 @@ match ($act) {
     'them-vao-gio-hang' => (new TrangChuController())->themGioHang(),
     'them-tu-san-pham' => (new TrangChuController())->themTuSanPham(),
     'them-tu-chi-tiet' => (new TrangChuController())->themTuChiTiet(),
-
-    
+    'delete-gio-hang' => (new TrangChuController())->xoaGioHang(),
+    // Thanh toán
+    'render-thanh-toan' => (new TrangChuController())->renderThanhToan(),
+    'post-thanh-toan' => (new TrangChuController())->postThanhToan(),
 };

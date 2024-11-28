@@ -18,21 +18,21 @@
                 echo 'Lỗi: '.$e->getMessage();
             }
         }
-        public function giam($id_gio_hang){
+        public function giam($san_pham_id){
             try{
-                $sql = 'UPDATE chi_tiet_gio_hangs SET so_luong = so_luong - 1 WHERE id=:id';
+                $sql = 'UPDATE chi_tiet_gio_hangs SET so_luong = so_luong - 1 WHERE san_pham_id=:id';
                 $stmt = $this->conn->prepare($sql);
-                $stmt ->execute([':id'=>$id_gio_hang]);
+                $stmt ->execute([':id'=>$san_pham_id]);
                 return true;
             }catch(PDOException $e){
                 echo 'Lỗi: '.$e->getMessage();
             }
         }
-        public function tang($id_gio_hang){
+        public function tang($san_pham_id){
             try{
-                $sql = 'UPDATE chi_tiet_gio_hangs SET so_luong = so_luong + 1 WHERE id=:id';
+                $sql = 'UPDATE chi_tiet_gio_hangs SET so_luong = so_luong + 1 WHERE san_pham_id=:id';
                 $stmt = $this->conn->prepare($sql);
-                $stmt ->execute([':id'=>$id_gio_hang]);
+                $stmt ->execute([':id'=>$san_pham_id]);
                 return true;
             }catch(PDOException $e){
                 echo 'Lỗi: '.$e->getMessage();
@@ -43,6 +43,16 @@
                 $sql = 'SELECT gio_hangs.* FROM gio_hangs WHERE tai_khoan_id=:tai_khoan_id';
                 $stmt = $this->conn->prepare($sql);
                 $stmt ->execute([':tai_khoan_id'=>$tai_khoan_id]);
+                return $stmt->fetch();
+            }catch(PDOException $e){
+                echo 'Lỗi: '.$e->getMessage();
+            }
+        }
+        public function checkChiTiet($gio_hang_id){
+            try{
+                $sql = 'SELECT chi_tiet_gio_hangs.* FROM chi_tiet_gio_hangs WHERE gio_hang_id=:gio_hang_id';
+                $stmt = $this->conn->prepare($sql);
+                $stmt ->execute([':gio_hang_id'=>$gio_hang_id]);
                 return $stmt->fetch();
             }catch(PDOException $e){
                 echo 'Lỗi: '.$e->getMessage();
@@ -73,6 +83,36 @@
                 $sql = 'INSERT INTO chi_tiet_gio_hangs(gio_hang_id,san_pham_id,so_luong) VALUES (:gio_hang_id,:san_pham_id,:so_luong)';
                 $stmt = $this->conn->prepare($sql);
                 $stmt ->execute([':gio_hang_id'=>$gio_hang_id,':san_pham_id'=>$san_pham_id,':so_luong'=>$so_luong]);
+                return true;
+            }catch(PDOException $e){
+                echo 'Lỗi: '.$e->getMessage();
+            }
+        }
+        public function deleteSanPham($id_gio_hang){
+            try{
+                $sql = 'DELETE FROM chi_tiet_gio_hangs WHERE id=:id';
+                $stmt = $this->conn->prepare($sql);
+                $stmt->execute([':id'=>$id_gio_hang]);
+                return true;
+            }catch(PDOException $e){
+                echo 'Lỗi: '.$e->getMessage();
+            }
+        }
+        public function deleteGioHang($id_tai_khoan){
+            try{
+                $sql = 'DELETE FROM gio_hangs WHERE tai_khoan_id=:tai_khoan_id';
+                $stmt = $this->conn->prepare($sql);
+                $stmt->execute([':tai_khoan_id'=>$id_tai_khoan]);
+                return true;
+            }catch(PDOException $e){
+                echo 'Lỗi: '.$e->getMessage();
+            }
+        }
+        public function deleteChiTietGioHang($id){
+            try{
+                $sql = 'DELETE FROM chi_tiet_gio_hangs WHERE gio_hang_id=:id';
+                $stmt = $this->conn->prepare($sql);
+                $stmt->execute([':id'=>$id]);
                 return true;
             }catch(PDOException $e){
                 echo 'Lỗi: '.$e->getMessage();

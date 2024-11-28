@@ -33,6 +33,16 @@ class taiKhoan{
         return $this->conn->query($sql)->fetch();
     }
 
+    public function getOneTaiKhoan($id){
+        try{
+            $sql = 'SELECT * FROM tai_khoans WHERE id=:id';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':id'=>$id]);
+            return $stmt->fetch();
+        }catch(PDOException $e){
+            echo 'Lỗi: '.$e->getMessage();
+        }
+    }
 }
 
 ?>
