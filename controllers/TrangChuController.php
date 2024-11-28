@@ -429,7 +429,8 @@ class TrangChuController
     }
     // lich su don hang 
     public function list() {
-        $donHangs = $this->modelDonHang->getAllDonHang();
+        $tai_khoan_id = $_SESSION['id'];
+        $donHangs = $this->modelDonHang->getAllDonHang($tai_khoan_id);
         include './views/lichSuDonHang.php'; 
     }
  // thong tin cá nhân 
