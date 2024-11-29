@@ -1,6 +1,6 @@
 <?php
- define('BASE_URL','http://localhost/du_an_trang_suc/');
- define('BASE_URL_ADMIN','http://localhost/du_an_trang_suc/admin/');
+ define('BASE_URL','http://localhost/DU_AN_01/');
+ define('BASE_URL_ADMIN','http://localhost/DU_AN_01/admin/');
  define('DB_HOST','localhost');
  define('DB_PORT',3306);
  define('DB_USERNAME','root');
