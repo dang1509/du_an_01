@@ -10,7 +10,7 @@ class TrangChu
     
     public function getAllDanhMuc(){
         try{
-            $sql = "SELECT * FROM danh_mucs WHERE id != 0";
+            $sql = "SELECT * FROM danh_mucs WHERE id != 0 " ;
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -18,7 +18,8 @@ class TrangChu
             echo "Lỗi: ".$e->getMessage();
         }
     }
-   
+ 
+    
 
    
     

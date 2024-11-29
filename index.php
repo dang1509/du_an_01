@@ -35,6 +35,7 @@ match ($act) {
     'list-san-pham' => (new TrangChuController())->getListSanPham(),
     'chi-tiet-san-pham'=>(new TrangChuController())->chiTietSanPham(),
     'timkiem'=>(new TrangChuController())->timKiem(),
+    'timkiemdanhmuc'=>(new TrangChuController())->timKiemDanhMuc($_GET['id']),
 
     // Bình luận
     'add-binh-luan' => (new TrangChuController())->addBinhLuan(),
@@ -56,6 +57,7 @@ match ($act) {
     // thong tin 
     'thongtin' => (new TrangChuController())->thongTinCaNhan(),
     'editThongtin' => (new TrangChuController())->capNhatThongTin(),
-   
+   // lien he 
+   'lienhe' => (new TrangChuController())->lienHe(),
 
 };

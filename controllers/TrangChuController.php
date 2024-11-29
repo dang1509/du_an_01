@@ -474,8 +474,6 @@ class TrangChuController
 // Phương thức để hiển thị trang sản phẩm với tìm kiếm
 public function timKiem()
 {
-    
-    
     $listSP = $this->modelSanPham->getAllSanPham();
     $DanhMuc = $this->modelTrangChu->getAllDanhMuc();
     $result = [];
@@ -490,4 +488,22 @@ public function timKiem()
     require_once './views/TrangSanPham.php';
     
 }
+// tim kiem danh muc
+public function timKiemDanhMuc($danh_muc_id)
+{
+    $DanhMuc = $this->modelTrangChu->getAllDanhMuc();
+    $SanPham = $this->modelSanPham->search($danh_muc_id);
+    require_once './views/TrangSanPham.php';
+}
+
+// lien he 
+
+    public function lienHe() {
+        $DanhMuc = $this->modelTrangChu->getAllDanhMuc();
+        $SanPham = $this->modelSanPham->getAllSanPham();
+
+    include './views/layout/lienHe.php';
+}
+
+
 }

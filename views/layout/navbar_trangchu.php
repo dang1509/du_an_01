@@ -9,14 +9,12 @@
             <nav class="collapse show navbar navbar-vertical navbar-light align-items-start p-0 border border-top-0 border-bottom-0"
                 id="navbar-vertical">
                 <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
+                
+                  <?php foreach ($DanhMuc as $key => $item): ?>
 
-                    <?php foreach ($DanhMuc as $key => $item): ?>
-
-                        <a href="" class="nav-item nav-link"><?= $item['ten_danh_muc'] ?></a>
-
-
-                    <?php endforeach; ?>
-
+                    <a href="?act=timkiemdanhmuc&id=<?= $item['id'] ?>" class="nav-item nav-link" ><?= $item['ten_danh_muc'] ?></a>
+                  
+                    <?php endforeach; ?> 
                 </div>
             </nav>
         </div>
@@ -35,7 +33,7 @@
                         <a href="<?php echo BASE_URL . '?act=list-san-pham' ?>" class="nav-item nav-link">Sản phẩm</a>
                         <a href="#" class="nav-item nav-link">Tin tức</a>
                         <a href="#" class="nav-item nav-link">Giới thiệu</a>
-                        <a href="#" class="nav-item nav-link">Liên hệ</a>
+                        <a href="?act=lienhe" class="nav-item nav-link">Liên hệ</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0">
                         <?php
@@ -62,6 +60,8 @@
                                     <i class="fas fa-user"></i>
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" href="?act=thongtin" >Thông tin cá nhân</a></li>
+                                <li><a class="dropdown-item" href="?act=lichsu">Lịch sử đơn hàng</a></li>
                                     <li><a class="dropdown-item" href="<?php echo BASE_URL_ADMIN.'?act=/' ?>">Vào Quản Trị</a></li>
                                     <li><a class="dropdown-item text-danger" href="?act=logout">Đăng xuất</a></li>
                                 </ul>
