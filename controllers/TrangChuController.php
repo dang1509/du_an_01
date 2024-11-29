@@ -201,7 +201,7 @@ class TrangChuController
             }
             // var_dump($gio_hang_id);die();
             $san_pham_id = $_GET['id_san_pham'];
-            $san_pham = $this->modelGioHang->checkSanPham($san_pham_id);
+            $san_pham = $this->modelGioHang->checkSanPham($san_pham_id,$gio_hang_id);
             // var_dump($san_pham);die();
             if ($san_pham == true) { // Sản phẩm đã tồn tại trong giỏ hàng
                 $check = $this->modelGioHang->tang($san_pham_id);
@@ -247,7 +247,7 @@ class TrangChuController
             }
             // var_dump($gio_hang_id);die();
             $san_pham_id = $_GET['id_san_pham'];
-            $san_pham = $this->modelGioHang->checkSanPham($san_pham_id);
+            $san_pham = $this->modelGioHang->checkSanPham($san_pham_id,$gio_hang_id);
             // var_dump($san_pham);die();
             if ($san_pham == true) { // Sản phẩm đã tồn tại trong giỏ hàng
                 $check = $this->modelGioHang->tang($san_pham_id);
@@ -292,8 +292,8 @@ class TrangChuController
             }
             // var_dump($gio_hang_id);die();
             $san_pham_id = $_GET['id_san_pham'];
-            $san_pham = $this->modelGioHang->checkSanPham($san_pham_id);
-            $check_gio_hang = $this->modelGioHang->checkChiTiet($gio_hang_id);
+            $san_pham = $this->modelGioHang->checkSanPham($san_pham_id,$gio_hang_id);
+            // $check_gio_hang = $this->modelGioHang->checkChiTiet($gio_hang_id);
 
             // var_dump($san_pham);die();
             if ($san_pham == true) { // Sản phẩm đã tồn tại trong giỏ hàng

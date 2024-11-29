@@ -58,11 +58,11 @@
                 echo 'Lỗi: '.$e->getMessage();
             }
         }
-        public function checkSanPham($san_pham_id){
+        public function checkSanPham($san_pham_id,$gio_hang_id){
             try{
-                $sql = 'SELECT chi_tiet_gio_hangs.* FROM chi_tiet_gio_hangs WHERE san_pham_id=:san_pham_id';
+                $sql = 'SELECT chi_tiet_gio_hangs.* FROM chi_tiet_gio_hangs WHERE san_pham_id=:san_pham_id AND gio_hang_id=:gio_hang_id';
                 $stmt = $this->conn->prepare($sql);
-                $stmt ->execute([':san_pham_id'=>$san_pham_id]);
+                $stmt ->execute([':san_pham_id'=>$san_pham_id,':gio_hang_id'=>$gio_hang_id]);
                 return $stmt->fetch();
             }catch(PDOException $e){
                 echo 'Lỗi: '.$e->getMessage();
