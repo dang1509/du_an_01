@@ -41,7 +41,7 @@
                 <!-- Mã Voucher -->
                 <div class="mb-3">
                     <label for="maVoucher" class="form-label">Mã Voucher</label>
-                    <input type="text" class="form-control" id="maVoucher" name="ma_voucher" required>
+                    <input type="text" class="form-control" id="maVoucher" name="ma_voucher" >
                     <?php if (isset($_SESSION['error']['ma_voucher'])) { ?>
                         <p class="text-danger"><?= $_SESSION['error']['ma_voucher']; ?></p>
                     <?php } ?>
@@ -50,16 +50,30 @@
                 <!-- Giảm Giá -->
                 <div class="mb-3">
                     <label for="giamGia" class="form-label">Giảm Giá (%)</label>
-                    <input type="number" class="form-control" id="giamGia" name="giam_gia" min="1" max="100" required>
+                    <input type="number" class="form-control" id="giamGia" name="giam_gia"  >
                     <?php if (isset($_SESSION['error']['giam_gia'])) { ?>
                         <p class="text-danger"><?= $_SESSION['error']['giam_gia']; ?></p>
+                    <?php } ?>
+                </div>
+                <div class="mb-3">
+                    <label for="giamGia" class="form-label">Giảm Tối Thiểu Để Giảm</label>
+                    <input type="number" class="form-control"  name="gia_toi_thieu_de_giam"  >
+                    <?php if (isset($_SESSION['error']['gia_toi_thieu_de_giam'])) { ?>
+                        <p class="text-danger"><?= $_SESSION['error']['gia_toi_thieu_de_giam']; ?></p>
+                    <?php } ?>
+                </div>
+                <div class="mb-3">
+                    <label for="giamGia" class="form-label">Giảm Tối Đa Có thể Giảm</label>
+                    <input type="number" class="form-control"  name="gia_toi_da_co_the_giam"  >
+                    <?php if (isset($_SESSION['error']['gia_toi_da_co_the_giam'])) { ?>
+                        <p class="text-danger"><?= $_SESSION['error']['gia_toi_da_co_the_giam']; ?></p>
                     <?php } ?>
                 </div>
 
                 <!-- Ngày Bắt Đầu -->
                 <div class="mb-3">
                     <label for="ngayBatDau" class="form-label">Ngày Bắt Đầu</label>
-                    <input type="date" class="form-control" id="ngayBatDau" name="ngay_bat_dau" required>
+                    <input type="date" class="form-control" id="ngayBatDau" name="ngay_bat_dau" >
                     <?php if (isset($_SESSION['error']['ngay_bat_dau'])) { ?>
                         <p class="text-danger"><?= $_SESSION['error']['ngay_bat_dau']; ?></p>
                     <?php } ?>
@@ -68,7 +82,7 @@
                 <!-- Ngày Kết Thúc -->
                 <div class="mb-3">
                     <label for="ngayKetThuc" class="form-label">Ngày Kết Thúc</label>
-                    <input type="date" class="form-control" id="ngayKetThuc" name="ngay_ket_thuc" required>
+                    <input type="date" class="form-control" id="ngayKetThuc" name="ngay_ket_thuc" >
                     <?php if (isset($_SESSION['error']['ngay_ket_thuc'])) { ?>
                         <p class="text-danger"><?= $_SESSION['error']['ngay_ket_thuc']; ?></p>
                     <?php } ?>
@@ -77,7 +91,7 @@
                 <!-- Số Lượng -->
                 <div class="mb-3">
                     <label for="soLuong" class="form-label">Số Lượng</label>
-                    <input type="number" class="form-control" id="soLuong" name="so_luong" min="1" required>
+                    <input type="number" class="form-control" id="soLuong" name="so_luong" min="1" >
                     <?php if (isset($_SESSION['error']['so_luong'])) { ?>
                         <p class="text-danger"><?= $_SESSION['error']['so_luong']; ?></p>
                     <?php } ?>

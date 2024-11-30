@@ -56,6 +56,7 @@ match ($act) {
     // thong tin 
     'thongtin' => (new TrangChuController())->thongTinCaNhan(),
     'editThongtin' => (new TrangChuController())->capNhatThongTin(),
-   
+    //voucher
+    
 
 };

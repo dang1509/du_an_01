@@ -43,6 +43,8 @@
                     <th>STT</th>
                     <th>Mã Voucher</th>
                     <th>Giảm giá</th>
+                    <th>Giá tối thiểu</th>
+                    <th>Giá tối đa </th>
                     <th>Ngày bắt đầu</th>
                     <th>Ngày kết thúc</th>
                     <th>Số lượng</th>
@@ -60,7 +62,9 @@
                             <tr>
                             <td><?= $key+1;?></td>
                             <td><?= $item['ma_voucher']?></td>
-                            <td><?= $item['giam_gia']?>%</td>
+                            <td><?= $item['giam_gia'] * 100?>%</td>
+                            <td><?= $item['gia_toi_thieu_de_giam'] ?></td>
+                            <td><?= $item['gia_toi_da_co_the_giam'] ?></td>
                             <td><?= $item['ngay_bat_dau']?></td>
                             <td><?= $item['ngay_ket_thuc']?></td>
                             <td><?= $item['so_luong']?></td>
