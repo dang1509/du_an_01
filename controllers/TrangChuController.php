@@ -573,7 +573,7 @@ class TrangChuController
                     //Add Params of 2.0.1 Version
                     // $vnp_ExpireDate = $_POST['txtexpire'];
                     //Billing
-                    
+
                     $inputData = array(
                         "vnp_Version" => "2.1.0",
                         "vnp_TmnCode" => $vnp_TmnCode,
@@ -587,13 +587,13 @@ class TrangChuController
                         "vnp_OrderType" => $vnp_OrderType,
                         "vnp_ReturnUrl" => $vnp_Returnurl,
                         "vnp_TxnRef" => $vnp_TxnRef
-                        
+
                     );
 
                     if (isset($vnp_BankCode) && $vnp_BankCode != "") {
                         $inputData['vnp_BankCode'] = $vnp_BankCode;
                     }
-                    
+
 
                     //var_dump($inputData);
                     ksort($inputData);
@@ -640,7 +640,7 @@ class TrangChuController
         }
     }
 
-//     Ngân hàng: NCB
+    //     Ngân hàng: NCB
 // Số thẻ: 9704198526191432198
 // Tên chủ thẻ:NGUYEN VAN A
 // Ngày phát hành:07/15
@@ -714,5 +714,12 @@ class TrangChuController
         $SanPham = $result;
         require_once './views/TrangSanPham.php';
 
+    }
+    public function timKiemDanhMuc()
+    {
+        $danh_muc_id = $_GET['danh_muc_id'];
+        $DanhMuc = $this->modelTrangChu->getAllDanhMuc();
+        $SanPham = $this->modelSanPham->search($danh_muc_id);
+        require_once './views/TrangSanPham.php';
     }
 }

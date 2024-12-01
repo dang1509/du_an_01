@@ -10,7 +10,7 @@
                         
                         <?php foreach($DanhMuc as $key=>$item): ?>
                         
-                        <a href="" class="nav-item nav-link"><?= $item['ten_danh_muc'] ?></a>
+                        <a href="<?= BASE_URL.'?act=tim-kiem-danh-muc&danh_muc_id='.$item['id'] ?>" class="nav-item nav-link"><?= $item['ten_danh_muc'] ?></a>
                         
                         
                         <?php endforeach;?>
