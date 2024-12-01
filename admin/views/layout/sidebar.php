@@ -25,7 +25,7 @@
             <a href="<?php echo BASE_URL_ADMIN.'?act=/' ?>" class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-              Trang chủ
+              Thống kê
               </p>
             </a>
           </li>

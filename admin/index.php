@@ -22,6 +22,8 @@ session_start();
 
     require_once './controllers/AdminDonHangController.php';
     require_once './models/AdminDonHangModel.php';
+
+    require_once './models/ThongKe.php';
     
 
     
@@ -74,5 +76,7 @@ session_start();
         'form-sua-don-hang'=> (new AdminDonHangController())->formSuaDonHang(),
         'sua-don-hang'=> (new AdminDonHangController())->SuaDonHang(),
         'chi-tiet-don-hang'=>(new AdminDonHangController())->ChiTietDonHang(),
+        // Thống kê
+        'thong-ke'=> (new AdminThongKeController())->ThongKeTheoNgay(),
     };
 ?>
