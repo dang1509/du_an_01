@@ -504,6 +504,21 @@ public function timKiemDanhMuc($danh_muc_id)
 
     include './views/layout/lienHe.php';
 }
+// gioi thieu 
 
+    public function gioiThieu() {
+        $DanhMuc = $this->modelTrangChu->getAllDanhMuc();
+        $SanPham = $this->modelSanPham->getAllSanPham();
+
+    include './views/layout/gioithieu.php';
+}
+// tin tuc 
+
+    public function tinTuc() {
+        $DanhMuc = $this->modelTrangChu->getAllDanhMuc();
+        $SanPham = $this->modelSanPham->getAllSanPham();
+
+    include './views/layout/tintuc.php';
+}
 
 }

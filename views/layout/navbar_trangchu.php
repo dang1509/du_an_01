@@ -17,7 +17,7 @@
                     <?php endforeach; ?> 
                 </div>
             </nav>
-        </div>
+                  </div>
         <div class="col-lg-9">
             <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
                 <a href="<?=BASE_URL?>" class="text-decoration-none d-block d-lg-none">
@@ -31,8 +31,8 @@
                     <div class="navbar-nav mr-auto py-0">
                         <a href="<?=BASE_URL?>" class="nav-item nav-link active">Trang chủ</a>
                         <a href="<?php echo BASE_URL . '?act=list-san-pham' ?>" class="nav-item nav-link">Sản phẩm</a>
-                        <a href="#" class="nav-item nav-link">Tin tức</a>
-                        <a href="#" class="nav-item nav-link">Giới thiệu</a>
+                        <a href="?act=tintuc" class="nav-item nav-link">Tin tức</a>
+                        <a href="?act=gioithieu" class="nav-item nav-link">Giới thiệu</a>
                         <a href="?act=lienhe" class="nav-item nav-link">Liên hệ</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0">

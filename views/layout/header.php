@@ -23,7 +23,7 @@
     <link href="./assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="./assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
     <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.10.0-beta1/dist/js/bootstrap.bundle.min.js"></script> -->
     
    <style>

@@ -59,5 +59,7 @@ match ($act) {
     'editThongtin' => (new TrangChuController())->capNhatThongTin(),
    // lien he 
    'lienhe' => (new TrangChuController())->lienHe(),
+   'gioithieu' => (new TrangChuController())->gioiThieu(),
+   'tintuc' => (new TrangChuController())->tinTuc(),
 
 };
