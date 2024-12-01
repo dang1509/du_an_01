@@ -35,7 +35,7 @@
                         <a href="<?php echo BASE_URL . '?act=list-san-pham' ?>" class="nav-item nav-link">Sản phẩm</a>
                         <a href="#" class="nav-item nav-link">Tin tức</a>
                         <a href="#" class="nav-item nav-link">Giới thiệu</a>
-                        <a href="#" class="nav-item nav-link">Liên hệ</a>
+                        <a href="?act=lien-he" class="nav-item nav-link">Liên hệ</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0">
                         <?php

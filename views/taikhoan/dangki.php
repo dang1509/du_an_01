@@ -20,18 +20,7 @@
         <form action="?act=sign-up"  method="POST">
                 <h1>Tạo tài khoản</h1>
                 <div class="social-container">
-                    <!-- Facebook -->
-                    <a href="https://www.facebook.com/yourprofile" class="social" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <!-- Google Plus (lưu ý: Google Plus đã ngừng hoạt động, thay bằng URL khác nếu cần) -->
-                    <a href="https://plus.google.com/yourprofile" class="social" target="_blank">
-                        <i class="fab fa-google-plus-g"></i>
-                    </a>
-                    <!-- LinkedIn -->
-                    <a href="https://www.linkedin.com/in/yourprofile" class="social" target="_blank">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
+                   
                 </div>
                 <span>hoặc sử dụng email của bạn để đăng ký</span>
                 <input type="text" name="name" placeholder="Họ Và Tên" value="<?php echo isset($name) ? $name : ''; ?>" />
@@ -39,6 +28,7 @@
                 <input type="password" name="pass" placeholder="Mật khẩu" />
                 <input type="password" name="so_dien_thoai" placeholder="Số điện thoại" />
                 <input type="text" name="dia_chi" placeholder="Địa chỉ" value="<?php echo isset($dia_chi) ? $dia_chi : ''; ?>" />
+                <a href="?act=dangnhap">Đã có tài khoản</a>
                 <button type="submit" name="signup">Đăng Kí</button>
                 
             </form>

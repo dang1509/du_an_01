@@ -9,7 +9,7 @@
                 <p class="m-0">Trang sản phẩm</p>
             </div>
         </div>
-    </div>
+</div>
 <div class="container-fluid pt-5">
         <div class="row px-xl-5">
             <!-- Shop Sidebar Start -->

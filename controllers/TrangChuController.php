@@ -722,4 +722,8 @@ class TrangChuController
         $SanPham = $this->modelSanPham->search($danh_muc_id);
         require_once './views/TrangSanPham.php';
     }
+    public function lienHe(){
+        $DanhMuc = $this->modelTrangChu->getAllDanhMuc();
+        require_once './views/LienHe.php';
+    }
 }

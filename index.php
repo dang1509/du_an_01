@@ -58,7 +58,7 @@ match ($act) {
     'editThongtin' => (new TrangChuController())->capNhatThongTin(),
     //voucher
     'tim-kiem-danh-muc'=>(new TrangChuController())->timKiemDanhMuc(),
-    
+    'lien-he' =>(new TrangChuController())->lienHe(),
     
 
 };
