@@ -116,37 +116,40 @@
 
                 </div>
                 <div class="tab-pane fade" id="tab-pane-2">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h4 class="mb-4">Bình luận của sản phẩm</h4>
-                            <?php foreach ($BinhLuan as $key => $item): ?>
-                                <div class="media mb-4">
+    <div class="row">
+        <div class="col-md-6">
+            <h4 class="mb-4">Bình luận của sản phẩm</h4>
+            <?php foreach ($BinhLuan as $key => $item): ?>
+                <div class="media mb-4">
+                    <!-- Display user avatar -->
+                    <img src="<?= htmlspecialchars($item['anh_dai_dien']) ?>" alt="Avatar" class="img-fluid mr-3 mt-1" style="width: 45px; height: 45px; border-radius: 50%;">
+                    
+                    <div class="media-body">
+                        <h6><?= htmlspecialchars($item['ho_ten']) ?><small> - <i><?= htmlspecialchars($item["ngay_dang"]) ?></i></small></h6>
+                        <p><?= htmlspecialchars($item['noi_dung']) ?></p>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
 
-                                    <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
-                                    <div class="media-body">
-                                        <h6><?= $item['ho_ten'] ?><small> - <i><?= $item["ngay_dang"] ?></i></small></h6>
-                                        <p><?= $item['noi_dung'] ?></p>
-                                    </div>
+        <div class="col-md-6">
+            <h4 class="mb-4">Nhập bình luận</h4>
+            <form method="post" action="?act=add-binh-luan&id_san_pham=<?= $SanPham['id'] ?>">
+                <div class="form-group">
+                    <textarea id="message" cols="30" rows="5" class="form-control" name="noi_dung"></textarea>
+                </div>
+                <div class="form-group mb-0">
+                    <?php if (isset($_SESSION['name'])) {
+                        echo '<input type="submit" value="Gửi" class="btn btn-primary px-3" name="addBinhLuan">';
+                    } else {
+                        echo '<p class="text-danger">Vui lòng đăng nhập để nhập bình luận</p>';
+                    } ?>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-                                </div>
-                            <?php endforeach; ?>
-                        </div>
-                        <div class="col-md-6">
-                            <h4 class="mb-4">Nhập bình luận</h4>
-                            <form method="post" action="?act=add-binh-luan&id_san_pham=<?= $SanPham['id'] ?>">
-                                <div class="form-group">
-                                    <textarea id="message" cols="30" rows="5" class="form-control"
-                                        name="noi_dung"></textarea>
-                                </div>
-                                <div class="form-group mb-0">
-                                    <?php if (isset($_SESSION['name'])) {
-                                        echo '<input type="submit" value="Gửi" class="btn btn-primary px-3" name="addBinhLuan">';
-                                    } else {
-                                        echo '<p class="text-danger">Vui lòng đăng nhập để nhập bình luận</p>';
-                                    } ?>
-
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>

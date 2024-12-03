@@ -40,12 +40,11 @@ class TrangChuController
     {
         require_once "./views/taikhoan/dangki.php";
     }
-    public function signUp()
-    {
+    public function signUp(){
         // Initialize variables to hold the values and error messages
         $name = $email = $pass = $so_dien_thoai = $dia_chi = '';
         $errors_name = $errors_email = $errors_pass = $errors_so_dien_thoai = $errors_dia_chi = '';
-
+    
         // Check if the form is submitted
         if (isset($_POST['signup'])) {
             // Capture the form values
@@ -55,42 +54,65 @@ class TrangChuController
             $pass = $_POST['pass'];
             $dia_chi = $_POST['dia_chi'];
             $so_dien_thoai = $_POST['so_dien_thoai'];
-
+    
             // Validate each field and store error messages if necessary
-            if (empty($name)) {
-                $errors_name = "Họ và tên là bắt buộc.";
-            }
-            if (empty($email)) {
-                $errors_email = "Email là bắt buộc.";
-            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $errors_email = "Email không hợp lệ.";
-            }
-            if (empty($pass)) {
-                $errors_pass = "Mật khẩu là bắt buộc.";
-            }
-            if (empty($dia_chi)) {
-                $errors_dia_chi = "Địa chỉ là bắt buộc.";
-            }
-            if (empty($so_dien_thoai)) {
-                $errors_so_dien_thoai = "Số điện thoại là bắt buộc.";
-            }
-
-            // If there are no errors, insert the new account into the database
-            if (empty($errors_name) && empty($errors_email) && empty($errors_pass) && empty($errors_so_dien_thoai) && empty($errors_dia_chi)) {
-                $result = $this->modelTaiKhoan->insert_taikhoan($name, $email, $pass, $so_dien_thoai, $dia_chi, $chuc_vu_id);
-                if ($result) {
-                    // Success message and redirect
-                    echo "<script>alert('Đăng ký thành công');</script>";
-                    header('Location: ./index.php?act=dangnhap');
-                    exit(); // Ensure no further code is executed after the redirect
-                } else {
-                    echo "Đã có lỗi xảy ra khi đăng ký.";
+            if (isset($_POST['signup'])) {
+                // Initialize error variables
+                $errors_name = $errors_email = $errors_pass = $errors_so_dien_thoai = $errors_dia_chi = '';
+            
+                // Capture form values
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $pass = $_POST['pass'];
+                $dia_chi = $_POST['dia_chi'];
+                $so_dien_thoai = $_POST['so_dien_thoai'];
+                $chuc_vu_id = 2; // Default role or set as required
+            
+                // Validate each field and store error messages if necessary
+                if (empty($name)) {
+                    $errors_name = "Họ và tên là bắt buộc.";
+                }
+            
+                if (empty($email)) {
+                    $errors_email = "Email là bắt buộc.";
+                } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    $errors_email = "Email không hợp lệ.";
+                }
+            
+                if (empty($pass)) {
+                    $errors_pass = "Mật khẩu là bắt buộc.";
+                } elseif (strlen($pass) < 8) {
+                    $errors_pass = "Mật khẩu phải có ít nhất 8 ký tự.";
+                }
+            
+                if (empty($dia_chi)) {
+                    $errors_dia_chi = "Địa chỉ là bắt buộc.";
+                }
+            
+                if (empty($so_dien_thoai)) {
+                    $errors_so_dien_thoai = "Số điện thoại là bắt buộc.";
+                } elseif (strlen($so_dien_thoai) != 10 || !preg_match('/^0\d{9}$/', $so_dien_thoai)) {
+                    $errors_so_dien_thoai = "Số điện thoại phải bắt đầu bằng 0 và có 10 chữ số.";
+                }
+            
+                // If no errors, insert the new account into the database
+                if (empty($errors_name) && empty($errors_email) && empty($errors_pass) && empty($errors_so_dien_thoai) && empty($errors_dia_chi)) {
+                    $result = $this->modelTaiKhoan->insert_taikhoan($name, $email, $pass, $so_dien_thoai, $dia_chi, $chuc_vu_id);
+                    if ($result) {
+                        echo "<script>alert('Đăng ký thành công');</script>";
+                        header('Location: ./index.php?act=dangnhap');
+                        exit();
+                    } else {
+                        echo "Đã có lỗi xảy ra khi đăng ký.";
+                    }
                 }
             }
-        }
-
-        // If there were errors, or if it's a first-time request, display the registration form
-        require_once 'views/taikhoan/dangki.php';
+            
+    
+        // Render the registration form with error messages
+        require_once "./views/taikhoan/dangki.php";
+    }
+    
     }
 
     function logout()
