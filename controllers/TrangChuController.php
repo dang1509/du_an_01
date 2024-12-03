@@ -158,11 +158,63 @@ class TrangChuController
             echo "<script>
         alert('Vui lòng đăng nhập để sử dụng giỏ hàng!');
         window.location.href = '?act=dangnhap';
-                 </script>";
-
+        </script>";
         } else {
             $tai_khoan_id = $_SESSION['id'];
             $gioHang = $this->modelGioHang->getAllGioHang($tai_khoan_id);
+
+            // Khởi tạo các biến
+            $tong_tien = 0;
+            $giam_gia = 0;
+            $tien_giam = 0;
+            $tong_thanh_toan = 0;
+            $ma_voucher_ap_dung = null;
+
+            // Tính tổng tiền từ giỏ hàng
+            foreach ($gioHang as $item) {
+                $gia = $item['gia_khuyen_mai'] != 0 ? $item['gia_khuyen_mai'] : $item['gia_san_pham'];
+                $tong_tien += $gia * $item['so_luong'];
+            }
+
+            // Kiểm tra nếu người dùng áp dụng voucher
+            if (isset($_POST['ma_voucher'])) {
+                $ma_voucher = $_POST['ma_voucher'];
+
+                // Kiểm tra voucher trong cơ sở dữ liệu
+                $voucher = $this->modelGioHang->getVoucher($ma_voucher);
+
+                if ($voucher) {
+                    // Kiểm tra ngày áp dụng
+                    if (strtotime($voucher['ngay_bat_dau']) <= time() && strtotime($voucher['ngay_ket_thuc']) >= time()) {
+                        // Kiểm tra giá trị đơn hàng tối thiểu
+                        if ($tong_tien >= $voucher['gia_toi_thieu_de_giam']) {
+                            $giam_gia = $voucher['giam_gia']; // Lấy % giảm giá
+                            $tien_giam = $tong_tien * $giam_gia; // Tính số tiền giảm
+
+                            // Kiểm tra giá trị giảm tối đa
+                            if ($tien_giam > $voucher['gia_toi_da_co_the_giam']) {
+                                $tien_giam = $voucher['gia_toi_da_co_the_giam']; // Giới hạn giảm giá
+                            }
+
+                            // Lưu mã voucher vào session
+                            $_SESSION['voucher'] = $ma_voucher;
+
+                            $ma_voucher_ap_dung = $ma_voucher; // Lưu mã voucher đã áp dụng
+                        } else {
+                            echo "<script>alert('Đơn hàng không đủ điều kiện để áp dụng voucher này.');</script>";
+                        }
+                    } else {
+                        echo "<script>alert('Voucher đã hết hạn hoặc không hợp lệ.');</script>";
+                    }
+                } else {
+                    echo "<script>alert('Mã voucher không hợp lệ.');</script>";
+                }
+            }
+
+            // Tính tổng thanh toán
+            $tong_thanh_toan = $tong_tien - $tien_giam;
+
+            // Gửi dữ liệu đến View
             require_once './views/GioHang.php';
         }
     }
@@ -441,31 +493,75 @@ class TrangChuController
     }
     // cap nhat  thong tin cá nhân
     public function capNhatThongTin(){
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $id = $_SESSION['id'];
             $ho_ten = $_POST['ho_ten'];
             $email = $_POST['email'];
             $so_dien_thoai = $_POST['so_dien_thoai'];
             $dia_chi = $_POST['dia_chi'];
             $error = [];
-            if(empty($ho_ten)){
-                $error['ho_ten']='Họ tên không được để trống';
+            $anh_dai_dien = null;
+    
+            // Handle file upload
+            if (isset($_FILES['anh_dai_dien']) && $_FILES['anh_dai_dien']['error'] == 0) {
+                // Define upload directory and file extension validation
+                $upload_dir = 'uploads/';
+                $file_name = $_FILES['anh_dai_dien']['name'];
+                $file_tmp = $_FILES['anh_dai_dien']['tmp_name'];
+                $file_size = $_FILES['anh_dai_dien']['size'];
+                $file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+    
+                // Validate file type
+                $allowed_ext = ['jpg', 'jpeg', 'png', 'gif'];
+                if (!in_array(strtolower($file_ext), $allowed_ext)) {
+                    $error['anh_dai_dien'] = 'Chỉ cho phép tải lên ảnh (jpg, jpeg, png, gif).';
+                }
+    
+                // Validate file size (max 2MB)
+                if ($file_size > 2 * 1024 * 1024) {
+                    $error['anh_dai_dien'] = 'Kích thước ảnh không được vượt quá 2MB.';
+                }
+    
+                // If validation is successful, move the uploaded file
+                if (empty($error)) {
+                    $new_file_name = uniqid() . '.' . $file_ext;
+                    $upload_path = $upload_dir . $new_file_name;
+    
+                    if (move_uploaded_file($file_tmp, $upload_path)) {
+                        $anh_dai_dien = $upload_path; // Store file path
+                    } else {
+                        $error['anh_dai_dien'] = 'Lỗi khi tải ảnh lên.';
+                    }
+                }
             }
-            if(empty($email)){
-                $error['email']='Email không được để trống';
+    
+            // Validate other fields
+            if (empty($ho_ten)) {
+                $error['ho_ten'] = 'Họ tên không được để trống';
             }
-            if(empty($so_dien_thoai)){
-                $error['so_dien_thoai']='Số điện thoại không được để trống';
+            if (empty($email)) {
+                $error['email'] = 'Email không được để trống';
             }
-            if(empty($dia_chi)){
-                $error['dia_chi']='Địa chỉ không được để trống';
+            if (empty($so_dien_thoai)) {
+                $error['so_dien_thoai'] = 'Số điện thoại không được để trống';
             }
-            if(empty($error)){
-                $this->modelTaiKhoan->updateThongTin($id,$ho_ten,$email,$so_dien_thoai,$dia_chi);
-                header('Location: ?act=thongtin');                
-                
-            }else{
-                $thongtin = ['id'=>$id,'ho_ten'=>$ho_ten,'email'=>$email,'so_dien_thoai'=>$so_dien_thoai,'dia_chi'=>$dia_chi];
+            if (empty($dia_chi)) {
+                $error['dia_chi'] = 'Địa chỉ không được để trống';
+            }
+    
+            // If no errors, update information
+            if (empty($error)) {
+                $this->modelTaiKhoan->updateThongTin($id, $ho_ten, $email, $so_dien_thoai, $dia_chi, $anh_dai_dien);
+                header('Location: ?act=thongtin');
+            } else {
+                // If there are errors, show the form again
+                $thongtin = [
+                    'id' => $id,
+                    'ho_ten' => $ho_ten,
+                    'email' => $email,
+                    'so_dien_thoai' => $so_dien_thoai,
+                    'dia_chi' => $dia_chi
+                ];
                 require_once "./views/thongTin/thongTin.php";
             }
         }

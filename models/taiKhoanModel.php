@@ -54,16 +54,41 @@ class taiKhoan{
         }
         ;
     }
-    public function updateThongTin($id,$ho_ten,$email,$so_dien_thoai,$dia_chi){
+    public function updateThongTin($id, $ho_ten, $email, $so_dien_thoai, $dia_chi, $anh_dai_dien = null){
         try{
-            $sql = "UPDATE tai_khoans SET ho_ten=:ho_ten, email=:email, so_dien_thoai=:so_dien_thoai, dia_chi=:dia_chi  WHERE id=:id";
+            // If avatar is uploaded, add it to the update statement
+            if ($anh_dai_dien) {
+                $sql = "UPDATE tai_khoans SET ho_ten=:ho_ten, email=:email, so_dien_thoai=:so_dien_thoai, dia_chi=:dia_chi, anh_dai_dien=:anh_dai_dien WHERE id=:id";
+            } else {
+                $sql = "UPDATE tai_khoans SET ho_ten=:ho_ten, email=:email, so_dien_thoai=:so_dien_thoai, dia_chi=:dia_chi WHERE id=:id";
+            }
+
             $stmt = $this->conn->prepare($sql);
-            $stmt->execute([':ho_ten'=>$ho_ten,':email'=>$email,':so_dien_thoai'=>$so_dien_thoai,':dia_chi'=>$dia_chi,':id'=>$id]);
+
+            // If avatar is uploaded, bind the file path
+            if ($anh_dai_dien) {
+                $stmt->execute([
+                    ':ho_ten' => $ho_ten,
+                    ':email' => $email,
+                    ':so_dien_thoai' => $so_dien_thoai,
+                    ':dia_chi' => $dia_chi,
+                    ':anh_dai_dien' => $anh_dai_dien,
+                    ':id' => $id
+                ]);
+            } else {
+                $stmt->execute([
+                    ':ho_ten' => $ho_ten,
+                    ':email' => $email,
+                    ':so_dien_thoai' => $so_dien_thoai,
+                    ':dia_chi' => $dia_chi,
+                    ':id' => $id
+                ]);
+            }
+
             return true;
-        }catch(PDOException $e){
-            echo "Lỗi: ".$e->getMessage();
+        } catch(PDOException $e) {
+            echo "Lỗi: " . $e->getMessage();
         }
-        ;
     }
 }
 
