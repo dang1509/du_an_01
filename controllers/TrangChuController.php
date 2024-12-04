@@ -132,6 +132,7 @@ class TrangChuController
         $SanPham = $this->modelSanPham->getDetailSanPham($id_san_pham);
 
         $listAnhSanPham = $this->modelSanPham->getAlbumAnhSanPham($id_san_pham);
+        $this->modelSanPham->updateLuotXem($id_san_pham);
         // var_dump($BinhLuan);die(); 
         // var_dump($listAnhSanPham);die();
         if ($SanPham) {

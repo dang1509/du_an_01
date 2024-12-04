@@ -27,7 +27,7 @@ class SanPham{
     }
     public function getSale(){
         try{
-            $sql = "SELECT * FROM san_phams WHERE gia_khuyen_mai != 0";
+            $sql = "SELECT * FROM san_phams WHERE gia_khuyen_mai != 0 ORDER BY luot_xem DESC LIMIT 8";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -37,7 +37,7 @@ class SanPham{
     }
     public function getSanPhamMoi(){
         try{
-            $sql = "SELECT * FROM san_phams ORDER BY ngay_nhap DESC LIMIT 8";
+            $sql = "SELECT * FROM san_phams ORDER BY ngay_nhap DESC, luot_xem DESC LIMIT 8";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -73,6 +73,16 @@ class SanPham{
             $stmt = $this->conn->prepare($sql);
             $stmt->execute([':id' => $danh_muc_id]);
             return $stmt->fetchAll();
+        } catch (PDOException $e) {
+            echo 'Lỗi: '. $e->getMessage();
+        }
+    }
+    public function updateLuotXem($id){
+        try {
+            $sql = 'UPDATE san_phams SET luot_xem=luot_xem +1 WHERE id=:id';
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute([':id' => $id]);
+            return true;
         } catch (PDOException $e) {
             echo 'Lỗi: '. $e->getMessage();
         }

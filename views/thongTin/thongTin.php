@@ -18,7 +18,7 @@
         </div>
         <div class="form-group">
             <label for="email">Số điện thoại</label>
-            <input type="number" class="form-control" id="so_dien_thoai" name="so_dien_thoai" value="<?= htmlspecialchars($tai_khoan['so_dien_thoai']); ?>" required>
+            <input type="text" class="form-control" id="so_dien_thoai" name="so_dien_thoai" value="<?= htmlspecialchars($tai_khoan['so_dien_thoai']); ?>" required>
         </div>
         <div class="form-group">
             <label for="dia_chi">Địa chỉ</label>

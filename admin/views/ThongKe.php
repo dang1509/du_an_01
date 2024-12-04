@@ -101,7 +101,7 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header border-0">
-                            <h1 class="card-title">Top 3 Khách mua hàng</h1>
+                            <h1 class="card-title">Top 3 khách mua hàng nhiều nhất</h1>
                         </div>
                         <div class="card-body table-responsive p-0">
                             <table class="table table-striped table-valign-middle">
