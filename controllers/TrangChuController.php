@@ -39,6 +39,7 @@ class TrangChuController
     public function dangki()
     {
         require_once "./views/taikhoan/dangki.php";
+        deleteSessionError();
     }
     public function signUp()
     {
@@ -50,41 +51,42 @@ class TrangChuController
         if (isset($_POST['signup'])) {
             // Capture the form values
             $chuc_vu_id = 2;
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $pass = $_POST['pass'];
-            $dia_chi = $_POST['dia_chi'];
-            $so_dien_thoai = $_POST['so_dien_thoai'];
+            $name = $_POST['name'] ?? null;
+            $email = $_POST['email'] ?? null;
+            $pass = $_POST['pass'] ?? null;
+            $dia_chi = $_POST['dia_chi'] ?? null;
+            $so_dien_thoai = $_POST['so_dien_thoai'] ?? null;
 
-            // Validate each field and store error messages if necessary
+            $error = [];
             if (empty($name)) {
-                $errors_name = "Họ và tên là bắt buộc.";
+                $error['name'] = "Họ và tên là bắt buộc.";
             }
             if (empty($email)) {
-                $errors_email = "Email là bắt buộc.";
+                $error['email'] = "Email là bắt buộc.";
             } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $errors_email = "Email không hợp lệ.";
+                $error['email'] = "Email không hợp lệ.";
             }
             if (empty($pass)) {
-                $errors_pass = "Mật khẩu là bắt buộc.";
+                $error['pass'] = "Mật khẩu là bắt buộc.";
             }
             if (empty($dia_chi)) {
-                $errors_dia_chi = "Địa chỉ là bắt buộc.";
+                $error['dia_chi'] = "Địa chỉ là bắt buộc.";
             }
             if (empty($so_dien_thoai)) {
-                $errors_so_dien_thoai = "Số điện thoại là bắt buộc.";
+                $error['so_dien_thoai'] = "Số điện thoại là bắt buộc.";
             }
-
+            $_SESSION['error'] = $error;
             // If there are no errors, insert the new account into the database
-            if (empty($errors_name) && empty($errors_email) && empty($errors_pass) && empty($errors_so_dien_thoai) && empty($errors_dia_chi)) {
+            if (empty($error)) {
                 $result = $this->modelTaiKhoan->insert_taikhoan($name, $email, $pass, $so_dien_thoai, $dia_chi, $chuc_vu_id);
-                if ($result) {
-                    // Success message and redirect
+                if ($result) {               
                     echo "<script>alert('Đăng ký thành công');</script>";
-                    header('Location: ./index.php?act=dangnhap');
-                    exit(); // Ensure no further code is executed after the redirect
+                    header('Location:?act=dangnhap');
+                    exit(); 
                 } else {
-                    echo "Đã có lỗi xảy ra khi đăng ký.";
+                    $_SESSION['flash'] = true;
+                    header('location:?act=dangky');
+                    exit();
                 }
             }
         }
@@ -97,7 +99,7 @@ class TrangChuController
     {
         session_unset();
         session_destroy();
-        header('Location: ./index.php?act=/');
+        header('Location: '.BASE_URL);
     }
     public function dangnhap()
     {
@@ -107,17 +109,17 @@ class TrangChuController
             $pass = $_POST['password'];
             $account = $this->modelTaiKhoan->login($user, $pass);
 
-            if ($account) {
+            if ($account && $account['trang_thai'] == 1) {
                 $_SESSION['id'] = $account['id'];
                 $_SESSION['pass'] = $account['mat_khau'];
                 $_SESSION['name'] = $account['ho_ten'];
                 $_SESSION['email'] = $account['email'];
                 $_SESSION['login'] = true;
                 $_SESSION['chuc_vu'] = $account['chuc_vu_id'];
-                header("Location: ./index.php?act=/");
+                header("Location: ".BASE_URL);
 
             } else {
-                echo "<script>alert('Tài khoản hoặc mật khẩu không chính xác!')</script>";
+                echo "<script>alert('Thông tin đăng nhập không chính xác hoặc tài khoản đã bị vô hiệu hóa!')</script>";
             }
         }
     }
@@ -725,5 +727,23 @@ class TrangChuController
     public function lienHe(){
         $DanhMuc = $this->modelTrangChu->getAllDanhMuc();
         require_once './views/LienHe.php';
+    }
+    public function gioiThieu() {
+        $DanhMuc = $this->modelTrangChu->getAllDanhMuc();
+        $SanPham = $this->modelSanPham->getAllSanPham();
+    include './views/gioithieu.php';
+}
+// tin tuc 
+    public function tinTuc() {
+        $DanhMuc = $this->modelTrangChu->getAllDanhMuc();
+        $SanPham = $this->modelSanPham->getAllSanPham();
+    include './views/tintuc.php';
+}
+    public function chiTietDonHang(){
+        $DanhMuc = $this->modelTrangChu->getAllDanhMuc();
+        $don_hang_id = $_GET['id_don_hang'];
+            $donHang = $this->modelTrangChu->getOneDonHang($don_hang_id);
+            $sanPhamDonHang = $this->modelTrangChu->getListSpDonHang($don_hang_id);
+            require_once './views/ChiTietDonHang.php';
     }
 }

@@ -30,7 +30,7 @@ require_once './views/layout/sidebar.php';
                 <div class="card-body">
                   <div class="form-group">
                     <label for="">Họ tên</label>
-                    <input type="text" class="form-control" name="ho_ten" placeholder="Nhập họ tên" value="<?= $khachHang['ho_ten']?>">
+                    <input type="text" class="form-control" name="ho_ten" placeholder="Nhập họ tên" value="<?= $khachHang['ho_ten']?>" disabled>
                     <?php if(isset($_SESSION['error']['ho_ten'])){ ?>
                         <p class="text-danger"><?= $_SESSION['error']['ho_ten'] ?></p>
                  <?php   }
@@ -42,7 +42,7 @@ require_once './views/layout/sidebar.php';
               </div>
                   <div class="form-group">
                     <label for="">Email</label>
-                    <input type="email" class="form-control" name="email" value="<?= $khachHang['email']?>" placeholder="Nhập email">
+                    <input type="email" class="form-control" name="email" value="<?= $khachHang['email']?>" placeholder="Nhập email" disabled>
                     <?php if(isset($_SESSION['error']['email'])){ ?>
                         <p class="text-danger"><?= $_SESSION['error']['email'] ?></p>
                  <?php   }
@@ -50,7 +50,7 @@ require_once './views/layout/sidebar.php';
                   </div>     
                   <div class="form-group">
                     <label for="">Số điện thoại</label>
-                    <input type="text" class="form-control" name="so_dien_thoai" value="<?= $khachHang['so_dien_thoai']?>" placeholder="Nhập số điện thoại">
+                    <input type="text" class="form-control" name="so_dien_thoai" value="<?= $khachHang['so_dien_thoai']?>" placeholder="Nhập số điện thoại" disabled>
                     <?php if(isset($_SESSION['error']['so_dien_thoai'])){ ?>
                         <p class="text-danger"><?= $_SESSION['error']['so_dien_thoai'] ?></p>
                  <?php   }
@@ -58,17 +58,17 @@ require_once './views/layout/sidebar.php';
                   </div>  
                   <div class="form-group">
                     <label for="">Ngày sinh</label>
-                    <input type="date" class="form-control" name="ngay_sinh" value="<?= $khachHang['ngay_sinh']?>" placeholder="Nhập ngày sinh">
+                    <input type="date" class="form-control" name="ngay_sinh" value="<?= $khachHang['ngay_sinh']?>" placeholder="Nhập ngày sinh" disabled>
 
                   </div> 
                   <div class="form-group">
                     <label for="">Địa chỉ</label>
-                    <input type="text" class="form-control" name="dia_chi" value="<?= $khachHang['dia_chi']?>" placeholder="Nhập ngày sinh">
+                    <input type="text" class="form-control" name="dia_chi" value="<?= $khachHang['dia_chi']?>" placeholder="Nhập ngày sinh" disabled>
 
                   </div>
                   <div class="form-group " >
                     <label for="">Giới tính</label>
-                    <select name="gioi_tinh" class='form-control' id="exampleFormControlSelect1" >
+                    <select name="gioi_tinh" class='form-control' id="exampleFormControlSelect1"  disabled>
                       <option <?php $khachHang['gioi_tinh']==1?'selected':'' ?> value="1">Nam</option>
                       <option <?php $khachHang['gioi_tinh']!==1?'selected':'' ?> value="2">Nữ</option>
                     </select>   
@@ -76,7 +76,7 @@ require_once './views/layout/sidebar.php';
               </div>
               <div class="form-group">
                     <label for="">Mật khẩu</label>
-                    <input type="text" class="form-control" name="mat_khau" value="<?= $khachHang['mat_khau']?>" placeholder="Nhập mật khẩu">
+                    <input type="text" class="form-control" name="mat_khau" value="<?= $khachHang['mat_khau']?>" placeholder="Nhập mật khẩu" disabled>
                     <?php if(isset($_SESSION['error']['mat_khau'])){ ?>
                         <p class="text-danger"><?= $_SESSION['error']['mat_khau'] ?></p>
                  <?php   }

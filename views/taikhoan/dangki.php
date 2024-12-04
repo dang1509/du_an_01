@@ -22,12 +22,11 @@
                 <div class="social-container">
                    
                 </div>
-                <span>hoặc sử dụng email của bạn để đăng ký</span>
-                <input type="text" name="name" placeholder="Họ Và Tên" value="<?php echo isset($name) ? $name : ''; ?>" />
-                <input type="email" name="email" placeholder="Email" value="<?php echo isset($email) ? $email : ''; ?>" />
-                <input type="password" name="pass" placeholder="Mật khẩu" />
-                <input type="password" name="so_dien_thoai" placeholder="Số điện thoại" />
-                <input type="text" name="dia_chi" placeholder="Địa chỉ" value="<?php echo isset($dia_chi) ? $dia_chi : ''; ?>" />
+                <input type="text" name="name" placeholder="Họ Và Tên" required>
+                <input type="email" name="email" placeholder="Email" required>      
+                <input type="password" name="pass" placeholder="Mật khẩu" required>   
+                <input type="text" name="so_dien_thoai" placeholder="Số điện thoại" required>    
+                <input type="text" name="dia_chi" placeholder="Địa chỉ" required>
                 <a href="?act=dangnhap">Đã có tài khoản</a>
                 <button type="submit" name="signup">Đăng Kí</button>
                 

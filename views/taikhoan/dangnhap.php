@@ -29,8 +29,7 @@
                 </div>
                 <span>hoặc sử dụng tài khoản của bạn</span>
                 <input type="text" name="email" placeholder="Email" required />
-                <input type="password" name="password" placeholder="Mật khẩu" required />
-                
+                <input type="password" name="password" placeholder="Mật khẩu" required />              
                 <div>Bạn chưa có tài khoản?<a href="?act=dangki">Đăng ký ngay</a></div>            
                 <button type="submit" name="login">Đăng Nhập</button>
             </form>

@@ -15,7 +15,6 @@
         <div class="col-lg-10 table-responsive mb-5">
             <table class="table table-bordered text-center mb-0">
                 <thead class="bg-secondary text-dark">
-                    <tr>
                         <th>Số Thứ Tự</th>
                         <th>Mã Đơn Hàng</th>
                         <th>Tên Người Nhận</th>
@@ -25,11 +24,12 @@
                         <th>Phương Thức Thanh Toán</th>
                         <th>Tổng Tiền</th>
                         <th>Trạng Thái</th>
+                        <th>Chi tiết</th>
                     </tr>
                 </thead>
                 <tbody class="align-middle">
                     <?php $stt = 1; ?>
-                    <?php foreach ($donHangs as $donHang): ?>
+                    <?php foreach ($donHangs as $donHang):?>
                         <tr>
                             <td><?php echo $stt++; ?></td>
                             <td><?php echo ($donHang['ma_don_hang']); ?></td>
@@ -51,6 +51,7 @@
                             ?>
                             <td><?php echo number_format($donHang['tong_tien'], 0, ',', '.') ?> VND</td>
                             <td class="text-<?=$colorAlert?>"><?php echo ($donHang['ten_trang_thai']); ?></td>
+                            <td><a href="?act=chi-tiet-don-hang&id_don_hang=<?= $donHang['don_hang_id']?>"><button class="btn btn-primary">Chi tiết</button></a></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

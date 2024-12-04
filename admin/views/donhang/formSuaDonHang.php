@@ -30,7 +30,7 @@ require_once './views/layout/sidebar.php';
                 <div class="card-body">
                   <div class="form-group">
                     <label for="">Tên người nhận</label>
-                    <input type="text" class="form-control" name="ten_nguoi_nhan" placeholder="Nhập tên danh mục" value="<?= $DonHang['ten_nguoi_nhan'] ;?>">
+                    <input type="text" class="form-control" name="ten_nguoi_nhan" placeholder="Nhập tên danh mục" value="<?= $DonHang['ten_nguoi_nhan'] ;?>" disabled>
                     <?php if(isset($error['ten_nguoi_nhan'])){ ?>
                         <p class="text-danger"><?= $error['ten_nguoi_nhan'] ?></p>
                  <?php   }
@@ -38,7 +38,7 @@ require_once './views/layout/sidebar.php';
                   </div>
                   <div class="form-group">
                     <label for="">Số điện thoại</label>
-                    <input type="text" class="form-control" name="sdt_nguoi_nhan" placeholder="Nhập tên danh mục" value="<?= $DonHang['sdt_nguoi_nhan'] ;?>">
+                    <input type="text" class="form-control" name="sdt_nguoi_nhan" placeholder="Nhập tên danh mục" value="<?= $DonHang['sdt_nguoi_nhan'] ;?>" disabled>
                     <?php if(isset($error['sdt_nguoi_nhan'])){ ?>
                         <p class="text-danger"><?= $error['sdt_nguoi_nhan'] ?></p>
                  <?php   }
@@ -46,7 +46,7 @@ require_once './views/layout/sidebar.php';
                   </div>
                   <div class="form-group">
                     <label for="">Email</label>
-                    <input type="email" class="form-control" name="email_nguoi_nhan" placeholder="Nhập tên danh mục" value="<?= $DonHang['email_nguoi_nhan'] ;?>">
+                    <input type="email" class="form-control" name="email_nguoi_nhan" placeholder="Nhập tên danh mục" value="<?= $DonHang['email_nguoi_nhan'] ;?>" disabled>
                     <?php if(isset($error['email_nguoi_nhan'])){ ?>
                         <p class="text-danger"><?= $error['email_nguoi_nhan'] ?></p>
                  <?php   }
@@ -54,7 +54,7 @@ require_once './views/layout/sidebar.php';
                   </div>
                   <div class="form-group">
                     <label for="">Địa chỉ</label>
-                    <input type="text" class="form-control" name="dia_chi_nguoi_nhan" placeholder="Nhập tên danh mục" value="<?= $DonHang['dia_chi_nguoi_nhan'] ;?>">
+                    <input type="text" class="form-control" name="dia_chi_nguoi_nhan" placeholder="Nhập tên danh mục" value="<?= $DonHang['dia_chi_nguoi_nhan'] ;?>" disabled>
                     <?php if(isset($error['dia_chi_nguoi_nhan'])){ ?>
                         <p class="text-danger"><?= $error['dia_chi_nguoi_nhan'] ?></p>
                  <?php   }
@@ -62,7 +62,7 @@ require_once './views/layout/sidebar.php';
                   </div>
                   <div class="form-group">
                     <label for="">Ghi chú</label>
-                    <textarea name="ghi_chu" id="" class='form-control' ><?= $DonHang['ghi_chu'] ;?></textarea>
+                    <textarea name="ghi_chu" id="" class='form-control' disabled><?= $DonHang['ghi_chu'] ;?></textarea>
                   </div>    
                   <hr>
                   <div class="form-group " >

@@ -122,7 +122,7 @@
                     <table class="table">
                       <tr>
                         <th style="width:50%">Thành tiền:</th>
-                        <td>$<?php echo $tong_tien;?></td>
+                        <td><?php echo $tong_tien;?> VND</td>
                       </tr>                   
                       <tr>
                         <th>Phí ship:</th>
@@ -130,7 +130,7 @@
                       </tr>
                       <tr>
                         <th>Tổng tiền:</th>
-                        <td>$<?php echo $tong_tien+ $phiShip; ?></td>
+                        <td><?php echo $tong_tien+ $phiShip; ?> VND</td>
                       </tr>
                     </table>
                   </div>

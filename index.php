@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 // Require file Common
@@ -26,19 +26,19 @@ $act = $_GET['act'] ?? '/';
 
 match ($act) {
     // Trang chủ
-    '/'=>(new TrangchuController())->trangChu(),
-    'dangki'=>(new TrangchuController())->dangki(),
-    'dangnhap'=>(new TrangchuController())->dangnhap(),
-    'sign-up'   =>  (new TrangchuController())->signUp(),
+    '/' => (new TrangchuController())->trangChu(),
+    'dangki' => (new TrangchuController())->dangki(),
+    'dangnhap' => (new TrangchuController())->dangnhap(),
+    'sign-up' => (new TrangchuController())->signUp(),
     'logout' => (new TrangchuController())->logout(),
     // Lấy sản phẩm
     'list-san-pham' => (new TrangChuController())->getListSanPham(),
-    'chi-tiet-san-pham'=>(new TrangChuController())->chiTietSanPham(),
-    'timkiem'=>(new TrangChuController())->timKiem(),
+    'chi-tiet-san-pham' => (new TrangChuController())->chiTietSanPham(),
+    'timkiem' => (new TrangChuController())->timKiem(),
 
     // Bình luận
     'add-binh-luan' => (new TrangChuController())->addBinhLuan(),
-    
+
     // Giỏ hàng
     'xem-gio-hang' => (new TrangChuController())->xemGioHang(),
     'tang-so-luong' => (new TrangChuController())->tangSoLuong(),
@@ -50,15 +50,16 @@ match ($act) {
     // Thanh toán
     'render-thanh-toan' => (new TrangChuController())->renderThanhToan(),
     'post-thanh-toan' => (new TrangChuController())->postThanhToan(),
-  
+
     //lịch sử đơn hàng 
     'lichsu' => (new TrangChuController())->list(),
     // thong tin 
     'thongtin' => (new TrangChuController())->thongTinCaNhan(),
     'editThongtin' => (new TrangChuController())->capNhatThongTin(),
     //voucher
-    'tim-kiem-danh-muc'=>(new TrangChuController())->timKiemDanhMuc(),
-    'lien-he' =>(new TrangChuController())->lienHe(),
-    
-
+    'tim-kiem-danh-muc' => (new TrangChuController())->timKiemDanhMuc(),
+    'lien-he' => (new TrangChuController())->lienHe(),
+    'gioithieu' => (new TrangChuController())->gioiThieu(),
+    'tintuc' => (new TrangChuController())->tinTuc(),
+    'chi-tiet-don-hang'=>(new TrangChuController())->chiTietDonHang(),
 };

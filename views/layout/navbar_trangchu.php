@@ -24,7 +24,7 @@
             <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
                 <a href="<?=BASE_URL?>" class="text-decoration-none d-block d-lg-none">
                     <h1 class="m-0 display-5 font-weight-semi-bold"><span
-                            class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
+                            class="text-primary font-weight-bold border px-3 mr-1">J</span>Shopper</h1>
                 </a>
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
@@ -33,8 +33,8 @@
                     <div class="navbar-nav mr-auto py-0">
                         <a href="<?=BASE_URL?>" class="nav-item nav-link active">Trang chủ</a>
                         <a href="<?php echo BASE_URL . '?act=list-san-pham' ?>" class="nav-item nav-link">Sản phẩm</a>
-                        <a href="#" class="nav-item nav-link">Tin tức</a>
-                        <a href="#" class="nav-item nav-link">Giới thiệu</a>
+                        <a href="?act=tintuc" class="nav-item nav-link">Tin tức</a>
+                        <a href="?act=gioithieu" class="nav-item nav-link">Giới thiệu</a>
                         <a href="?act=lien-he" class="nav-item nav-link">Liên hệ</a>
                     </div>
                     <div class="navbar-nav ml-auto py-0">
@@ -84,9 +84,9 @@
                             alt="Image">
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 700px;">
-                                <h4 class="text-light text-uppercase font-weight-medium mb-3">Giảm giá lên đến 20%</h4>
-                                <h3 class="display-4 text-white font-weight-semi-bold mb-4">Trang sức bạc</h3>
-                                <a href="" class="btn btn-light py-2 px-3">Mua ngay</a>
+                                <h4 class="text-light text-uppercase font-weight-medium mb-3">Giảm giá lên đến 10%</h4>
+                                <h3 class="display-4 text-white font-weight-semi-bold mb-4">Đơn hàng trên 1.000.000đ</h3>
+                                <a href="?act=list-san-pham" class="btn btn-light py-2 px-3">Mua ngay</a>
                             </div>
                         </div>
                     </div>
@@ -96,10 +96,10 @@
                             alt="Image">
                         <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                             <div class="p-3" style="max-width: 700px;">
-                                <h4 class="text-light text-uppercase font-weight-medium mb-3">Giảm giá lên đến 30% </h4>
+                                <h4 class="text-light text-uppercase font-weight-medium mb-3">Giảm giá lên đến 20% </h4>
                                 <h3 class="display-4 text-white font-weight-semi-bold mb-4">Đơn hàng trên 2.000.000đ
                                 </h3>
-                                <a href="" class="btn btn-light py-2 px-3">Mua ngay</a>
+                                <a href="?act=list-san-pham" class="btn btn-light py-2 px-3">Mua ngay</a>
                             </div>
                         </div>
                     </div>

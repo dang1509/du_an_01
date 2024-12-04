@@ -5,8 +5,18 @@
             $this->modelThongKe = new ThongKe;
         }
         public function ThongKe(){
-
+            
+        
+            if (!isset($_SESSION['chuc_vu']) || $_SESSION['chuc_vu'] != 1) {
+                echo "<script>";
+                echo "alert('Tài khoản không có quyền truy cập');";
+                echo "window.location.href = '".BASE_URL."';";
+                echo "</script>";
+                exit; 
+            }
+            else{
             require_once './views/ThongKe.php';
+            }
         }
         public function ThongKeTheoNgay(){
             if($_SERVER['REQUEST_METHOD'] == "POST"){

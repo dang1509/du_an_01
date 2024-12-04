@@ -6,7 +6,8 @@ class DonHang{
     }
     public function getAllDonHang(){
         try{
-            $sql = 'SELECT don_hangs.*, don_hangs.id AS don_hang_id, trang_thai_don_hangs.ten_trang_thai FROM don_hangs INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_id= trang_thai_don_hangs.id';
+            $sql = 'SELECT don_hangs.*, don_hangs.id AS don_hang_id, trang_thai_don_hangs.ten_trang_thai
+             FROM don_hangs INNER JOIN trang_thai_don_hangs ON don_hangs.trang_thai_id= trang_thai_don_hangs.id ORDER BY ngay_dat DESC';
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
@@ -51,24 +52,19 @@ class DonHang{
         } 
     }
      
-    public function updateDonHang($ten_nguoi_nhan,$sdt_nguoi_nhan,$email_nguoi_nhan,$dia_chi_nguoi_nhan,$ghi_chu,$trang_thai_id,$id){
+    public function updateDonHang($don_hang_id,$trang_thai_id){
         try{
-            $sql = "UPDATE don_hangs SET ten_nguoi_nhan =:ten_nguoi_nhan 
-            ,sdt_nguoi_nhan=:sdt_nguoi_nhan
-            ,email_nguoi_nhan=:email_nguoi_nhan
-            ,dia_chi_nguoi_nhan=:dia_chi_nguoi_nhan,
-            ghi_chu=:ghi_chu,
+            $sql = "UPDATE don_hangs SET 
             trang_thai_id=:trang_thai_id
              
             WHERE id=:id";
-            // var_dump($id);die();
+            
+            // var_dump();die();
             
             $stmt = $this->conn->prepare($sql);   
-            $stmt->execute([':ten_nguoi_nhan'=>$ten_nguoi_nhan,':sdt_nguoi_nhan'=>$sdt_nguoi_nhan,
-                            ':email_nguoi_nhan'=>$email_nguoi_nhan,':dia_chi_nguoi_nhan'=>$dia_chi_nguoi_nhan,
-                            ':ghi_chu'=>$ghi_chu,
-                            ':trang_thai_id'=>$trang_thai_id,
-                            ':id'=>$id
+            $stmt->execute([
+                            ':trang_thai_id'=> $trang_thai_id,
+                            ':id'=>$don_hang_id
         ]);
         
             return true;
