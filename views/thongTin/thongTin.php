@@ -18,6 +18,10 @@
                     <!-- If the user does not have an avatar -->
                     <img src="default-avatar.png" alt="Avatar" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
                 <?php endif; ?>
+                <br>
+                <br>
+               
+                <h3>Ảnh đại diện</h3>
             </div>
 
             <!-- Form Section (Right Side) -->
